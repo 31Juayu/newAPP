@@ -28,7 +28,7 @@ Stand up Procedure:
 | Task                                                                              |   Assigned To   |   Due Date   |
 |:----------------------------------------------------------------------------------|:---------------:|:------------:|
 | [Implement the basic framework, design interface] | [Jiayu Jian, Tianyi Xu, ]        | [2024-04-22] |
-| [Draw the UML diagram of the application, design the front end of the interface, and try to complete the search function]                                                          | [Zhengyu Pen, Wenzhao Zheng] | [2024-04-22] |
+| [Draw the UML diagram of the application, design the front end of the interface, and try to complete the search function]                                                          | [Zhengyu Peng] | [2024-04-22] |
 
 
 
