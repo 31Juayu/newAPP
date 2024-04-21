@@ -28,7 +28,7 @@ Stand up Procedure:
 ## Action Items
 | Task                                                                              |   Assigned To   |   Due Date   |
 |:----------------------------------------------------------------------------------|:---------------:|:------------:|
-| [Design and implement the basic framework, design functions and try to implement] |       []        | [2024-04-16] |
+| [Design and implement the basic framework, design functions and try to implement] | [All Members]        | [2024-04-16] |
 | [Develop a project plan]                                                          | [Wenzhao Zheng] | [2024-04-16] |
 
 
