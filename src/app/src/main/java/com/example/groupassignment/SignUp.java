@@ -44,7 +44,7 @@ public class SignUp extends AppCompatActivity {
         String strPassW = passWord.getText().toString();
         String confirmPass = confirmPassWord.getText().toString();
         if(!strPassW.equals(confirmPass)){
-            Toast.makeText(this, "URL is invalid", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "two password are different", Toast.LENGTH_SHORT).show();
             return;
         }
 
