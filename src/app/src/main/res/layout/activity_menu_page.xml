@@ -68,7 +68,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Home" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -76,7 +76,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Contacts" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView3"
@@ -84,7 +84,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Idea" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
         </LinearLayout>
 
@@ -111,7 +111,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 2"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <Button
@@ -126,7 +126,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 2"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <!-- Button 3 -->
@@ -143,7 +143,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 3"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -162,7 +162,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Key" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -170,7 +170,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Lock" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -178,7 +178,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Ok" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
         </LinearLayout>
 
@@ -204,8 +204,8 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 2"
-                android:textColor="black"
+                android:text="Button 4"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <Button
@@ -219,8 +219,8 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 2"
-                android:textColor="black"
+                android:text="Button 5"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <!-- Button 3 -->
@@ -236,8 +236,8 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 3"
-                android:textColor="black"
+                android:text="Button 6"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -256,7 +256,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Scroll" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView8"
@@ -264,7 +264,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Services" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/imageView9"
@@ -272,7 +272,7 @@
                 android:layout_height="44dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                app:srcCompat="@drawable/munu_Volume" />
+                app:srcCompat="@drawable/ic_launcher_foreground" />
 
         </LinearLayout>
 
@@ -299,7 +299,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 7"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <Button
@@ -314,7 +314,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 8"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
             <!-- Button 3 -->
@@ -331,7 +331,7 @@
                 android:background="@android:color/background_light"
                 android:padding="15dp"
                 android:text="Button 9"
-                android:textColor="black"
+                android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
