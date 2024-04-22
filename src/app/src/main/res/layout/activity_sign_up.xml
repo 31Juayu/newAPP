@@ -14,6 +14,8 @@
         android:layout_height="379dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@id/text_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteX="18dp">
 
         <EditText
