@@ -37,12 +37,13 @@ Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submis
 ## Team Members and Roles
 The key area(s) of responsibilities for each member
 
-| UID   |  Name  |   Role |
-|:------|:------:|-------:|
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
-| [uid] | [name] | [role] |
+| UID      |     Name      |                                                                           Role |
+|:---------|:-------------:|-------------------------------------------------------------------------------:|
+| u7780366 |   Tianyi Xu   |                     Group leader, backend and some basic part of the interface |
+| u7776709 |   Ruize Luo   |                                                                         [role] |
+| u7705888 | Wenzhao Zheng |                                                                         [role] |
+| u7727795 | Zhengyu Peng  |                                                                         [role] |
+| u7731262 |  Jiayu Jian   | Main programmer, backend programmer, and helping other members with the issues |
 
 
 ## Summary of Individual Contributions
