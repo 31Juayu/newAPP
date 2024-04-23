@@ -13,13 +13,15 @@ public class SignUp extends AppCompatActivity {
     private EditText emailName;
     private EditText passWord;
     private EditText confirmPassWord;
+    private EditText userName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        emailName = (EditText) findViewById(R.id.emailInput);
-        passWord = (EditText) findViewById(R.id.setPassword);
-        confirmPassWord = (EditText) findViewById(R.id.confirmPassWord);
+        userName = (EditText) findViewById(R.id.editTextText);
+        emailName = (EditText) findViewById(R.id.editTextTextEmailAddress);
+        passWord = (EditText) findViewById(R.id.editTextTextPassword);
+        confirmPassWord = (EditText) findViewById(R.id.editTextTextPassword3);
         Button registerButton = (Button) findViewById(R.id.button_register);
         Button returnButton = (Button) findViewById(R.id.button_return_login);
 
