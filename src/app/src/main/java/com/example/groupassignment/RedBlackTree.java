@@ -1,72 +1,82 @@
 package com.example.groupassignment;
+/*        RedBlackTree<String> tree= new RedBlackTree<String>();
+        //put是添加元素，第一个元素是key，第二个元素是value
+        tree.put("a","this is");
+        tree.put("b","that is");
+        tree.put("c","not impossible");
+        tree.put("d","shit");
+        //remove是删除元素，根据key来删除
+        tree.remove("b");
+        tree.remove("a");
+        tree.remove("c");
+        //search是寻找元素，根据key来寻找
+        System.out.println(tree.search("d"));*/
 
-public class RedBlackTree {
+public class RedBlackTree<T extends Comparable<T>> {
     enum Color{
         RED,BLACK
     }
 
-    private Node root;
+    private Node<T> root;
 
-    private static class Node{
-        int key;
-        int value;
-        Node left;
-        Node right;
+    private static class Node<T> {
+        T key;
+        T value;
+        Node<T> left;
+        Node<T> right;
+        Node<T> parent;
+        Color color = Color.RED;
 
-        Node parent;
-
-        Color color = Color.RED;//新增的默认是红色
-
-        //判断是否是左孩子
-        boolean isLeftChild(){
+        // 判断是否是左孩子
+        boolean isLeftChild() {
             return parent != null && parent.left == this;
         }
 
-        //返回叔叔节点（uncle）:根parent节点平辈的节点
-        Node uncle(){
-            //有parent且有祖辈的才可能有叔叔节点
-            if(parent == null || parent.parent == null){
+        // 返回叔叔节点（uncle）:根parent节点平辈的节点
+        Node<T> uncle() {
+            // 有parent且有祖辈的才可能有叔叔节点
+            if (parent == null || parent.parent == null) {
                 return null;
             }
-            if(parent.isLeftChild()){
+            if (parent.isLeftChild()) {
                 return parent.parent.right;
-            }else{
-                return  parent.parent.left;
+            } else {
+                return parent.parent.left;
             }
         }
 
-        //返回兄弟节点
-        Node sibling(){
-            if (parent == null){
+        // 返回兄弟节点
+        Node<T> sibling() {
+            if (parent == null) {
                 return null;
             }
-            if(this.isLeftChild()){
+            if (this.isLeftChild()) {
                 return this.right;
-            }else{
+            } else {
                 return this.left;
             }
         }
 
-        public Node(int key, int value) {
+        public Node(T key, T value) {
             this.key = key;
             this.value = value;
         }
     }
 
     //判断红，黑
-    boolean isRed(Node node){
+    boolean isRed(Node<T> node){
         //rule 2:所有的null为黑色
         return node != null && node.color == Color.RED;
     }
 
-    boolean isBlack(Node node){
+    boolean isBlack(Node<T> node){
         return !isRed(node);
     }
 
-    private void rightRotate(Node pink){
-        Node parent = pink.parent;
-        Node yellow = pink.left;
-        Node green = yellow.right;
+    private void rightRotate(Node<T> pink){
+        Node<T> parent = pink.parent;
+        Node<T> yellow = pink.left;
+        Node<T> green = yellow.right;
         //pink.parent.left = yellow;
         if(green != null){
             green.parent = pink;
@@ -88,10 +98,10 @@ public class RedBlackTree {
         }
     }
 
-    private void leftRotate(Node pink){
-        Node parent = pink.parent;
-        Node yellow = pink.right;
-        Node green = yellow.left;
+    private void leftRotate(Node<T> pink){
+        Node<T> parent = pink.parent;
+        Node<T> yellow = pink.right;
+        Node<T> green = yellow.left;
         //pink.parent.right = yellow;
         if(green != null){
             green.parent = pink;
@@ -114,36 +124,39 @@ public class RedBlackTree {
     }
 
     //红黑树的插入
-    public void put(int key, int value){
-        Node p = root;
-        Node parent = null;//由于null和p是不同的空间，所以要有parent去记录。不能直接用p，在链接的时候
-        while(p != null){
+    public void put(T key, T value) {
+        Node<T> p = root;
+        Node<T> parent = null;
+
+        while (p != null) {
             parent = p;
-            if(key < p.key){
+            int cmp = key.compareTo(p.key);
+            if (cmp < 0) {
                 p = p.left;
-            } else if (key > p.key) {
+            } else if (cmp > 0) {
                 p = p.right;
-            }else{
+            } else {
                 p.value = value;
                 return;
             }
         }
 
-        Node inserted = new Node(key,value);
-        if(parent == null){
+        Node<T> inserted = new Node<>(key, value);
+        if (parent == null) {
             root = inserted;
-        } else if (key < parent.key) {
-            parent.left = inserted;
-            inserted.parent = parent;//修改parent属性
-        }else{
-            parent.right = inserted;
+        } else {
+            int cmp = key.compareTo(parent.key);
+            if (cmp < 0) {
+                parent.left = inserted;
+            } else {
+                parent.right = inserted;
+            }
             inserted.parent = parent;
         }
         fixRedRed(inserted);
     }
-
     //默认插入的都是红色的，然后rule 3:红色的不相邻，所以要修改
-    void fixRedRed(Node x){
+    void fixRedRed(Node<T> x){
         //case 1:根节点为红色
         if (x == root){
             x.color = Color.BLACK;
@@ -157,9 +170,9 @@ public class RedBlackTree {
 
         //case 3:父亲为红色，且叔叔为红色
         //把父亲和叔叔都变成黑色，再把祖父变成红色。把祖父当成新插入的节点，递归调用直到根节点
-        Node parent = x.parent;
-        Node uncle = x.uncle();
-        Node grandparent = parent.parent;
+        Node<T> parent = x.parent;
+        Node<T> uncle = x.uncle();
+        Node<T> grandparent = parent.parent;
         if(isRed(uncle)){
             parent.color = Color.BLACK;
             uncle.color = Color.BLACK;
@@ -199,9 +212,9 @@ public class RedBlackTree {
     }
 
     //红黑树的删除
-    public void remove(int key){
-        Node deleted = find(key);
-        if(deleted == null){
+    public void remove(T key) {
+        Node<T> deleted = find(key);
+        if (deleted == null) {
             return;
         }
         doRemove(deleted);
@@ -211,12 +224,12 @@ public class RedBlackTree {
     //deleted node and the remaining node are black
     //case 3-5
     //function to rebalanced
-    private void fixDoubleBlack(Node x){
+    private void fixDoubleBlack(Node<T> x){
         if(x == root){
             return;
         }
-        Node parent = x.parent;
-        Node sibling = x.sibling();
+        Node<T> parent = x.parent;
+        Node<T> sibling = x.sibling();
         //case 3: 删除的节点是黑色，剩下的节点也是黑色
         // 被调整的节点的兄弟为红色，同时其兄弟的子节点为黑色
         //方法：1.被调整的是左孩子，左旋父亲。反之右旋
@@ -306,9 +319,9 @@ public class RedBlackTree {
     }
 
 
-    private void doRemove(Node deleted){
-        Node replaced = findReplaced(deleted);
-        Node parent = deleted.parent;
+    private void doRemove(Node<T> deleted){
+        Node<T> replaced = findReplaced(deleted);
+        Node<T> parent = deleted.parent;
         //被删除节点没孩子,先调整平衡再删除
         //deleted node has no children
         if(replaced == null){
@@ -389,24 +402,25 @@ public class RedBlackTree {
         // => The deleted node has only one child / no children
         //case 0:
         //switch key
-        int t = deleted.key;
+        T tempKey = deleted.key;
         deleted.key = replaced.key;
-        replaced.key = t;
+        replaced.key = tempKey;
 
-        //switch value
-        int v = deleted.value;
+        // switch value
+        T tempValue = deleted.value;
         deleted.value = replaced.value;
-        replaced.value = v;
+        replaced.value = tempValue;
         doRemove(replaced);
     }
 
     //查找删除的节点
-    Node find(int key){
-        Node p = root;
-        while(p != null){
-            if(key < p.key){
+    Node<T> find(T key) {
+        Node<T> p = root;
+        while (p != null) {
+            int cmp = key.compareTo(p.key);
+            if (cmp < 0) {
                 p = p.left;
-            } else if (key > p.key) {
+            } else if (cmp > 0) {
                 p = p.right;
             } else {
                 return p;
@@ -416,7 +430,7 @@ public class RedBlackTree {
     }
 
     //查找被删除节点的剩余节点
-    Node findReplaced(Node deleted){
+    Node<T> findReplaced(Node<T> deleted){
         //被删除节点的左右孩子都是null
         if(deleted.left == null && deleted.right == null){
             return null;
@@ -430,12 +444,35 @@ public class RedBlackTree {
         }
         //若有两个孩子，则返回后继节点（比它大的当中最小的）
         //successor Node
-        Node s = deleted.right;
+        Node<T> s = deleted.right;
         while (s.left != null){
             s = s.left;
         }
         return s;
     }
 
+    public Node<T> findByKey(Node<T> x, T v) {
+        if (x==null || x.key == null)
+            return null;
+
+        int cmp = v.compareTo(x.key);
+        if (cmp < 0)
+            return findByKey(x.left, v);
+        else if (cmp > 0)
+            return findByKey(x.right, v);
+        else
+            return x;
+    }
+
+    public T search(T key) {
+        Node<T> foundNode = findByKey(root, key);
+        if(foundNode == null){
+            return null;
+        }else{
+            return foundNode.value;
+        }
+    }
+
 
 }
+

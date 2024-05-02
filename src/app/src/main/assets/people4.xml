@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Customer>
+    <ID id="1">
+        <Email>comp2100@anu.edu.au</Email>
+        <PassWord>comp2100</PassWord>
+    </ID>
+    <ID id="2">
+        <Email>comp6442@anu.edu.au</Email>
+        <PassWord>comp6442</PassWord>
+    </ID>
+</Customer>
