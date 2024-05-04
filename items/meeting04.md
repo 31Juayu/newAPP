@@ -1,6 +1,6 @@
 # [Team Name]
 
-## Team Meeting [04] - Week [9] - [2024-05-04] (19:00 - 19:45)
+## Team Meeting [04] - Week [9] - [2024-05-04] (19:00 - 19:50)
 **Absent: No one is absent**
 <br>
 **Lead/scribe: Tianyi Xu, Zhengyu Peng**
