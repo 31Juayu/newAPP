@@ -12,6 +12,8 @@ package com.example.groupassignment;
         //search是寻找元素，根据key来寻找
         System.out.println(tree.search("d"));*/
 
+import java.util.ArrayList;
+
 public class RedBlackTree<T extends Comparable<T>> {
     enum Color{
         RED,BLACK
@@ -473,6 +475,23 @@ public class RedBlackTree<T extends Comparable<T>> {
         }
     }
 
+    //红黑数的遍历
+
+    public ArrayList<ArrayList<T>> preOrder() {
+        ArrayList<ArrayList<T>> result = new ArrayList<>();
+        preOrder(root, result);
+        return result;
+    }
+
+    private void preOrder(Node<T> tree, ArrayList<ArrayList<T>> result) {
+        if (tree != null && tree.key != null) {
+            ArrayList<T> keyValue = new ArrayList<>();
+            keyValue.add(tree.key);
+            keyValue.add(tree.value);
+            result.add(keyValue); // 将当前节点的键值添加到结果中
+            preOrder(tree.left, result); // 递归遍历左子树
+            preOrder(tree.right, result); // 递归遍历右子树
+        }
+    }
 
 }
-
