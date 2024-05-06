@@ -30,7 +30,7 @@ public class GPSActivity extends AppCompatActivity {
         // get the related element
         position_show = (TextView) findViewById(R.id.position_show);
         // create the location manager
-        lm = (LocationManager) getSystemService(Context.LOCALE_SERVICE);
+        lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         // if the gps service is closed, switch on
         if (!isGPSable(lm)) {
             Toast.makeText(GPSActivity.this, "please open GPS", Toast.LENGTH_SHORT).show();
