@@ -30,7 +30,7 @@ public class MenuPage extends AppCompatActivity {
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GPSActivity.class);
+                Intent intent = new Intent(getApplicationContext(), locationActivity.class);
                 startActivity(intent);
             }
         });
