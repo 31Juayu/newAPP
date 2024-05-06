@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuPage extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_page);
         Button searchButton = (Button) findViewById(R.id.button10);
+
+        Button newButton = (Button) findViewById(R.id.button1);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,5 +26,14 @@ public class MenuPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), locationActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
