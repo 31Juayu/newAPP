@@ -18,6 +18,18 @@
             android:name=".GPSActivity"
             android:exported="false" />
         <activity
+            android:name=".dealSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".showCountryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".showInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".searchActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuPage"
             android:exported="false" />
         <activity

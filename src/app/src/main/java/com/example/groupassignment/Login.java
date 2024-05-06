@@ -9,6 +9,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 public class Login extends AppCompatActivity {
     private EditText userNameText;
     private EditText passWordText;
@@ -39,12 +57,56 @@ public class Login extends AppCompatActivity {
     private void performLogin(){
         String userName = userNameText.getText().toString().trim();
         String passWord = passWordText.getText().toString().trim();
-        if(userName.isEmpty() || passWord.isEmpty()){
+        List<Customer> list = parseXML();
+        boolean ifIn = false;
+        for (Customer e : list) {
+            if (e.getUsername().equals(userName) && e.getPassword().equals(passWord)) {
+                ifIn = true;
 
+                break;
+            }
         }
+        if(ifIn){
+            //List<String> urlList = readURLs();
+            Intent intent = new Intent(getApplicationContext(), MenuPage.class);
+            //intent.putStringArrayListExtra("key_name", (ArrayList<String>) urlList);
+            startActivity(intent);
+        }
+
     }
+
     private void performSignUp(){
         Intent intent = new Intent(getApplicationContext(),SignUp.class);
         startActivity(intent);
+    }
+    public ArrayList<Customer> parseXML() {
+        ArrayList<Customer> customers = new ArrayList<>();
+        try {
+/*            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document document = builder.parse(new File(filePath));*/
+
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            InputStream inputStream = getAssets().open("people4.xml");
+            Document document = builder.parse(inputStream);
+
+            NodeList nodeList = document.getElementsByTagName("ID");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    String id = element.getAttribute("id");
+                    String email = element.getElementsByTagName("Email").item(0).getTextContent();
+                    String password = element.getElementsByTagName("PassWord").item(0).getTextContent();
+
+                    customers.add(new Customer(id, email, password));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return customers;
     }
 }
