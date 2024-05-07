@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +28,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class VideoDemonstrationActivity extends AppCompatActivity {
     private Button uploadv;
@@ -35,17 +38,23 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private TextView progressText;
 
+    private RecyclerView videoList;
+
+    private List<Uri> videoUris;
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_video_demonstration);
 
         // Initialize layout components
         uploadv = findViewById(R.id.upload_video);
         progressBar = findViewById(R.id.progress_bar);
         progressText = findViewById(R.id.progress_text);
-
+        videoList = findViewById(R.id.video_list);
+        videoUris = new ArrayList<>();
         uploadv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,10 +79,13 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             progressText.setVisibility(View.VISIBLE);
             uploadVideo();
+        } else {
+            Toast.makeText(this, "No video selected or selection cancelled.", Toast.LENGTH_SHORT).show();
         }
     }
 
     private String getFileType(Uri videouri) {
+        if (videouri == null) return "";
         ContentResolver r = getContentResolver();
         // Get the file type, in this case it's mp4
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
@@ -82,28 +94,36 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
 
     private void uploadVideo() {
         if (videouri != null) {
-            // Save the selected video in Firebase storage
+            // Save the selected video in Firebase storage (后续修改存储位置，名字)
             final StorageReference reference = FirebaseStorage.getInstance()
                     .getReference("Files/" + System.currentTimeMillis() + "." + getFileType(videouri));
 
             reference.putFile(videouri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                    while (!((Task<?>) uriTask).isSuccessful());
+                    reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri downloadUri) {
+                            // Get the link of the video
+                            String uriString = downloadUri.toString();
+                            DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Video");
+                            HashMap<String, String> map = new HashMap<>();
+                            map.put("videolink", uriString);
+                            reference1.child("" + System.currentTimeMillis()).setValue(map);
 
-                    // Get the link of the video
-                    String downloadUri = uriTask.getResult().toString();
-
-                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Video");
-                    HashMap<String, String> map = new HashMap<>();
-                    map.put("videolink", downloadUri);
-                    reference1.child("" + System.currentTimeMillis()).setValue(map);
-
-                    // Video uploaded successfully
-                    progressBar.setVisibility(View.GONE);
-                    progressText.setVisibility(View.GONE);
-                    Toast.makeText(VideoDemonstrationActivity.this, "Video Uploaded!!", Toast.LENGTH_SHORT).show();
+                            // Video uploaded successfully
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            Toast.makeText(VideoDemonstrationActivity.this, "Video Uploaded!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar.setVisibility(View.GONE);
+                            progressText.setVisibility(View.GONE);
+                            Toast.makeText(VideoDemonstrationActivity.this, "Failed to get download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -111,7 +131,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
                     // Error, Image not uploaded
                     progressBar.setVisibility(View.GONE);
                     progressText.setVisibility(View.GONE);
-                    Toast.makeText(VideoDemonstrationActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VideoDemonstrationActivity.this, "Failed to upload video: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
@@ -122,6 +142,9 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
                     progressText.setText("Uploaded " + (int) progress + "%");
                 }
             });
+        } else {
+            Toast.makeText(this, "No video selected for upload.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
