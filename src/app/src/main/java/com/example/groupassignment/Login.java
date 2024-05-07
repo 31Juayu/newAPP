@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+
 import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -35,6 +37,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // open the fire base
+        FirebaseApp.initializeApp(getBaseContext());
         // find all elements
         userNameText = (EditText) findViewById(R.id.UserNameEdit);
         passWordText = (EditText) findViewById(R.id.PassWordEdit);
