@@ -19,6 +19,7 @@ public class MenuPage extends AppCompatActivity {
 
         Button newButton = (Button) findViewById(R.id.button1);
         Button videoButton = (Button) findViewById(R.id.button2);
+        Button assignmentButton = (Button) findViewById(R.id.button3);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,12 @@ public class MenuPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        assignmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),AssignmentDemonstrationActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
