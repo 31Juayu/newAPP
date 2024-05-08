@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -51,7 +53,7 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity {
         PDFList = (RecyclerView) findViewById(R.id.PDF_list);
         PDFUris = new ArrayList<>();
         PDFList.setLayoutManager(new LinearLayoutManager(this));
-        //TODO: 后续增加下载
+        readPDFLinks();
         uploadPDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +112,7 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity {
         if (PDFUri != null){
             String fileName = getUploadFileName(PDFUri);
             final StorageReference reference = FirebaseStorage.getInstance()
-                    .getReference("Files/Assignments" + fileName + "." + getUploadFileType(PDFUri));
+                    .getReference("Assignments/" + fileName + "." + getUploadFileType(PDFUri));
             reference.putFile(PDFUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -156,5 +158,42 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No Assignment selected for upload.", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void readPDFLinks() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        storageRef.child("Assignments").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+                List<AssignmentItem> assignmentItemList = new ArrayList<>();
+                for (StorageReference item : listResult.getItems()) {
+                    String fileName = item.getName();
+                    item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String downloadUriPDF = uri.toString();
+                            assignmentItemList.add(new AssignmentItem(fileName,downloadUriPDF));
+                            updatePDFList(assignmentItemList);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AssignmentDemonstrationActivity.this, "Failed to get download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AssignmentDemonstrationActivity.this, "Failed to list files: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void updatePDFList(List<AssignmentItem> assignmentItemList){
+        AssignmentAdapter adapter = new AssignmentAdapter(assignmentItemList,this);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        PDFList.setLayoutManager(layoutManager);
+        PDFList.setAdapter(adapter);
     }
 }
