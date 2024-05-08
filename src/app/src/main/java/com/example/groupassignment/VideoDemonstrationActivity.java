@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,14 +17,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -31,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class VideoDemonstrationActivity extends AppCompatActivity {
     private Button uploadv;
@@ -55,6 +63,8 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
         progressText = findViewById(R.id.progress_text);
         videoList = findViewById(R.id.video_list);
         videoUris = new ArrayList<>();
+        videoList.setLayoutManager(new LinearLayoutManager(this));
+        readVideoLinks();
         uploadv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,6 +72,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
             }
         });
     }
+
 
     // Choose a video from phone storage
     private void chooseVideo() {
@@ -145,6 +156,47 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No video selected for upload.", Toast.LENGTH_SHORT).show();
         }
+
+    }
+    private void readVideoLinks() {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference();
+        storageRef.child("Files").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+            @Override
+            public void onSuccess(ListResult listResult) {
+                List<VideoItem> videoItemList = new ArrayList<>();
+                int itemCount = listResult.getItems().size();
+                AtomicInteger count = new AtomicInteger(0);
+                for (StorageReference item : listResult.getItems()) {
+                    String fileName = item.getName();
+                    item.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            String downloadUri = uri.toString();
+                            videoItemList.add(new VideoItem(fileName,downloadUri));
+                            // Check if this is the last item
+                            updateVideoList(videoItemList);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(VideoDemonstrationActivity.this, "Failed to get download URL: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(VideoDemonstrationActivity.this, "Failed to list files: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
+    private void updateVideoList(List<VideoItem> videoItemList) {
+        VideoAdapter adapter = new VideoAdapter(videoItemList,this);
+        StaggeredGridLayoutManager layoutManager=new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        videoList.setLayoutManager(layoutManager);
+        videoList.setAdapter(adapter);
+    }
 }
