@@ -102,9 +102,6 @@
             android:background="#6DDBDFD5"
             android:orientation="horizontal">
 
-            <!-- Button 1 -->
-
-            <!-- Button 2 -->
 
             <Button
                 android:id="@+id/button1"
@@ -117,7 +114,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 2"
+                android:text="GPS"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -132,7 +129,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 2"
+                android:text="Video"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -149,7 +146,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 3"
+                android:text="Assignment"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
@@ -212,7 +209,7 @@
                 android:layout_weight="1"
                 android:background="@android:color/background_light"
                 android:padding="15dp"
-                android:text="Button 4"
+                android:text="Profile"
                 android:textColor="@android:color/black"
                 android:textSize="18sp" />
 
