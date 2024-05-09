@@ -33,7 +33,7 @@ Stand up Procedure:
 |:----------------------------------------------------------------------------------|:---------------:|:------------:|
 | [Finish the report, testing, page design, design modules, Video Collection.] | [Zhengyu Peng]  | [2024-05-16] |
 | [User interaction]   | [Tianyi Xu] | [2024-05-16] |
-| [Finish user profile, help document, design modules, share,and help others] | [Wenzhao Zheng]        | [2024-05-16] |
+| [Finish user profile, help document, design modules, share,and add friend function] | [Wenzhao Zheng]        | [2024-05-16] |
 | [Finish search function, help others code job] | [Jiayu Jian] | [2024-05-16] |
 | [Convert to json, User interaction] | [Ruizhe Luo]        | [2024-05-16] |
 
