@@ -63,7 +63,7 @@ public class Profile {
         return gson.toJson(this);
     }
 
-    public void uploadProfile(Profile profile) {
+    public void uploadProfileJson(Profile profile) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("Profiles/" + profile.getUsername() + ".json");
 

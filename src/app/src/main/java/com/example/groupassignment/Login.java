@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                 //following is test method to upload files to firestore, no check will apply for the test method
                 Profile profile = new Profile(userName, null, passWord, null, null, null);
                 profile.setExampleData();
-                profile.uploadProfile();
+                profile.uploadProfileJson(profile);
                 break;
             }
         }
