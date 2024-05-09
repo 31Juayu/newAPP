@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
         CheckBox privacyCheckbox = (CheckBox) findViewById(R.id.privacyCheckbox);
 
         loginButtonMain.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, Login.class);
+            Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
         });
         signUpButtonMain.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, SignUp.class);
+            Intent intent = new Intent(getApplicationContext(), SignUp.class);
             startActivity(intent);
         });
         privacyCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {

@@ -20,6 +20,7 @@ public class MenuPage extends AppCompatActivity {
         Button newButton = (Button) findViewById(R.id.button1);
         Button videoButton = (Button) findViewById(R.id.button2);
         Button assignmentButton = (Button) findViewById(R.id.button3);
+        Button profileButton = (Button) findViewById(R.id.button4);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +49,14 @@ public class MenuPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),AssignmentDemonstrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
                 startActivity(intent);
             }
         });
