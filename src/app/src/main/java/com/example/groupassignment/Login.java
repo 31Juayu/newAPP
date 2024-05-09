@@ -76,7 +76,7 @@ public class Login extends AppCompatActivity {
                 editor.putString("USERNAME_KEY", userName);
                 editor.putString("PASSWORD_KEY", passWord);
                 editor.apply();
-                //following is test method to upload files to firestore, no check will apply for the test method
+                //following is test method to upload files to firebase, no check will apply for the test method
                 Profile profile = new Profile(userName, null, passWord, null, null, null);
                 profile.setExampleData();
                 profile.uploadProfileJson(profile);

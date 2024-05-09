@@ -58,7 +58,6 @@ public class ProfileActivity extends AppCompatActivity {
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
 
         downloadProfile(username, FirebaseStorage.getInstance());
-        updateProfile(profile);
 
         ButtonProfile2Menu.setOnClickListener(v -> {
             Intent intent0 = new Intent(ProfileActivity.this, MenuPage.class);
@@ -76,49 +75,62 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchUserProfile(String username, String password) {
-        // get data from firestore
-        // use firestore to store profile information, further development to modify login is required later
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("users").document(username).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    profile = document.toObject(Profile.class);
-                } else {
-                    Log.d("Firebase", "No such document");
-                }
-            } else {
-                Log.d("Firebase", "get failed with ", task.getException());
-            }
-        });
-    }
 
     public void downloadProfile(String username, FirebaseStorage storage) {
-        StorageReference profileRef = storage.getReference().child("Profiles/" + username + ".json");
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
 
         profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
             String json = new String(bytes);
+            System.out.println("Downloaded Profile json " + json);
             profile = new Gson().fromJson(json, Profile.class);
-
+            if (profile!=null){
+                if(profile.getUsername()!=null){
+                    System.out.println("Profile " + profile.getUsername());
+                    UsernameProfile.setText(profile.getUsername());
+                }
+                if(profile.getEmail()!=null){
+                    EmailProfile.setText(profile.getEmail());
+                    System.out.println("Email is " + profile.getEmail());
+                }else {
+                    EmailProfile.setText(profile.getUsername());
+                }
+                if(profile.getCourses()!=null){
+                    adapter.clear();
+                    adapter.addAll(profile.getCourses());
+                    adapter.notifyDataSetChanged();
+                }
+                if (profile.getProfileImageUrl()!=null){
+                    //TODO:For checkpoint 2, please ask why the image load keeps failing
+                    //    I have added all required dependencies:
+                    //    implementation("com.github.bumptech.glide:glide:4.16.0")
+                    //    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+                    //    The url is manually set to be correct
+                    //    Error: class com.bumptech.glide.load.engine.GlideException: Failed to load resource
+                    Glide.with(HeadImage.getContext())
+                            .load(profile.getProfileImageUrl())
+                            .override(126, 126)
+                            .into(HeadImage);
+                }
+            }
             System.out.println("Profile downloaded: " + profile.getUsername());
         }).addOnFailureListener(e -> {
             System.err.println("Failed to download profile JSON: " + e.getMessage());
         });
     }
 
-    protected void updateProfile(Profile profile){
-        UsernameProfile.setText(profile.getUsername());
-        EmailProfile.setText(profile.getEmail());
+    /*protected void updateProfile(Profile profile){
+        //UsernameProfile.setText(profile.getUsername());
+        //EmailProfile.setText(profile.getEmail());
 
-        adapter.clear();
+        /*adapter.clear();
         adapter.addAll(profile.getCourses());
-        adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();*/
 
-        RequestOptions options = new RequestOptions().override(128, 128).centerCrop();
+        /*RequestOptions options = new RequestOptions().override(128, 128).centerCrop();
         Glide.with(HeadImage.getContext())
                 .load(profile.getProfileImageUrl())
                 .apply(options)
                 .into(HeadImage);
-    }
+    }*/
 }
