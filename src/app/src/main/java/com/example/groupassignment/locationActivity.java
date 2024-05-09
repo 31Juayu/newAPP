@@ -33,6 +33,13 @@ public class locationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),GPSMapsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
