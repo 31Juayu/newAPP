@@ -21,6 +21,9 @@ import com.bumptech.glide.request.RequestOptions;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -54,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
 
-        fetchUserProfile(username, password);
+        downloadProfile(username, FirebaseStorage.getInstance());
         updateProfile(profile);
 
         ButtonProfile2Menu.setOnClickListener(v -> {
@@ -88,6 +91,19 @@ public class ProfileActivity extends AppCompatActivity {
             } else {
                 Log.d("Firebase", "get failed with ", task.getException());
             }
+        });
+    }
+
+    public void downloadProfile(String username, FirebaseStorage storage) {
+        StorageReference profileRef = storage.getReference().child("Profiles/" + username + ".json");
+
+        profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
+            String json = new String(bytes);
+            profile = new Gson().fromJson(json, Profile.class);
+
+            System.out.println("Profile downloaded: " + profile.getUsername());
+        }).addOnFailureListener(e -> {
+            System.err.println("Failed to download profile JSON: " + e.getMessage());
         });
     }
 

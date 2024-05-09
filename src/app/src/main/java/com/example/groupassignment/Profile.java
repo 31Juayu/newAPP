@@ -1,6 +1,10 @@
 package com.example.groupassignment;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.google.gson.Gson;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -52,6 +56,24 @@ public class Profile {
         this.setCourses(c);
         List<String> f = Arrays.asList("a", "b", "c");
         this.setFriends(f);
+    }
+
+    public String toJson() {
+        Gson gson = new Gson();
+        return gson.toJson(this);
+    }
+
+    public void uploadProfile(Profile profile) {
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference().child("Profiles/" + profile.getUsername() + ".json");
+
+        String json = profile.toJson();
+        UploadTask uploadTask = storageRef.putBytes(json.getBytes());
+        uploadTask.addOnSuccessListener(taskSnapshot -> {
+            System.out.println("Profile JSON uploaded successfully");
+        }).addOnFailureListener(e -> {
+            System.err.println("Failed to upload profile JSON: " + e.getMessage());
+        });
     }
 
     public Profile(){
