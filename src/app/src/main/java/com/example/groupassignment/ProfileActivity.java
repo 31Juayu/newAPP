@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,17 +12,15 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.bumptech.glide.Glide;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -36,6 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     private Button ButtonProfile2Courses;
     private ImageView HeadImage;
     private ArrayAdapter<String> adapter;
+    private ArrayList<String> friends;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         UsernameProfile = (TextView) findViewById(R.id.UsernameProfile);
         EmailProfile = (TextView) findViewById(R.id.EmailProfile);
-        CourseList = (ListView) findViewById(R.id.CourseList);
+        CourseList = (ListView) findViewById(R.id.FriendsList);
         ButtonProfile2Menu = (Button) findViewById(R.id.ButtonProfile2Menu);
         ButtonProfile2Courses = (Button) findViewById(R.id.ButtonProfile2Courses);
         ButtonProfile2Friends = (Button) findViewById(R.id.ButtonProfile2Friends);
@@ -66,7 +64,8 @@ public class ProfileActivity extends AppCompatActivity {
         //Following button use temporary classes for "go-to", further classes including friends.java and courses.java will be done later
         //Or the button will be replaced by listview or removed
         ButtonProfile2Friends.setOnClickListener(v -> {
-            Intent intent1 = new Intent(ProfileActivity.this, showInfoActivity.class);
+            Intent intent1 = new Intent(ProfileActivity.this, FriendsActivity.class);
+            intent1.putExtra("friendsList", friends);
             startActivity(intent1);
         });
         ButtonProfile2Courses.setOnClickListener(v -> {
@@ -99,6 +98,12 @@ public class ProfileActivity extends AppCompatActivity {
                     adapter.clear();
                     adapter.addAll(profile.getCourses());
                     adapter.notifyDataSetChanged();
+                }
+                if(profile.getFriends()!=null){
+                    friends = (ArrayList<String>) profile.getFriends();
+                    for (String friend : friends){
+                        System.out.println(friend);
+                    }
                 }
                 if (profile.getProfileImageUrl()!=null){
                     //TODO:For checkpoint 2, please ask why the image load keeps failing
