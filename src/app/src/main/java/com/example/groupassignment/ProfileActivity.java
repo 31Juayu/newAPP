@@ -42,7 +42,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         UsernameProfile = (TextView) findViewById(R.id.UsernameProfile);
         EmailProfile = (TextView) findViewById(R.id.EmailProfile);
-        CourseList = (ListView) findViewById(R.id.FriendsList);
+        CourseList = (ListView) findViewById(R.id.CoursesList);
         ButtonProfile2Menu = (Button) findViewById(R.id.ButtonProfile2Menu);
         ButtonProfile2Courses = (Button) findViewById(R.id.ButtonProfile2Courses);
         ButtonProfile2Friends = (Button) findViewById(R.id.ButtonProfile2Friends);

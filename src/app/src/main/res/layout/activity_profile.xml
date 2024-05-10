@@ -72,7 +72,7 @@
             android:textSize="34sp" />
 
         <ListView
-            android:id="@+id/FriendsList"
+            android:id="@+id/CoursesList"
             android:layout_width="match_parent"
             android:layout_height="320dp">
 
