@@ -33,7 +33,7 @@ public class Profile {
         this.setProfileImageUrl("gs://comp6442project-8a60c.appspot.com/images/user0.jpg");
         List<String> c = Arrays.asList("03-打开CMD", "1715313106408", "gs://comp6442project-8a60c.appspot.com/Files/02-人机交互-图形化界面的小故事.mp4", "gs://comp6442project-8a60c.appspot.com/Files/01-Java学习介绍.mp4");
         this.setCourses(c);
-        List<String> f = Arrays.asList("a@gmail.com", "b@outlook.com", "c@hotmail.com");
+        List<String> f = Arrays.asList("comp2100@anu.edu.au", "comp6442@anu.edu.au", "c@hotmail.com");
         this.setFriends(f);
     }
 
