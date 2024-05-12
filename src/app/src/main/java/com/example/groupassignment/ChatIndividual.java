@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
@@ -48,19 +49,26 @@ public class ChatIndividual extends AppCompatActivity {
         message_area = (EditText) findViewById(R.id.message_area);
         // use the singleton pattern
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        reference1 = FirebaseDatabase.getInstance().getReference("messages/" + currentUserName + "_" + friendName);
-        reference2 = FirebaseDatabase.getInstance().getReference("messages/" + friendName + "_" + currentUserName);
+        String toUseUserName = currentUserName.replace(".","-");
+        String toUseFriendName = friendName.replace(".","-");
+        reference1 = FirebaseDatabase.getInstance().getReference("messages/" + toUseUserName + "_" + toUseFriendName);
+        reference2 = FirebaseDatabase.getInstance().getReference("messages/" + toUseFriendName + "_" + toUseUserName);
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String message = message_area.getText().toString();
                 if (!message.equals("")){
+                    Toast.makeText(ChatIndividual.this, "Sending message: " + message, Toast.LENGTH_SHORT).show();
                     Map<String,String> map = new HashMap<>();
                     map.put("current_message",message);
                     map.put("current_user",currentUserName);
-                    reference1.push().setValue(map);
-                    reference2.push().setValue(map);
+                    reference1.push().setValue(map)
+                            .addOnSuccessListener(aVoid -> Toast.makeText(ChatIndividual.this, "Message sent to reference1 successfully!", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(ChatIndividual.this, "Failed to send message to reference1: " + e.getMessage(), Toast.LENGTH_LONG).show());
+                    reference2.push().setValue(map)
+                            .addOnSuccessListener(aVoid -> Toast.makeText(ChatIndividual.this, "Message sent to reference2 successfully!", Toast.LENGTH_SHORT).show())
+                            .addOnFailureListener(e -> Toast.makeText(ChatIndividual.this, "Failed to send message to reference2: " + e.getMessage(), Toast.LENGTH_LONG).show());
                 }
             }
         });

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -26,7 +27,6 @@ public class FriendsActivity extends AppCompatActivity {
         ArrayList<String> friends = getIntent().getStringArrayListExtra("friendsList");
         String currentUserName = getIntent().getStringExtra("currentUserName");
         friendList = (ListView) findViewById(R.id.FriendsList);
-
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         friendList.setAdapter(adapter);
 
