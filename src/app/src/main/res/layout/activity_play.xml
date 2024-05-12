@@ -2,22 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".PlayActivity">
+
     <TextView
         android:id="@+id/current_video_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Video Name"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:textColor="#00008F"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:text="Video Name"
+        android:textColor="#00008F"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
     <VideoView
         android:id="@+id/current_video_play"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="400dp" />
+
+    <Switch
+        android:id="@+id/switch_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Favorite"
+        android:textColorLink="#C36A6A"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/backButton11"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:text="Return" />
 </LinearLayout>
