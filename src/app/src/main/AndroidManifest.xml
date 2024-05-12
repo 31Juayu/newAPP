@@ -88,6 +88,9 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
+            android:name=".VideoCollection"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="false" />
         <activity
