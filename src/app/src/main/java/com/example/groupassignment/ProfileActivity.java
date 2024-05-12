@@ -66,6 +66,8 @@ public class ProfileActivity extends AppCompatActivity {
         ButtonProfile2Friends.setOnClickListener(v -> {
             Intent intent1 = new Intent(ProfileActivity.this, FriendsActivity.class);
             intent1.putExtra("friendsList", friends);
+            String currentUserName = UsernameProfile.getText().toString();
+            intent1.putExtra("currentUserName",currentUserName);
             startActivity(intent1);
         });
         ButtonProfile2Courses.setOnClickListener(v -> {

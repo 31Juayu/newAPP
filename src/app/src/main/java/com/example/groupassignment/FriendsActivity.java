@@ -24,6 +24,7 @@ public class FriendsActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_friends);
         ArrayList<String> friends = getIntent().getStringArrayListExtra("friendsList");
+        String currentUserName = getIntent().getStringExtra("currentUserName");
         friendList = (ListView) findViewById(R.id.FriendsList);
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
@@ -38,6 +39,7 @@ public class FriendsActivity extends AppCompatActivity {
             String friendName = adapter.getItem(position);
             Intent intent = new Intent(getApplicationContext(), ChatIndividual.class);
             intent.putExtra("friendName", friendName);
+            intent.putExtra("currentUserName",currentUserName);
             startActivity(intent);
         });
     }
