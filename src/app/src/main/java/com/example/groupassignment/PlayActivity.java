@@ -51,13 +51,13 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    addToFavorites(username, toPlayName);
+                    addToFavorites(username, toPlayName, toPlayView);
                 } else {
-                    removeFromFavorites(username, toPlayName);
+                    removeFromFavorites(username, toPlayName, toPlayView);
                 }
             }
         });
-        checkFavoriteStatus(username, toPlayName);
+        checkFavoriteStatus(username, toPlayName, toPlayView);
 
         Button backButton = findViewById(R.id.backButton11);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -72,22 +72,24 @@ public class PlayActivity extends AppCompatActivity {
         current_VideoView.start();
     }
 
-    private void addToFavorites(String username, String videoName) {
+    private void addToFavorites(String username, String videoName, String videoUrl) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Map<String, Object> favorite = new HashMap<>();
         favorite.put("username", username);
         favorite.put("videoName", videoName);
+        favorite.put("videoUrl", videoUrl);
 
         db.collection("favorites").add(favorite)
                 .addOnSuccessListener(documentReference -> Toast.makeText(PlayActivity.this, "This video is Favorited", Toast.LENGTH_SHORT).show())
                 .addOnFailureListener(e -> Toast.makeText(PlayActivity.this, "Fail to favorite it: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void removeFromFavorites(String username, String videoName) {
+    private void removeFromFavorites(String username, String videoName, String videoUrl) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("favorites")
                 .whereEqualTo("username", username)
                 .whereEqualTo("videoName", videoName)
+                .whereEqualTo("videoUrl", videoUrl)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -98,11 +100,12 @@ public class PlayActivity extends AppCompatActivity {
                 });
     }
 
-    private void checkFavoriteStatus(String username, String videoName) {
+    private void checkFavoriteStatus(String username, String videoName, String videoUrl) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("favorites")
                 .whereEqualTo("username", username)
                 .whereEqualTo("videoName", videoName)
+                .whereEqualTo("videoUrl", videoUrl)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful() && !task.getResult().isEmpty()) {

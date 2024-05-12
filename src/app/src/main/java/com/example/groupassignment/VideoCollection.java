@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -70,30 +71,29 @@ public class VideoCollection extends AppCompatActivity {
         // 设置点击事件监听器
         listView.setOnItemClickListener((parent, view, position, id) -> {
             String selectedVideoName = videoNames.get(position); // 获取选中的视频名称
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection("favorites")
+                    .whereEqualTo("videoName", selectedVideoName)
+                    .get()
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful() && !task.getResult().isEmpty()) {
+                            String videoUrl = task.getResult().getDocuments().get(0).getString("videoUrl");
 
-            // 假设我们还需要从数据库或者某处获取选中视频的URI
-            fetchVideoUriAndPlay(selectedVideoName);
+                            // 跳转到 PlayActivity 并传递视频 URL
+                            Intent intent = new Intent(VideoCollection.this, PlayActivity.class);
+                            intent.putExtra("toPlayName", selectedVideoName); // 传递视频名称
+                            intent.putExtra("toPlayView", videoUrl); // 传递视频路径
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(VideoCollection.this, "Video URL not found", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         });
+
+
+
     }
 
-    private void fetchVideoUriAndPlay(String videoName) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("Files") // 假设视频信息存储在名为"videos"的集合中
-                .whereEqualTo("videoName", videoName)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful() && !task.getResult().isEmpty()) {
-                        String videoUri = task.getResult().getDocuments().get(0).getString("videoUri");
 
-                        // 创建Intent并启动PlayActivity播放视频
-                        Intent intent = new Intent(VideoCollection.this, PlayActivity.class);
-                        intent.putExtra("toPlayName", videoName);
-                        intent.putExtra("toPlayView", videoUri);
-                        startActivity(intent);
-                    } else {
-                        Log.e("Firestore", "Video not found or error retrieving video URI", task.getException());
-                    }
-                });
-    }
 
 }

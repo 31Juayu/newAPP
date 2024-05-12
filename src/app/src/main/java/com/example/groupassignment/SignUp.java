@@ -25,44 +25,17 @@ public class SignUp extends AppCompatActivity {
         Button registerButton = (Button) findViewById(R.id.button_register);
         Button returnButton = (Button) findViewById(R.id.button_return_login);
 
-        //跳转
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                performRegister();
-            }
-        });
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                returnAct();
-            }
-        });
+
+
+
 
     }
 
-    private void performRegister(){
-        String userEmail = emailName.getText().toString();
-        String strPassW = passWord.getText().toString();
-        String confirmPass = confirmPassWord.getText().toString();
-        if(!strPassW.equals(confirmPass)){
-            Toast.makeText(this, "two password are different", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        signup(userEmail,strPassW);
 
-    }
 
-    private void signup(String userEmail,String strPassW){
 
-    };
 
-    private void returnAct(){
-        Intent intent = new Intent(getApplicationContext(),Login.class);
-        startActivity(intent);
-
-    }
 
 
 }
