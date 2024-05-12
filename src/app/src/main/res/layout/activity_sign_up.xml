@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+author : Zhengyu Peng
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,98 +11,122 @@
     android:background="@drawable/starrysky"
     tools:context=".SignUp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
-        android:layout_width="374dp"
-        android:layout_height="379dp"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/text_register"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteX="18dp">
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotationX="0"
+        app:layout_constraintBottom_toTopOf="@+id/button_register"
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
+        app:layout_constraintTop_toTopOf="@+id/guidelines_4"
+        app:layout_constraintVertical_bias="1.0">
 
         <EditText
             android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/underline1"
             android:ems="10"
             android:fontFamily="@font/playball"
+            android:hint="Name    "
             android:inputType="text"
-            android:paddingLeft="155dp"
-            android:text="Name"
+            android:paddingStart="20dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
+            android:textColorHint="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/editTextTextEmailAddress"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="15dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/underline1"
             android:ems="10"
             android:fontFamily="@font/playball"
-            android:hint="Email"
+            android:hint=" Email    "
             android:inputType="textEmailAddress"
-            android:paddingLeft="155dp"
+            android:paddingStart="20dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="#FDFDFD"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword3"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPassword3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/underline1"
             android:ems="10"
             android:fontFamily="@font/playball"
-            android:hint="Password"
+            android:hint="Password    "
             android:inputType="textPassword"
-            android:paddingLeft="140dp"
+            android:paddingStart="20dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword3"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
 
         <EditText
             android:id="@+id/editTextTextPassword3"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="374dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="8dp"
             android:background="@drawable/underline1"
             android:ems="10"
             android:fontFamily="@font/playball"
-            android:hint="Confirm Password"
+            android:hint="Confirm Password     "
             android:inputType="textPassword"
-            android:paddingLeft="100dp"
+            android:paddingStart="20dp"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:id="@+id/title_signUp"
-        android:layout_width="202dp"
-        android:layout_height="62dp"
+        android:layout_width="0dp"
+        android:layout_height="43dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="36dp"
         android:fontFamily="@font/zector"
         android:text="Sign Up"
+        android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
+        app:layout_constraintTop_toTopOf="@+id/guideline9" />
 
     <TextView
         android:id="@+id/text_register"
@@ -112,58 +139,97 @@
         android:text="Please register by using your email"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
         app:layout_constraintTop_toBottomOf="@id/title_signUp" />
 
     <Button
         android:id="@+id/button_register"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="508dp"
         android:background="?attr/selectableItemBackground"
         android:fontFamily="@font/zector"
         android:text="Register"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
+        app:layout_constraintTop_toTopOf="@+id/guidelines_3" />
 
     <TextView
         android:id="@+id/text_login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/button_register"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/spacegrotesk"
         android:text="Already have an account? Return to Login"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
         app:layout_constraintTop_toBottomOf="@id/button_register" />
 
     <Button
         android:id="@+id/button_return_login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_login"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:background="?android:attr/windowSplashScreenBackground"
         android:fontFamily="@font/zector"
         android:text="Log in"
         android:textColor="@android:color/white"
-        android:textSize="24sp"
+        android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelines_2"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guidelines_1"
         app:layout_constraintTop_toBottomOf="@id/text_login" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelines_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelines_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelines_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelines_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="27dp"
+        app:layout_constraintGuide_percent="0.03" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
