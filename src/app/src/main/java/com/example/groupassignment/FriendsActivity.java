@@ -1,8 +1,10 @@
 package com.example.groupassignment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,5 +34,11 @@ public class FriendsActivity extends AppCompatActivity {
             adapter.addAll(friends);
             adapter.notifyDataSetChanged();
         }
+        friendList.setOnItemClickListener((parent,view,position,id) -> {
+            String friendName = adapter.getItem(position);
+            Intent intent = new Intent(getApplicationContext(), ChatIndividual.class);
+            intent.putExtra("friendName", friendName);
+            startActivity(intent);
+        });
     }
 }
