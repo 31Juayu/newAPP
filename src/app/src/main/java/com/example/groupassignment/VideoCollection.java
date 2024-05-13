@@ -1,7 +1,9 @@
 package com.example.groupassignment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -21,16 +23,19 @@ public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
     private Button backButton;
     private ArrayAdapter<String> adapter;
-    private String username;
+
     @Override
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorites);
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
+        String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
 
 
         backButton = (Button) findViewById(R.id.backButton12);
-        username = getIntent().getStringExtra("username");
+
 
 
         // 假设从SharedPreferences或数据库加载收藏列表

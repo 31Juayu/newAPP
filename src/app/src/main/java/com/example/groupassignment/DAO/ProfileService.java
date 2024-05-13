@@ -5,8 +5,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class ProfileService {
-
-
+    // author: Zhengyu Peng
+    // use to upload the registered user information.
     public static void uploadProfileJson(Profile profile, OnProfileUploadListener listener) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("Profiles/" + profile.getUsername() + ".json");

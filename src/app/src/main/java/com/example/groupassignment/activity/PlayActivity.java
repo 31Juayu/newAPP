@@ -2,6 +2,8 @@ package com.example.groupassignment.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +29,7 @@ public class PlayActivity extends AppCompatActivity {
     MediaController mediaController;
     private Switch favoriteSwitch;
 
-    private String username; // 用户名
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +47,9 @@ public class PlayActivity extends AppCompatActivity {
         current_VideoView.setVideoPath(toPlayView);
         current_VideoView.setMediaController(mediaController);
         mediaController.setMediaPlayer(current_VideoView);
-        username = getIntent().getStringExtra("username");
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
+        String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
 
         // pzy 新增了play页面的switch按钮用于收藏和返回按钮
         favoriteSwitch = findViewById(R.id.switch_favorite);

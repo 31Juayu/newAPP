@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.groupassignment.DAO.Customer;
 import com.example.groupassignment.DAO.Profile;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -45,7 +49,7 @@ public class Login extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                performLogin();
+                checkLogin();
             }
         });
         signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +59,54 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+    // Login function version 2.0 base on firebase dataset.
+    private void checkLogin(){
+        String username = userNameText.getText().toString().trim();
+        String password = passWordText.getText().toString().trim();
+        checkUserJson(username, password, FirebaseStorage.getInstance());
+
+    }
+    // 实际上不建议在客户端直接处理密码验证。这种验证应该在服务器端进行，客户端只发送请求并处理响应，可以写进报告里。
+    private void checkUserJson(String username, String password, FirebaseStorage storage){
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
+        // 将文件的最大大小设置为1MB
+        long ONE_MEGABYTE = 1024 * 1024;
+        profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
+            String json = new String(bytes);
+            Profile userProfile = new Gson().fromJson(json, Profile.class);
+            if(!userProfile.getPassword().equals(password)){
+                // 显示密码错误的 Toast 消息
+                Toast.makeText(getApplicationContext(), "Wrong password", Toast.LENGTH_LONG).show();
+
+                return;
+            }else {
+                Toast.makeText(getApplicationContext(), "User authenticated successfully", Toast.LENGTH_LONG).show();
+                // Combined with the previous login code
+                SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("USERNAME_KEY", username);
+                editor.putString("PASSWORD_KEY", password);
+                editor.apply();
+                Intent intent = new Intent(getApplicationContext(),MenuPage.class);
+                startActivity(intent);
+                finish();
+
+            }
+
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getApplicationContext(), "Username error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            return;
+        });
+
+    }
+
+
+
+
+
+
+    // Login function version 1.0 base on local storage files.
     private void performLogin(){
         String userName = userNameText.getText().toString().trim();
         String passWord = passWordText.getText().toString().trim();
