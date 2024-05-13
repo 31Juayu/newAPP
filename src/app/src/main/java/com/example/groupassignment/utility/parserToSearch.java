@@ -1,10 +1,11 @@
 package com.example.groupassignment.utility;
 import android.content.Context;
 
-import com.example.groupassignment.utility.myParser;
-import com.example.groupassignment.utility.parserFactory;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class parserToSearch {
     public static ArrayList<ArrayList<String>> findRes(String input, Context context) {
@@ -358,4 +359,236 @@ public class parserToSearch {
 
         return ress;
     }
+
+    public static ArrayList<String> findRess(String input, Context context) {
+        ArrayList<String> resLine = new ArrayList<>();
+        input = removeExtraCommas(input);
+        input = removeLeadingTrailingCommasAndSpaces(input);
+        Tokenizer tokenizer = new Tokenizer(input,context);
+
+        ArrayList<Token> listOfToken = new ArrayList<>();
+        while (tokenizer.hasNext()){
+            listOfToken.add(tokenizer.current());
+            tokenizer.next();
+        }
+
+        //System.out.println(originalInput);
+        ArrayList<String> list = handle_err_Input(listOfToken,context);
+        for (int i = 0; i < list.size(); i++) {
+            String element = list.get(i);
+
+            if (element.endsWith(",")) {
+                list.set(i, element.substring(0, element.length() - 1));
+            }
+        }
+
+        for (String e:
+                list) {
+            //System.out.println(e);
+            ArrayList<ArrayList<String>> res = findRes(e,context);
+            for (ArrayList<String>  strs:
+                    res) {
+                String thisLine = "";
+                for (String j:
+                        strs) {
+                    thisLine = thisLine + j + ", ";
+                }
+                resLine.add(thisLine);
+            }
+        }
+
+        return resLine;
+    }
+
+
+
+    public static ArrayList<String> handle_err_Input(ArrayList<Token> listOfToken, Context context){
+        ArrayList<String> list = new ArrayList<>();
+
+        ArrayList<String> countryNameList = usefulMethod.getAllCountry(context);
+        countryNameList.remove(0);
+        ArrayList<String> infoList = usefulMethod.getAllInfo(context);
+        infoList.remove(0);
+        HashSet<String> yearSet = usefulMethod.getAllYear(context);
+        yearSet.remove("YEAR");
+        RedBlackTree<String> infoTree = usefulMethod.readCSVLinesAllInfo(context);
+
+        for (Token e:
+                listOfToken) {
+            if(e.getType()== Token.Type.info){
+                String element = e.getToken();
+                element = element.toLowerCase();
+                String value = infoTree.search(element);
+
+                if(value == null){
+                    ArrayList<String> similarStrings = findMostSimilarString(element,yearSet,infoList,countryNameList);
+                    if(list.isEmpty()){
+                        for (String s:
+                                similarStrings) {
+                            String addedE = s + ",";
+                            list.add(addedE);
+                        }
+                    }else{
+/*                        for (int i = 0; i < list.size(); i++) {
+                            for (String s:
+                                    similarStrings) {
+                                String originalItem = list.get(i);
+                                list.set(i, originalItem +  + ",");
+                            }
+                        }*/
+                        ArrayList<String> connect = new ArrayList<>();
+                        for (int j = 0; j < similarStrings.size(); j++) {
+                            for (int i = 0; i < list.size(); i++) {
+                                String originalItem = list.get(i);
+                                String added = similarStrings.get(j);
+                                String newRow = originalItem + added + ",";
+                                connect.add(newRow);
+                            }
+                        }
+                        list.clear();
+                        for (String newE:
+                                connect) {
+                            list.add(newE);
+                        }
+                    }
+                }else{
+                    if(list.isEmpty()){
+                        String thisElement = element + ",";
+                        list.add(thisElement);
+                    }else{
+                        for (int i = 0; i < list.size(); i++) {
+                            String originalItem = list.get(i);
+                            list.set(i, originalItem + element + ",");
+                        }
+                    }
+                }
+            }else{
+                if(list.isEmpty()){
+                    String thisElement = e.getToken() + ",";
+                    list.add(thisElement);
+                }else{
+                    for (int i = 0; i < list.size(); i++) {
+                        String originalItem = list.get(i);
+                        list.set(i, originalItem + e.getToken() + ",");
+                    }
+                }
+            }
+        }
+        return  list;
+    }
+
+    public static ArrayList<String> findMostSimilarString(String a, HashSet<String> yearSet,ArrayList<String> infoList,ArrayList<String> countryNameList) {
+        //String mostSimilarString = null;
+        double maxSimilarity = 0.0;
+        ArrayList<String> res = new ArrayList<>();
+
+        for (String str : yearSet) {
+            double similarity = calculateSimilarity(a, str);
+            if (similarity > maxSimilarity) {
+                maxSimilarity = similarity;
+                res.clear();
+                res.add(str);
+            } else if (similarity == maxSimilarity) {
+                res.add(str);
+            }
+        }
+
+        for (String str : infoList) {
+            double similarity = calculateSimilarity(a, str);
+            if (similarity > maxSimilarity) {
+                maxSimilarity = similarity;
+                res.clear();
+                res.add(str);
+            } else if (similarity == maxSimilarity) {
+                res.add(str);
+            }
+        }
+
+        for (String str : countryNameList) {
+            double similarity = calculateSimilarity(a, str);
+            if (similarity > maxSimilarity) {
+                maxSimilarity = similarity;
+                res.clear();
+                res.add(str);
+            } else if (similarity == maxSimilarity) {
+                res.add(str);
+            }
+        }
+
+        return res;
+    }
+
+    public static double calculateSimilarity(String a, String str) {
+        int totalChars = a.length();
+        char[] charArray = a.toCharArray();
+        int sameChar = 0;
+        for (char e:
+                charArray) {
+            int index = str.indexOf(e);
+            if (index != -1) {
+                sameChar = sameChar + 1;
+                str = str.substring(index + 1);
+            } else {
+                str = str;
+            }
+        }
+        //System.out.println((double) sameChar / totalChars);
+        return (double) sameChar / totalChars;
+    }
+
+    public static String removeExtraCommas(String input) {
+        StringBuilder result = new StringBuilder();
+        boolean lastWasComma = false;
+
+        int i = 0;
+        while (i < input.length()) {
+            char current = input.charAt(i);
+
+            if (current == ',') {
+                if (!lastWasComma) {
+                    result.append(current);
+                    lastWasComma = true;
+                }
+
+                while (i + 1 < input.length() && Character.isWhitespace(input.charAt(i + 1))) {
+                    i++;
+                }
+
+                if (i + 1 < input.length() && input.charAt(i + 1) == ',') {
+                    i++;
+                    continue;
+                }
+            } else {
+                lastWasComma = false;
+                result.append(current);
+            }
+            i++;
+        }
+
+        return result.toString();
+    }
+
+    public static String removeLeadingTrailingCommasAndSpaces(String input) {
+        // First trim the string to remove leading and trailing spaces
+        input = input.trim();
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        // Skip leading commas
+        while (start <= end && input.charAt(start) == ',') {
+            start++;
+        }
+
+        // Skip trailing commas
+        while (end >= start && input.charAt(end) == ',') {
+            end--;
+        }
+
+        // Return the substring without leading and trailing commas
+        return input.substring(start, end + 1);
+    }
+
+
+
 }
