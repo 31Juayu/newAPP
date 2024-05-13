@@ -80,7 +80,7 @@ public class VideoCollection extends AppCompatActivity {
                             String videoUrl = task.getResult().getDocuments().get(0).getString("videoUrl");
 
                             // 跳转到 PlayActivity 并传递视频 URL
-                            Intent intent = new Intent(VideoCollection.this, PlayActivity.class);
+                            Intent intent = new Intent(VideoCollection.this,  com.example.groupassignment.activity.PlayActivity.class);
                             intent.putExtra("toPlayName", selectedVideoName); // 传递视频名称
                             intent.putExtra("toPlayView", videoUrl); // 传递视频路径
                             startActivity(intent);
