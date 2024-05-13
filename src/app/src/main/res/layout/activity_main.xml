@@ -171,4 +171,31 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.6439318" />
 
+    <CheckBox
+        android:id="@+id/privacyCheckbox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/zector"
+        android:text="I have read and agree to the Privacy Policy."
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline35"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="@+id/guideline22"
+        app:layout_constraintTop_toTopOf="@+id/guideline34" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88949674" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9365427" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
