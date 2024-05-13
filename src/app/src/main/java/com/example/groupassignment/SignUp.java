@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.groupassignment.DAO.Profile;
+import com.example.groupassignment.DAO.ProfileService;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -20,6 +22,7 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
@@ -27,6 +30,7 @@ public class SignUp extends AppCompatActivity {
     private EditText passWord;
     private EditText confirmPassWord;
     private EditText userName;
+    private ProfileService signupService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,28 +103,50 @@ public class SignUp extends AppCompatActivity {
                 return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
             }
             private void registerUser(String username, String password, String email) {
-                // 初始化用户信息
-                Map<String, Object> userInfo = new HashMap<>();
-                userInfo.put("username", username);
-                userInfo.put("email", email);
-                userInfo.put("courses", new ArrayList<>()); // 初始为空列表
-                userInfo.put("friends", new ArrayList<>()); // 初始为空列表
-                userInfo.put("profileImageUrl", "gs://comp6442project-8a60c.appspot.com/images/user0.jpg");
-                // 将用户信息存储在 Firebase Storage 中
-                FirebaseStorage storage = FirebaseStorage.getInstance();
-                StorageReference storageRef = storage.getReference();
-                StorageReference userRef = storageRef.child("Profiles/" + email + ".json");
-
-                // 将用户信息转换为 JSON 格式
-                Gson gson = new Gson();
-                String jsonString = gson.toJson(userInfo);
-                byte[] data = jsonString.getBytes();
-
-                // 上传 JSON 数据到 Firebase Storage
-                UploadTask uploadTask = userRef.putBytes(data);
-                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                version 1, use my method to upload the data
+//                初始化用户信息
+//                Map<String, Object> userInfo = new HashMap<>();
+//                userInfo.put("username", username);
+//                userInfo.put("email", email);
+//                userInfo.put("courses", new ArrayList<>()); // 初始为空列表
+//                userInfo.put("friends", new ArrayList<>()); // 初始为空列表
+//                userInfo.put("profileImageUrl", "gs://comp6442project-8a60c.appspot.com/images/user0.jpg");
+//                // 将用户信息存储在 Firebase Storage 中
+//                FirebaseStorage storage = FirebaseStorage.getInstance();
+//                StorageReference storageRef = storage.getReference();
+//                StorageReference userRef = storageRef.child("Profiles/" + email + ".json");
+//
+//                // 将用户信息转换为 JSON 格式
+//                Gson gson = new Gson();
+//                String jsonString = gson.toJson(userInfo);
+//                byte[] data = jsonString.getBytes();
+//
+//                // 上传 JSON 数据到 Firebase Storage
+//                UploadTask uploadTask = userRef.putBytes(data);
+//                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//                        // 注册成功
+//                        Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
+//                        // 注册成功后可以跳转到其他活动
+//                        Intent intent = new Intent(SignUp.this, Login.class);
+//                        startActivity(intent);
+//                        finish();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        // 注册失败
+//                        Toast.makeText(SignUp.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                });
+                String profileImageUrl = "gs://comp6442project-8a60c.appspot.com/images/user0.jpg";
+                List<String> courses = new ArrayList<>();
+                List<String> friends = new ArrayList<>();
+                Profile signUpProfile = new Profile(username, email, password, profileImageUrl, courses, friends);
+                signupService.uploadProfileJson(signUpProfile, new ProfileService.OnProfileUploadListener() {
                     @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    public void onUploadSuccess() {
                         // 注册成功
                         Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         // 注册成功后可以跳转到其他活动
@@ -128,11 +154,11 @@ public class SignUp extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        // 注册失败
+                    public void onUploadFailure(Exception e) {
                         Toast.makeText(SignUp.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
                     }
                 });
 

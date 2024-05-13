@@ -81,6 +81,7 @@ public class Login extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MenuPage.class);
             //intent.putStringArrayListExtra("key_name", (ArrayList<String>) urlList);
             startActivity(intent);
+
         }
 
     }
@@ -88,6 +89,7 @@ public class Login extends AppCompatActivity {
     private void performSignUp(){
         Intent intent = new Intent(getApplicationContext(),SignUp.class);
         startActivity(intent);
+        finish(); // 关闭当前的 Activity
     }
     public ArrayList<Customer> parseXML() {
         ArrayList<Customer> customers = new ArrayList<>();
