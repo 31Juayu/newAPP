@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.groupassignment.activity.ProfileActivity;
+import com.example.groupassignment.activity.findCourseActivity;
 import com.example.groupassignment.activity.locationActivity;
 import com.example.groupassignment.activity.searchActivity;
 
@@ -23,6 +26,10 @@ public class MenuPage extends AppCompatActivity {
         Button assignmentButton = (Button) findViewById(R.id.button3);
         Button profileButton = (Button) findViewById(R.id.button4);
         Button vcButton = (Button) findViewById(R.id.button5);
+
+        Button seeTest = (Button) findViewById(R.id.button7);
+
+        EditText userInputIn = (EditText) findViewById(R.id.UserNameEdit);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +74,23 @@ public class MenuPage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),VideoCollection.class);
                 startActivity(intent);
+            }
+        });
+
+        seeTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputText = userInputIn.getText().toString();
+                /*Intent intent = new Intent(getApplicationContext(), findCourseActivity.class);
+                intent.putExtra("input",inputText);
+                startActivity(intent);*/
+                if (!inputText.isEmpty()) {
+                    Intent intent = new Intent(getApplicationContext(), findCourseActivity.class);
+                    intent.putExtra("input",inputText);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(MenuPage.this, "err: empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

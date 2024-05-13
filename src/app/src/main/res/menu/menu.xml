@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="sortList"
+    <item android:title="sort by number"
         android:id="@+id/sort">
+
+
+    </item>
+
+    <item android:title="Directly sort"
+        android:id="@+id/directly">
 
 
     </item>
