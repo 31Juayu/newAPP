@@ -1,14 +1,12 @@
 package com.example.groupassignment;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -21,14 +19,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.groupassignment.DAO.VideoItem;
+import com.example.groupassignment.DAO.VideoUploadInterface;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.OnProgressListener;
@@ -40,7 +36,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class VideoDemonstrationActivity extends AppCompatActivity {
+public class VideoDemonstrationActivity extends AppCompatActivity implements VideoUploadInterface {
     private Button uploadv;
     private Uri videouri;
     private ProgressBar progressBar;
@@ -104,7 +100,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(r.getType(videouri));
     }
 
-    private void uploadVideo() {
+    public void uploadVideo() {
         if (videouri != null) {
             // Save the selected video in Firebase storage (后续修改存储位置，名字)
             final StorageReference reference = FirebaseStorage.getInstance()
@@ -159,7 +155,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity {
         }
 
     }
-    private void readVideoLinks() {
+    public void readVideoLinks() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         storageRef.child("Files").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {

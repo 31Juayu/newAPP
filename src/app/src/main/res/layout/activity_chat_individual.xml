@@ -10,7 +10,7 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:orientation="vertical"
-    tools:context=".ChatIndividual">
+    tools:context=".activity.ChatIndividual">
     <TextView
         android:id="@+id/header_chat"
         android:layout_width="match_parent"
