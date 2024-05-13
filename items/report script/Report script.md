@@ -2,43 +2,96 @@
 
 ## Team structure and roles
 
-Tianyi Xu - manager, backend,tester,presenter
 
-Ruizhe Luo - backend, tester
-
-Zhengyu Peng - front-end, tester, recorder,reporter
-
-Wenzhao Zheng - front back,helpdocument
-
-Jiayu Jian - back-end
+| UID      |     Name      |                                                                           Role |
+|:---------|:-------------:|-------------------------------------------------------------------------------:|
+| u7780366 |   Tianyi Xu   |                                              manager, backend,tester,presenter |
+| u7776709 |   Ruize Luo   |                                                                backend, tester |
+| u7705888 | Wenzhao Zheng |                                          front-end, tester, recorder,reporter  |
+| u7727795 | Zhengyu Peng  |                                           front-end, tester, recorder,reporter |
+| u7731262 |  Jiayu Jian   | Main programmer, backend programmer, and helping other members with the issues |
 
 ## Summary of individual contributions
 
-Tianyi Xu - manage to teamwork, gps, data uploading and storage
+1. **u7780366, Tianyi Xu**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Feature A1, A2, A3 - class Dummy: 
+  - XYZ Design Pattern -  class AnotherClass: 
+  -  (any other contribution in the code, including UI and data files) 
 
-Ruizhe Luo - Video loading and display, data uploading and storage
+- **Code and App Design**
+  - [What design patterns, data structures, did the involved member propose?]*
+  - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
 
-Zhengyu Peng - Page Design, Report, Firebase, record meeting
+- **Others**: (only if significant and significantly different from an "average contribution")
+  - [Report Writing?] [Slides preparation?]*
 
-Wenzhao Zheng - Page Design
 
-Jiayu Jian - Login, search, delete function
+2. **u7776709,  Ruize Luo**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Feature A1, A2, A3 - class Dummy:
+  - XYZ Design Pattern -  class AnotherClass:
+  -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+  - [What design patterns, data structures, did the involved member propose?]*
+  - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+  - [Report Writing?] [Slides preparation?]*
+
+3. **u7705888, Wenzhao Zheng**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Feature A1, A2, A3 - class Dummy:
+  - XYZ Design Pattern -  class AnotherClass:
+  -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+  - [What design patterns, data structures, did the involved member propose?]*
+  - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+  - [Report Writing?] [Slides preparation?]*
+
+4. **u7727795, Zhengyu Peng**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Feature A1, A2, A3 - class Dummy:
+  - XYZ Design Pattern -  class AnotherClass:
+  -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+  - [What design patterns, data structures, did the involved member propose?]*
+  - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+  - [Report Writing?] [Slides preparation?]*
+
+5. **u7731262, Jiayu Jian**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+  - Feature A1, A2, A3 - class Dummy:
+  - XYZ Design Pattern -  class AnotherClass:
+  -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+  - [What design patterns, data structures, did the involved member propose?]*
+  - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+  - [Report Writing?] [Slides preparation?]*
+
 
  
 
-## APP summary
+## Application Description
 
 What we want to achieve is an APP for students to enjoy free educational resources. The goal is to bridge the gap of educational resources available to students from different races, countries and families.
 
-我们要实现的是一个供学生享受免费的教育资源的APP，目标是弥合来自于不同的人种，国家，家庭的学生之间所能获取到的教育资源的差距。
-
 The APP provides users with basic functions (such as login, view data, search, etc.) that can realize the purpose of the APP. In addition, some practical functions (such as load and share data, gps, etc.)  are added to improve the user experience.
-
-APP给用户提供了能够实现APP用途的基础功能（如登录，查看数据，搜索等），此外增加了一些实用功能来提高用户的使用体验。
 
 The following screenshots will be helpful to understand what's going on in the app.
 
-## List of examples
+
+### Application Use Cases and or Examples
 
 ### Use Case 1: User registration and login
 
@@ -89,55 +142,179 @@ Steps:
 1. The users select to upload the file and enters the resource description.
 2. Students view and download resources on the course page.
 
-## UML diagram and ER diagram
+### Application UML and ER diagram
 
 ![Untitled](Report%20d4b43c65a286492886332f3255a35983/Untitled.png)
 
 ![Untitled](Report%20d4b43c65a286492886332f3255a35983/Untitled%201.png)
 
-## Application Design and Decisions
 
-### Summary of the basic App and implemented features
+## Code Design and Decisions
+
+This is an important section of your report and should include all technical decisions made. Well-written justifications will increase your marks for both the report as well as for the relevant parts (e.g., data structure). This includes, for example,
+
+- Details about the parser (describe the formal grammar and language used)
+
+- Decisions made (e.g., explain why you chose one or another data structure, why you used a specific data model, etc.)
+
+- Details about the design patterns used (where in the code, justification of the choice, etc)
+
+*Please give clear and concise descriptions for each subsections of this part. It would be better to list all the concrete items for each subsection and give no more than `5` concise, crucial reasons of your design.
+
+<hr>
+
+### Data Structures
+
+*I used the following data structures in my project:*
+
+1. *LinkedList*
+  * *Objective: used for storing xxxx for xxx feature.*
+  * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+  * *Reasons:*
+    * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
+    * *We don't need to access the item by index for xxx feature because...*
+    * For the (part), the data ... (characteristics) ...
+
+2. ...
+
+3. ...
+
+<hr>
+
+### Design Patterns
+*[What design patterns did your team utilise? Where and why?]*
+
+1. *Adapter Pattern*
+  * *Objective: used for storing xxxx for xxx feature.*
+  * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+  * *Reasons:*
+    * ...
+    * 
+2. *Factory Pattern*
+* *Objective: used for storing xxxx for xxx feature.*
+* *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+* *Reasons:*
+    * ...
+
+<hr>
+
+### Parser
+
+### <u>Grammar(s)</u>
+*[How do you design the grammar? What are the advantages of your designs?]*
+*If there are several grammars, list them all under this section and what they relate to.*
+
+Production Rules:
+
+    <Non-Terminal> ::= <some output>
+    <Non-Terminal> ::= <some output>
+
+
+### <u>Tokenizers and Parsers</u>
+
+*[Where do you use tokenisers and parsers? How are they built? What are the advantages of the designs?]*
+
+<hr>
+
+### Others
+
+*[What other design decisions have you made which you feel are relevant? Feel free to separate these into their own subheadings.]*
+
+<br>
+<hr>
+
+
+## Implemented Features
 
 This app aims to provide free, high-quality educational resources to help students learn independently to achieve the project objectives: A better world, it's in our hands!. The core functions of the application include user management, course management, learning groups, interactive functions and resource sharing.
 
-### List all items implemented
+### Basic Features
 
-- User management
-    
-    User registration/login
-    
-    User profile
-    
-- Course management
-    
-    Course upload and publish
-    
-    Course search and browse
-    
-- Interactive features
-    
-    Discussion groups
-    
-    Private message chat
-    
-- Resource management
-    
-    Document upload/download
-    
-    Video upload/play
-    
-- Additional Features
-    
-    Offline Learning Group (GPS based)
-    
-    etc
-    
+1. [LogIn]. Description of the feature ... (easy)
+  * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+  * Description of feature: ... <br>
+  * Description of your implementation: ... <br>
+
+2. [SignUp]. Description  ... ... (easy)
+  * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
+  * Link to the Firebase repo: ...
+
+3. ...
+   <br>
+
+### Custom Features
+
+Feature Category: Privacy <br>
+1. [Privacy-Request]. Description of the feature  (easy)
+  * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+  * Description of your implementation: ... <br>
+    <br>
+
+2. [Privacy-Block]. Description ... ... (medium)
+   ... ...
+   <br><br>
+
+Feature Category: Firebase Integration <br>
+3. [FB-Auth] Description of the feature (easy)
+  * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+  * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
+  * Description of your implementation: ... <br>
+
+<hr>
+
+### Surprise Features
+
+- If implemented, explain how your solution addresses the task (any detail requirements will be released with the surprise feature specifications).
+- State that "Suprised feature is not implemented" otherwise.
+
+<br> <hr>
 
 ## Summary of known errors/bugs
 
-At present, it is found that uploading a large amount of video will fail, and the problem can only be solved by splitting the file temporarily.
+1. *Bug 1:*
+  - *A space bar (' ') in the sign in email will crash the application.*
+  - ...
+
+2. *Bug 2:*
+3. ...
+
+<br> <hr>
 
 ## Testing summary
 
-No systematic testing has begun.
+1. Tests for Search
+  - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
+  - *Number of test cases: ...*
+  - *Code coverage: ...*
+  - *Types of tests created and descriptions: ...*
+
+2. Tests for Upload
+
+...
+
+<br> <hr>
+
+## Team Management
+
+### Meetings Records
+* Link to the minutes of your meetings like above. There must be at least 4 team meetings.
+  (each commited within 2 days aftre the meeting)
+* Your meetings should also have a reasonable date spanning across Week 6 to 11.*
+
+
+- *[Team Meeting 1](items/meeting01.md)*
+- ...
+- ...
+- [Team Meeting 4](link_to_md_file.md)
+- ... (Add any descriptions if needed) ...
+
+<hr>
+
+### Conflict Resolution Protocol
+*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
+(If you choose to make this an external document, link to it here)]*
+
+This shall include an agreed procedure for situations including (but not limited to):
+- e.g., if a member fails to meet the initial plan and/or deadlines
+- e.g., if your group has issues, how will your group reach consensus or solve the problem?
+- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project? 
