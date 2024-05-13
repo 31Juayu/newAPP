@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.groupassignment.activity.ProfileActivity;
+import com.example.groupassignment.activity.locationActivity;
+import com.example.groupassignment.activity.searchActivity;
 
 public class MenuPage extends AppCompatActivity {
     @Override
@@ -56,7 +57,7 @@ public class MenuPage extends AppCompatActivity {
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ProfileActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
             }
         });

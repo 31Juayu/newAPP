@@ -18,16 +18,16 @@
         android:theme="@style/Theme.GroupAssignment"
         tools:targetApi="31">
         <activity
-            android:name=".ChatIndividual"
+            android:name=".activity.ChatIndividual"
             android:exported="false" />
         <activity
             android:name=".ChatP2P"
             android:exported="false" />
         <activity
-            android:name=".PostActivity"
+            android:name=".activity.PostActivity"
             android:exported="false" />
         <activity
-            android:name=".FriendsActivity"
+            android:name=".activity.FriendsActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -48,38 +48,38 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".GPSMapsActivity"
+            android:name=".activity.GPSMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_gpsmaps" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".AssignmentDemonstrationActivity"
             android:exported="false" />
         <activity
-            android:name=".PlayActivity"
+            android:name=".activity.PlayActivity"
             android:exported="false" />
         <activity
             android:name=".VideoDemonstrationActivity"
             android:exported="false" />
         <activity
-            android:name=".locationActivity"
+            android:name=".activity.locationActivity"
             android:exported="false" />
         <activity
-            android:name=".GPSActivity"
+            android:name=".activity.GPSActivity"
             android:exported="false" />
         <activity
-            android:name=".dealSearchActivity"
+            android:name=".activity.dealSearchActivity"
             android:exported="false" />
         <activity
-            android:name=".showCountryActivity"
+            android:name=".activity.showCountryActivity"
             android:exported="false" />
         <activity
-            android:name=".showInfoActivity"
+            android:name=".activity.showInfoActivity"
             android:exported="false" />
         <activity
-            android:name=".searchActivity"
+            android:name=".activity.searchActivity"
             android:exported="false" />
         <activity
             android:name=".MenuPage"
@@ -91,7 +91,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
