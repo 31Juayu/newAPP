@@ -61,7 +61,7 @@
     <Button
         android:id="@+id/Sign_up_button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:background="#00F3E5E5"
         android:backgroundTint="#00FFFFFF"
         android:fontFamily="@font/zentokyozoo"
@@ -70,6 +70,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display4"
         android:textColor="@android:color/white"
         android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline19"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline17"
@@ -184,6 +185,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7416667" />
+        app:layout_constraintGuide_percent="0.77" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
