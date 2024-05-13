@@ -44,6 +44,8 @@ public class PostActivity extends AppCompatActivity {
     private PostAdapter adapter;
     private List<String> postList = new ArrayList<>();
     private Button ButtonPost2PostItem;
+    private Button ButtonPostRefresh;
+
     private FirebaseStorage storage;
     private StorageReference storageRef;
 
@@ -59,11 +61,17 @@ public class PostActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PostAdapter(postList);
         recyclerView.setAdapter(adapter);
-        ButtonPost2PostItem = findViewById(R.id.post_notice);
+        ButtonPost2PostItem = (Button) findViewById(R.id.post_notice);
+        ButtonPostRefresh = (Button) findViewById(R.id.button_refresh_posts);
 
         downloadPosts();
         ButtonPost2PostItem.setOnClickListener(v -> {
+            System.out.println("pressed");
             showPostDialog();
+        });
+        ButtonPostRefresh.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -86,6 +94,8 @@ public class PostActivity extends AppCompatActivity {
                 post.uploadPostJson(post);
             }
         });
+
+        dialog.show();
     }
 
     private void downloadPosts() {
