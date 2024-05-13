@@ -69,8 +69,9 @@ public class VideoCollection extends AppCompatActivity {
     }
     private void updateVideoList(List<String> videoNames) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1, videoNames);
+                R.layout.custom_list_item, videoNames);
         ListView listView = findViewById(R.id.favoritesList);
+
         listView.setAdapter(adapter);
 
         // 设置点击事件监听器
