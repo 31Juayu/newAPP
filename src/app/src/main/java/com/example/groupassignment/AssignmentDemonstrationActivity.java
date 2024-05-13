@@ -20,6 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.groupassignment.DAO.AssignmentItem;
+import com.example.groupassignment.DAO.AssignmentUploadInterface;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -35,7 +37,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
-public class AssignmentDemonstrationActivity extends AppCompatActivity {
+public class AssignmentDemonstrationActivity extends AppCompatActivity implements AssignmentUploadInterface {
     private Button uploadPDF;
     private Uri PDFUri;
     private ProgressBar progressBarPDF;
@@ -108,7 +110,7 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity {
         }
         return result;
     }
-    private void uploadPDFAssign(){
+    public void uploadPDFAssign(){
         if (PDFUri != null){
             String fileName = getUploadFileName(PDFUri);
             final StorageReference reference = FirebaseStorage.getInstance()
@@ -159,7 +161,7 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity {
             Toast.makeText(this, "No Assignment selected for upload.", Toast.LENGTH_SHORT).show();
         }
     }
-    private void readPDFLinks() {
+    public void readPDFLinks() {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference();
         storageRef.child("Assignments").listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
