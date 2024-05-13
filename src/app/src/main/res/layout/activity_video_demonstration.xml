@@ -7,12 +7,27 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".VideoDemonstrationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Result"
+        tools:layout_editor_absoluteX="-34dp" />
+
+
     <Button
         android:id="@+id/upload_video"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Upload Video"
         android:layout_centerInParent="true" />
+
 
     <ProgressBar
         android:id="@+id/progress_bar"

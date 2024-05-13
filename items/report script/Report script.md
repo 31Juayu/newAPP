@@ -297,16 +297,12 @@ Feature Category: Firebase Integration <br>
 ## Team Management
 
 ### Meetings Records
-* Link to the minutes of your meetings like above. There must be at least 4 team meetings.
-  (each commited within 2 days aftre the meeting)
-* Your meetings should also have a reasonable date spanning across Week 6 to 11.*
-
 
 - *[Team Meeting 1](items/meeting01.md)*
-- ...
-- ...
-- [Team Meeting 4](link_to_md_file.md)
-- ... (Add any descriptions if needed) ...
+- *[Team Meeting 2](items/meeting02.md)*
+- *[Team Meeting 3](items/meeting03.md)*
+- *[Team Meeting 4](items/meeting04.md)*
+- *[Team Meeting 5](items/meeting05.md)*
 
 <hr>
 

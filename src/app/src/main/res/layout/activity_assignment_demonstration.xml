@@ -7,6 +7,19 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".AssignmentDemonstrationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:title="Upload"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
     <Button
         android:id="@+id/upload_Assignment"
         android:layout_width="wrap_content"
