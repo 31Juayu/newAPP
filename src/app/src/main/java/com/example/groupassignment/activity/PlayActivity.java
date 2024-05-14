@@ -2,7 +2,10 @@ package com.example.groupassignment.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +17,9 @@ public class PlayActivity extends AppCompatActivity {
     private TextView video_name_textView;
     private VideoView current_VideoView;
     MediaController mediaController;
+
+    private Button go_back_play;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,5 +34,16 @@ public class PlayActivity extends AppCompatActivity {
         current_VideoView.setMediaController(mediaController);
         mediaController.setMediaPlayer(current_VideoView);
         current_VideoView.start();
+
+        go_back_play = (Button) findViewById(R.id.go_back_play);
+
+        go_back_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 }

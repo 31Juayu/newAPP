@@ -32,7 +32,7 @@
         app:layout_constraintVertical_chainStyle="packed" />
 
     <Button
-        android:id="@+id/goBack"
+        android:id="@+id/go_back_location"
         android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_marginBottom="500dp"

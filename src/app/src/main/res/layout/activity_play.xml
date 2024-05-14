@@ -7,7 +7,28 @@
     android:layout_height="match_parent"
     tools:context=".activity.PlayActivity">
 
+    <!-- 添加 Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:title="Play Video"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <!-- 添加返回按钮 -->
+    <Button
+        android:id="@+id/go_back_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Return"
+        android:layout_gravity="start"
+        android:layout_margin="16dp"
+        android:background="@drawable/background_button_login_and_sign_up"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:fontFamily="@font/atomicage" />
 
     <TextView
         android:id="@+id/current_video_name"
@@ -19,8 +40,10 @@
         android:textColor="#00008F"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
+
     <VideoView
         android:id="@+id/current_video_play"
         android:layout_width="match_parent"
         android:layout_height="400dp"/>
+
 </LinearLayout>
