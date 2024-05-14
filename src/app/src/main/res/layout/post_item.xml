@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:title="Result"
-        tools:layout_editor_absoluteX="-34dp" />
-
     <TextView
-        android:id="@+id/video_name_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:textSize="18sp"
-        android:textColor="@android:color/black"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:id="@+id/post_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="normal"/>
 </LinearLayout>

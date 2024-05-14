@@ -5,61 +5,31 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/starrysky"
     tools:context=".activity.locationActivity">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        app:title="GPS"
-        app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <Button
         android:id="@+id/seeInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:text="GPS info"
-        app:layout_constraintBottom_toTopOf="@+id/Country"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <Button
-        android:id="@+id/go_back_location"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="500dp"
-        android:layout_weight="1"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:fontFamily="@font/atomicage"
-        android:padding="10dp"
-        android:text="Return"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        android:layout_marginTop="100dp"/>
 
     <Button
         android:id="@+id/Country"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:text="Google Map"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/seeInfo"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toStartOf="@+id/seeInfo"
-        app:layout_constraintTop_toBottomOf="@+id/seeInfo"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintBottom_toBottomOf="@+id/seeInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.967"
+        app:layout_constraintStart_toEndOf="@+id/seeInfo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
