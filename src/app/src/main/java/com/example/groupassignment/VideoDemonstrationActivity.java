@@ -46,6 +46,8 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
 
     private List<Uri> videoUris;
 
+    private Button go_back_demo;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -61,10 +63,19 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
         videoUris = new ArrayList<>();
         videoList.setLayoutManager(new LinearLayoutManager(this));
         readVideoLinks();
+        go_back_demo = (Button) findViewById(R.id.go_back_demo);
+
         uploadv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseVideo();
+            }
+        });
+
+        go_back_demo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

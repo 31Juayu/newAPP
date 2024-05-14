@@ -90,7 +90,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="24dp"
                 android:layout_weight="1"
-                android:text="Return" />
+                android:background="@drawable/background_button_login_and_sign_up"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/atomicage"
+                android:text="Retur" />
 
             <Button
                 android:id="@+id/ButtonProfile2Friends"
@@ -99,7 +102,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="24dp"
                 android:layout_weight="1"
-                android:text="Friends" />
+                android:background="@drawable/background_button_login_and_sign_up"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/atomicage"
+                android:text="Friend" />
 
             <Button
                 android:id="@+id/ButtonProfile2Courses"
@@ -108,7 +114,10 @@
                 android:layout_marginHorizontal="20dp"
                 android:layout_marginVertical="24dp"
                 android:layout_weight="1"
-                android:text="Courses" />
+                android:background="@drawable/background_button_login_and_sign_up"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/atomicage"
+                android:text="Course" />
         </LinearLayout>
 
     </LinearLayout>
