@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.groupassignment.activity.ProfileActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -22,7 +23,9 @@ import java.util.List;
 public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
     private Button backButton;
+    private Button ButtonUpdate2Profile;
     private ArrayAdapter<String> adapter;
+    private Intent intent;
 
     @Override
     @SuppressLint("MissingInflatedId")
@@ -32,14 +35,20 @@ public class VideoCollection extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
+        intent = new Intent(this, ProfileActivity.class);
+
 
 
         backButton = (Button) findViewById(R.id.backButton12);
-
+        ButtonUpdate2Profile = (Button) findViewById(R.id.buttonUploadToProfile);
 
 
         // 假设从SharedPreferences或数据库加载收藏列表
         loadUserFavorites(username);
+
+        ButtonUpdate2Profile.setOnClickListener(v -> {
+            startActivity(intent);
+        });
 
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(VideoCollection.this, MenuPage.class);
@@ -62,6 +71,8 @@ public class VideoCollection extends AppCompatActivity {
                         }
                         // 更新UI或处理视频名称列表
                         updateVideoList(videoNames);
+                        intent.putStringArrayListExtra("courses_list", new ArrayList<>(videoNames));
+                        //
                     } else {
                         Log.e("Firestore", "Error getting documents: ", task.getException());
                     }

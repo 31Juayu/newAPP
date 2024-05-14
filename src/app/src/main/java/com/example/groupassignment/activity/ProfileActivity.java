@@ -38,6 +38,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView HeadImage;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> friends;
-    private String courseToAdd;
+    private List<String> coursesToAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +77,7 @@ public class ProfileActivity extends AppCompatActivity {
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
         //SharedPreferences sharedCoursePreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         //courseToAdd = sharedCoursePreferences.getString("COURSE_KEY", null);
-        System.out.println(courseToAdd);
+        coursesToAdd = getIntent().getStringArrayListExtra("courses_list");
 
         downloadProfile(username, FirebaseStorage.getInstance());
 
@@ -110,6 +111,9 @@ public class ProfileActivity extends AppCompatActivity {
             //if (courseToAdd!=null)
                 //profile.addCourse(courseToAdd);
             if (profile!=null){
+                if (coursesToAdd!=null && !coursesToAdd.equals(profile.getCourses())){
+                    profile.updateCourses(coursesToAdd);
+                }
                 if(profile.getUsername()!=null){
                     System.out.println("Profile " + profile.getUsername());
                     UsernameProfile.setText(profile.getUsername());

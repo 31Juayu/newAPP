@@ -61,6 +61,10 @@ public class Profile {
     public List<String> getCourses() {
         return courses;
     }
+    public void updateCourses(List<String> courses){
+        this.setCourses(courses);
+        uploadProfileJson(this);
+    }
 
     public void setCourses(List<String> courses) {
         this.courses = courses;
