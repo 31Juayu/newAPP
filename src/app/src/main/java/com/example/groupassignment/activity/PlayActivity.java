@@ -53,7 +53,7 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
         // pzy 新增了play页面的switch按钮用于收藏和返回按钮
@@ -63,12 +63,12 @@ public class PlayActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     addToFavorites(username, toPlayName, toPlayView);
-                    editor.putString("COURSE_KEY", toPlayName);
-                    editor.apply();
+                    //editor.putString("COURSE_KEY", toPlayName);
+                    //editor.apply();
                 } else {
                     removeFromFavorites(username, toPlayName, toPlayView);
-                    editor.remove("COURSE_KEY");
-                    editor.apply();
+                    //editor.remove("COURSE_KEY");
+                    //editor.apply();
                 }
             }
         });

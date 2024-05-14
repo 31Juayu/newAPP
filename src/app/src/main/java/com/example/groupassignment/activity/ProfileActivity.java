@@ -74,8 +74,8 @@ public class ProfileActivity extends AppCompatActivity {
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         System.out.println(username);
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
-        SharedPreferences sharedCoursePreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        courseToAdd = sharedCoursePreferences.getString("COURSE_KEY", null);
+        //SharedPreferences sharedCoursePreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        //courseToAdd = sharedCoursePreferences.getString("COURSE_KEY", null);
         System.out.println(courseToAdd);
 
         downloadProfile(username, FirebaseStorage.getInstance());
@@ -107,8 +107,8 @@ public class ProfileActivity extends AppCompatActivity {
             String json = new String(bytes);
             System.out.println("Downloaded Profile json " + json);
             profile = new Gson().fromJson(json, Profile.class);
-            if (courseToAdd!=null)
-                profile.addCourse(courseToAdd);
+            //if (courseToAdd!=null)
+                //profile.addCourse(courseToAdd);
             if (profile!=null){
                 if(profile.getUsername()!=null){
                     System.out.println("Profile " + profile.getUsername());
@@ -149,6 +149,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 Glide.with(HeadImage.getContext())
                         .load(uri.toString())
+                        .error(R.drawable.user_default)
                         .into(HeadImage);
             }
         }).addOnFailureListener(new OnFailureListener() {
