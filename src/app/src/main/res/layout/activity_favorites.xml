@@ -89,14 +89,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.75" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8406659" />
+        app:layout_constraintGuide_percent="0.84" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline21"
@@ -104,4 +104,17 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.91914386" />
+
+    <Button
+        android:id="@+id/buttonUploadToProfile"
+        android:layout_width="250dp"
+        android:layout_height="66dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:fontFamily="@font/atomicage"
+        android:text="Update to Profile"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/backButton12"
+        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/favoritesList"
+        app:layout_constraintTop_toBottomOf="@+id/favoritesList" />
 </androidx.constraintlayout.widget.ConstraintLayout>
