@@ -1,6 +1,6 @@
 package com.example.groupassignment.activity;
 
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -32,6 +32,9 @@ public class dealSearchActivity extends AppCompatActivity {
     ArrayAdapter<String> ad;
     ArrayList<String> resLine;
 
+    private Button go_back_search;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,22 @@ public class dealSearchActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.rightTextView);
         Intent intent = getIntent();
         String input = intent.getStringExtra("userInput");
+        ArrayList<ArrayList<String>> res = parserToSearch.findRes(input,this);
+        resLine = new ArrayList<>();
+
+        go_back_search = (Button) findViewById(R.id.go_back_search);
+
+        for (ArrayList<String>  e:
+                res) {
+            String thisLine = "";
+            for (String j:
+                    e) {
+                thisLine = thisLine + j + ", ";
+            }
+            resLine.add(thisLine);
+        }
+        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
 
         btu.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +83,13 @@ public class dealSearchActivity extends AppCompatActivity {
                 ad = new ArrayAdapter<String>(dealSearchActivity.this,android.R.layout.simple_list_item_1,resLine);
                 lv.setAdapter(ad);
 
+            }
+        });
+
+        go_back_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

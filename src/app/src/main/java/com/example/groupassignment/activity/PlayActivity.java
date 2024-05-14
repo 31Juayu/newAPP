@@ -29,11 +29,9 @@ public class PlayActivity extends AppCompatActivity {
     private TextView video_name_textView;
     private VideoView current_VideoView;
     MediaController mediaController;
-    private Switch favoriteSwitch;
 
-
-
-
+    private Button go_back_play;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +83,17 @@ public class PlayActivity extends AppCompatActivity {
 
 
         current_VideoView.start();
+
+        go_back_play = (Button) findViewById(R.id.go_back_play);
+
+        go_back_play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
     }
 
     private void addToFavorites(String username, String videoName, String videoUrl) {

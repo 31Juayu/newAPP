@@ -11,11 +11,11 @@ Stand up Procedure:
 
 
 ## Agenda Items
-| Number                |                                   Item |
-|:----------------------|---------------------------------------:|
-| [1]                   |    [Exchange Project progress] |
-| [2]                   |             [Identify all tasks that need to be completed in the near future] |
-| [3]                   |           [Work Arrangement] |
+| Number                |                                                                         Item |
+|:----------------------|-----------------------------------------------------------------------------:|
+| [1]                   |                                                  [Exchange Project progress] |
+| [2]                   |            [Identify all tasks that need to be completed in the near future] |
+| [3]                   |                                                           [Work Arrangement] |
 
 ## Meeting Minutes
 - The team members explained their current project progress and existing problems to others in turn, and the team leader summarized the current progress of the project and the implemented functions.
@@ -24,10 +24,10 @@ Stand up Procedure:
 
 
 ## Action Items
-| Task                                                                              |   Assigned To   |   Due Date   |
-|:----------------------------------------------------------------------------------|:---------------:|:------------:|
-| [Complete the Login function] | [Ruizhe Luo, Tianyi Xu, ]        | [2024-05-03] |
-| [Complete the Signup function and Search function.]   | [Wenzhao Zheng, Jiayu Jian,Zhengyu Peng] | [2024-05-03] |
+| Task                                                |               Assigned To                |   Due Date   |
+|:----------------------------------------------------|:----------------------------------------:|:------------:|
+| [Complete the Login function]                       |        [Ruizhe Luo, Tianyi Xu, ]         | [2024-05-03] |
+| [Complete the Signup function and Search function.] | [Wenzhao Zheng, Jiayu Jian,Zhengyu Peng] | [2024-05-03] |
 
 
 

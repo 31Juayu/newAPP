@@ -1,8 +1,11 @@
 package com.example.groupassignment.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +24,9 @@ public class FriendsActivity extends AppCompatActivity {
 
     private ListView friendList;
     private ArrayAdapter<String> adapter;
+
+    private Button go_back_friend;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,8 @@ public class FriendsActivity extends AppCompatActivity {
         friendList = (ListView) findViewById(R.id.FriendsList);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         friendList.setAdapter(adapter);
+
+        go_back_friend = (Button) findViewById(R.id.go_back_friend);
 
         adapter.clear();
         if (friends!=null){
@@ -43,6 +51,13 @@ public class FriendsActivity extends AppCompatActivity {
             intent.putExtra("friendName", friendName);
             intent.putExtra("currentUserName",currentUserName);
             startActivity(intent);
+        });
+
+        go_back_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 }
