@@ -34,8 +34,6 @@ public class ChatIndividual extends AppCompatActivity {
     private EditText message_area;
     DatabaseReference reference1;
     DatabaseReference reference2;
-
-    private Button go_back_chat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +54,6 @@ public class ChatIndividual extends AppCompatActivity {
         String toUseFriendName = friendName.replace(".","-");
         reference1 = FirebaseDatabase.getInstance().getReference("messages/" + toUseUserName + "_" + toUseFriendName);
         reference2 = FirebaseDatabase.getInstance().getReference("messages/" + toUseFriendName + "_" + toUseUserName);
-
-        go_back_chat = (Button) findViewById(R.id.go_back_chat);
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,13 +105,6 @@ public class ChatIndividual extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
-            }
-        });
-
-        go_back_chat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

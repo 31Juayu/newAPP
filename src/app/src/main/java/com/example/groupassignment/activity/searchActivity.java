@@ -1,6 +1,5 @@
 package com.example.groupassignment.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,9 +15,6 @@ import com.example.groupassignment.activity.dealSearchActivity;
 
 public class searchActivity extends AppCompatActivity {
 
-    private Button go_back_searches;
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,8 +30,6 @@ public class searchActivity extends AppCompatActivity {
         Button startSearch = (Button) findViewById(R.id.startSearch);
 
         EditText text = (EditText) findViewById(R.id.informationEditText);
-
-        go_back_searches = (Button) findViewById(R.id.go_back_searches);
 
         infoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +62,6 @@ public class searchActivity extends AppCompatActivity {
                     Toast.makeText(searchActivity.this, "input may invalid", Toast.LENGTH_SHORT).show();
                 }
 
-            }
-        });
-
-        go_back_searches.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

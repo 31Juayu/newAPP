@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.database.Cursor;
@@ -46,15 +45,11 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity implement
     private RecyclerView PDFList;
     private List<Uri> PDFUris;
 
-    private Button go_back_assign;
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignment_demonstration);
         uploadPDF = (Button) findViewById(R.id.upload_Assignment);
-        go_back_assign = (Button) findViewById(R.id.go_back_assign);
         progressBarPDF = (ProgressBar) findViewById(R.id.progress_bar_PDF);
         progressTextViewPDF = (TextView) findViewById(R.id.progress_text_PDF);
         PDFList = (RecyclerView) findViewById(R.id.PDF_list);
@@ -65,12 +60,6 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity implement
             @Override
             public void onClick(View v) {
                 chooseAssignment();
-            }
-        });
-        go_back_assign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.example.groupassignment.activity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,17 +13,11 @@ import com.example.groupassignment.activity.GPSActivity;
 import com.example.groupassignment.activity.GPSMapsActivity;
 
 public class locationActivity extends AppCompatActivity {
-
-    private Button go_back_location;
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_location);
-
-        go_back_location = (Button) findViewById(R.id.go_back_location);
-
 /*        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -46,13 +39,6 @@ public class locationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GPSMapsActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        go_back_location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
 

@@ -11,11 +11,11 @@ Stand up Procedure:
 
 
 ## Agenda Items
-| Number                |                                                              Item |
-|:----------------------|------------------------------------------------------------------:|
-| [1]                   |                                       [Exchange Project progress] |
-| [2]                   | [Identify all tasks that need to be completed in the near future] |
-| [3]                   |                                                [Work Arrangement] |
+| Number                |                                   Item |
+|:----------------------|---------------------------------------:|
+| [1]                   |    [Exchange Project progress] |
+| [2]                   |             [Identify all tasks that need to be completed in the near future] |
+| [3]                   |           [Work Arrangement] |
 
 ## Meeting Minutes
 - The team members explained their current project progress and existing problems to others in turn, and the team leader summarized the current progress of the project and the implemented functions.
@@ -24,13 +24,13 @@ Stand up Procedure:
 
 
 ## Action Items
-| Task                                                                                                                               |   Assigned To   |   Due Date   |
-|:-----------------------------------------------------------------------------------------------------------------------------------|:---------------:|:------------:|
-| [Try to implement the private message function and personal data function, and participate in the implementation of the database.] | [Zhengyu Peng]  | [2024-05-10] |
-| [Try to implement GPS function and course data function]                                                                           |   [Tianyi Xu]   | [2024-05-10] |
-| [Try to implement the sharing function and the focus course function]                                                              | [Wenzhao Zheng] | [2024-05-10] |
-| [Implement database, assist other team members to implement functions, and improve existing functions.]                            |  [Jiayu Jian]   | [2024-05-10] |
-| [Try to implement the list function and the user relationship function]                                                            |  [Ruizhe Luo]   | [2024-05-10] |
+| Task                                                                              |   Assigned To   |   Due Date   |
+|:----------------------------------------------------------------------------------|:---------------:|:------------:|
+| [Try to implement the private message function and personal data function, and participate in the implementation of the database.] | [Zhengyu Peng]        | [2024-05-10] |
+| [Try to implement GPS function and course data function]   | [Tianyi Xu] | [2024-05-10] |
+| [Try to implement the sharing function and the focus course function] | [Wenzhao Zheng]        | [2024-05-10] |
+| [Implement database, assist other team members to implement functions, and improve existing functions.] | [Jiayu Jian] | [2024-05-10] |
+| [Try to implement the list function and the user relationship function] | [Ruizhe Luo]        | [2024-05-10] |
 
 
 
