@@ -1,5 +1,6 @@
 package com.example.groupassignment;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -7,19 +8,28 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.groupassignment.DAO.Customer;
 import com.example.groupassignment.DAO.Profile;
+import com.example.groupassignment.activity.findCourseActivity;
+import com.example.groupassignment.utility.smallParserToSearch;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.ListResult;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -34,6 +44,24 @@ public class Login extends AppCompatActivity {
     private EditText userNameText;
     private EditText passWordText;
 
+    private String jsonRead;
+    private List<String> courseListInJson;
+
+    private String usernameInJson;
+
+    private String passwordInJson;
+
+    private String emailInJson;
+
+    private String profileImageUrlInJson;
+
+    private List<String> friendsInJson;
+
+    private ArrayList<String> videoNamesFound;
+
+    private StorageReference storageReference;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +73,7 @@ public class Login extends AppCompatActivity {
         passWordText = (EditText) findViewById(R.id.PassWordEdit);
         Button loginButton = (Button) findViewById(R.id.Login_button);
         Button signUpButton = (Button) findViewById(R.id.Sign_up_button);
+        videoNamesFound = new ArrayList<>();
         // add the listener
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +97,9 @@ public class Login extends AppCompatActivity {
     }
     // 实际上不建议在客户端直接处理密码验证。这种验证应该在服务器端进行，客户端只发送请求并处理响应，可以写进报告里。
     private void checkUserJson(String username, String password, FirebaseStorage storage){
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
+
         // 将文件的最大大小设置为1MB
         long ONE_MEGABYTE = 1024 * 1024;
         profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
@@ -88,6 +118,9 @@ public class Login extends AppCompatActivity {
                 editor.putString("USERNAME_KEY", username);
                 editor.putString("PASSWORD_KEY", password);
                 editor.apply();
+                //StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                //StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
+                readJSONFromStorage(profileRef);
                 Intent intent = new Intent(getApplicationContext(),MenuPage.class);
                 startActivity(intent);
                 finish();
@@ -101,10 +134,52 @@ public class Login extends AppCompatActivity {
 
     }
 
+    public void readJSONFromStorage(StorageReference storageRef) {
+        storageRef.getBytes(Long.MAX_VALUE)
+                .addOnSuccessListener(bytes -> {
+                    // 成功获取文件内容，将字节数组转换为字符串
+                    jsonRead = new String(bytes);
+                    // 将 JSON 内容显示在 TextView 中
+                    //jsonTextView.setText(json);
 
+                    Gson gson = new Gson();
+                    Profile people = gson.fromJson(jsonRead, Profile.class);
+                    courseListInJson = people.getCourses();
+                    usernameInJson = people.getUsername();
+                    passwordInJson = people.getPassword();
+                    emailInJson = people.getEmail();
+                    profileImageUrlInJson = people.getProfileImageUrl();
+                    friendsInJson = people.getFriends();
+                    StorageReference path = storageReference.child("Files/");
+                    //getVideoNames(path);
+                    path.listAll().addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                        @Override
+                        public void onSuccess(ListResult listResult) {
+                            for (StorageReference item : listResult.getItems()) {
+                                String name = item.getName();
+                                if (name.endsWith(".mp4")) {
+                                    name = name.substring(0, name.length() - 4); // 去掉.mp4后缀
+                                }
+                                videoNamesFound.add(name);
+                            }
+                            //Toast.makeText(Login.this, "first is " + videoNamesFound.get(0), Toast.LENGTH_SHORT).show();
+                            //public Profile(String username, String email, String password, String profileImageUrl, List<String> courses, List<String> friends) {
+                            Profile upDateP = new Profile(usernameInJson,emailInJson,passwordInJson,profileImageUrlInJson,videoNamesFound,friendsInJson);
+                            upDateP.uploadProfileJson(upDateP);
+                        }
 
-
-
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(Login.this, "fail", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    //Toast.makeText(findCourseActivity.this,"succeed" , Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(exception -> {
+                    //Toast.makeText(findCourseActivity.this, "fail", Toast.LENGTH_SHORT).show();
+                });
+    }
 
     // Login function version 1.0 base on local storage files.
     private void performLogin(){
