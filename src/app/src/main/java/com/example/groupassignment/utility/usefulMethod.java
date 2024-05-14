@@ -1,13 +1,13 @@
 package com.example.groupassignment.utility;
 import android.content.Context;
 
-import com.example.groupassignment.utility.RedBlackTree;
-
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class usefulMethod {
     public static RedBlackTree<String> readCSVLinesAllCountry(Context context) {
@@ -483,5 +483,74 @@ public class usefulMethod {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public static ArrayList<String> getAllCountry(Context context) {
+        //List<String[]> data = new ArrayList<>();
+        //String filePath = "CLTEARCHIVE_COUNTRY.csv";
+        ArrayList<String> list = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open("CLTEARCHIVE_COUNTRY.csv"), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] elements = line.split(",");
+
+                if (elements.length > 0 && elements[elements.length - 1].isEmpty()) {
+                    String[] trimmedElements = new String[elements.length - 1];
+                    System.arraycopy(elements, 0, trimmedElements, 0, elements.length - 1);
+                    elements = trimmedElements;
+                }
+
+                //tree.put(elements[1].toLowerCase(),elements[0].toLowerCase());
+                list.add(elements[1].toLowerCase());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static ArrayList<String> getAllInfo(Context context) {
+        //List<String[]> data = new ArrayList<>();
+        //String filePath = "CLTEARCHIVE_LABEL_23.csv";
+        ArrayList<String> list= new ArrayList<String>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open("CLTEARCHIVE_LABEL_23.csv"), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] elements = line.split(",");
+
+                if (elements.length > 0 && elements[elements.length - 1].isEmpty()) {
+                    String[] trimmedElements = new String[elements.length - 1];
+                    System.arraycopy(elements, 0, trimmedElements, 0, elements.length - 1);
+                    elements = trimmedElements;
+                }
+                String newInfo = elements[1].substring(1, elements[1].length() - 1);
+                list.add(newInfo.toLowerCase());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public static HashSet<String> getAllYear(Context context) {
+        //List<String[]> data = new ArrayList<>();
+        //String filePath = "CLTEARCHIVE_DATA_NATIONAL_2600.csv";
+        HashSet<String> yearSet= new HashSet<>();
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(context.getAssets().open("CLTEARCHIVE_DATA_NATIONAL_2600.csv"), StandardCharsets.UTF_8))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] elements = line.split(",");
+
+                if (elements.length > 0 && elements[elements.length - 1].isEmpty()) {
+                    String[] trimmedElements = new String[elements.length - 1];
+                    System.arraycopy(elements, 0, trimmedElements, 0, elements.length - 1);
+                    elements = trimmedElements;
+                }
+                yearSet.add(elements[2]);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return yearSet;
     }
 }

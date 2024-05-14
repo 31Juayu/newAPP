@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button loginButtonMain = (Button) findViewById(R.id.Login_button_main);
         Button signUpButtonMain = (Button) findViewById(R.id.SignUp_button_main);
-        CheckBox privacyCheckbox = (CheckBox) findViewById(R.id.privacyCheckbox);
+//        CheckBox privacyCheckbox = (CheckBox) findViewById(R.id.privacyCheckbox);
 
         loginButtonMain.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), Login.class);
@@ -28,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), SignUp.class);
             startActivity(intent);
         });
-        privacyCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            loginButtonMain.setEnabled(isChecked);
-                signUpButtonMain.setEnabled(isChecked);
-        });
+//        privacyCheckbox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+//            loginButtonMain.setEnabled(isChecked);
+//                signUpButtonMain.setEnabled(isChecked);
+//        });
     }
 
 }

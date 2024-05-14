@@ -44,6 +44,19 @@
     <VideoView
         android:id="@+id/current_video_play"
         android:layout_width="match_parent"
-        android:layout_height="400dp"/>
+        android:layout_height="400dp" />
 
+    <Switch
+        android:id="@+id/switch_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Favorite"
+        android:textColorLink="#C36A6A"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/backButton11"
+        android:layout_width="170dp"
+        android:layout_height="48dp"
+        android:text="Return" />
 </LinearLayout>

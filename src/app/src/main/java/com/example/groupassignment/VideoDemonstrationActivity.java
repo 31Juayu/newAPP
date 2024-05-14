@@ -52,6 +52,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
     private Button go_back_demo;
 
 
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

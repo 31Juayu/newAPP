@@ -18,6 +18,12 @@
         android:theme="@style/Theme.GroupAssignment"
         tools:targetApi="31">
         <activity
+            android:name=".activity.findCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.playVedioOfcourse"
+            android:exported="false" />
+        <activity
             android:name=".activity.ChatIndividual"
             android:exported="false" />
         <activity
@@ -86,6 +92,9 @@
             android:exported="false" />
         <activity
             android:name=".SignUp"
+            android:exported="false" />
+        <activity
+            android:name=".VideoCollection"
             android:exported="false" />
         <activity
             android:name=".Login"

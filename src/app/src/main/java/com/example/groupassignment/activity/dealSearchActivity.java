@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -24,6 +25,7 @@ import com.example.groupassignment.utility.parserToSearch;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
 public class dealSearchActivity extends AppCompatActivity {
@@ -43,6 +45,9 @@ public class dealSearchActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });*/
+        Button btu = (Button) findViewById(R.id.showRes);
+        ListView lv = (ListView) findViewById(R.id.listView);
+        TextView textView = findViewById(R.id.rightTextView);
         Intent intent = getIntent();
         String input = intent.getStringExtra("userInput");
         ArrayList<ArrayList<String>> res = parserToSearch.findRes(input,this);
@@ -62,9 +67,24 @@ public class dealSearchActivity extends AppCompatActivity {
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        ListView lv = (ListView) findViewById(R.id.listView);
-        ad = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,resLine);
-        lv.setAdapter(ad);
+
+        btu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                resLine = parserToSearch.findRess(input,dealSearchActivity.this);
+                //去重
+                LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(resLine);
+                resLine = new ArrayList<>(linkedHashSet);
+                textView.setText("result were found");
+                androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+                setSupportActionBar(toolbar);
+
+                ad = new ArrayAdapter<String>(dealSearchActivity.this,android.R.layout.simple_list_item_1,resLine);
+                lv.setAdapter(ad);
+
+            }
+        });
 
         go_back_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +115,12 @@ public class dealSearchActivity extends AppCompatActivity {
             for (Integer key : map.keySet()) {
                 newList.add(map.get(key));
             }
+            ad = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, newList);
+            ListView lv = (ListView) findViewById(R.id.listView);
+            lv.setAdapter(ad);
+        } else if (itemId == R.id.directly) {
+            ArrayList<String> newList = new ArrayList<>(resLine);
+            Collections.sort(newList);
             ad = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, newList);
             ListView lv = (ListView) findViewById(R.id.listView);
             lv.setAdapter(ad);
