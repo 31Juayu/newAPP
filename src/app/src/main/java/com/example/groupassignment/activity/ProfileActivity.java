@@ -149,12 +149,13 @@ public class ProfileActivity extends AppCompatActivity {
             public void onSuccess(Uri uri) {
                 Glide.with(HeadImage.getContext())
                         .load(uri.toString())
+                        .error(R.drawable.user_default)
                         .into(HeadImage);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
+                // Error Handler
             }
         });
     }
