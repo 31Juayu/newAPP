@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.groupassignment.activity.PostActivity;
 import com.example.groupassignment.activity.ProfileActivity;
 import com.example.groupassignment.activity.findCourseActivity;
 import com.example.groupassignment.activity.locationActivity;
@@ -26,7 +27,7 @@ public class MenuPage extends AppCompatActivity {
         Button assignmentButton = (Button) findViewById(R.id.button3);
         Button profileButton = (Button) findViewById(R.id.button4);
         Button vcButton = (Button) findViewById(R.id.button5);
-
+        Button postButton = (Button) findViewById(R.id.button6);
         Button seeTest = (Button) findViewById(R.id.button7);
 
         EditText userInputIn = (EditText) findViewById(R.id.UserNameEdit);
@@ -73,6 +74,14 @@ public class MenuPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),VideoCollection.class);
+                startActivity(intent);
+            }
+        });
+
+        postButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), PostActivity.class);
                 startActivity(intent);
             }
         });

@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class SignUp extends AppCompatActivity {
     private EditText emailName;
@@ -140,7 +141,9 @@ public class SignUp extends AppCompatActivity {
 //                        Toast.makeText(SignUp.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-                String profileImageUrl = "gs://comp6442project-8a60c.appspot.com/images/user0.jpg";
+                Random r = new Random();
+                int randomUserImage = r.nextInt(6);
+                String profileImageUrl = "user" + randomUserImage + ".jpg";
                 List<String> courses = new ArrayList<>();
                 List<String> friends = new ArrayList<>();
                 Profile signUpProfile = new Profile(username, email, password, profileImageUrl, courses, friends);

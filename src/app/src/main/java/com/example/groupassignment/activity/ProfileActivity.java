@@ -3,7 +3,10 @@ package com.example.groupassignment.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,7 +14,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.example.groupassignment.utility.MyAppGlideModule;
 
 import com.bumptech.glide.Glide;
 
@@ -20,6 +31,8 @@ import com.example.groupassignment.DAO.Profile;
 import com.example.groupassignment.MenuPage;
 import com.example.groupassignment.R;
 import com.example.groupassignment.activity.FriendsActivity;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
@@ -38,6 +51,8 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView HeadImage;
     private ArrayAdapter<String> adapter;
     private ArrayList<String> friends;
+    private String courseToAdd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +72,14 @@ public class ProfileActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
+        System.out.println(username);
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
+        SharedPreferences sharedCoursePreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        courseToAdd = sharedCoursePreferences.getString("COURSE_KEY", null);
+        System.out.println(courseToAdd);
 
         downloadProfile(username, FirebaseStorage.getInstance());
+
 
         ButtonProfile2Menu.setOnClickListener(v -> {
             Intent intent0 = new Intent(ProfileActivity.this, MenuPage.class);
@@ -80,15 +100,15 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-
     public void downloadProfile(String username, FirebaseStorage storage) {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
+        StorageReference profileRef = storage.getReference().child("Profiles/" + username + ".json");
 
         profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
             String json = new String(bytes);
             System.out.println("Downloaded Profile json " + json);
             profile = new Gson().fromJson(json, Profile.class);
+            if (courseToAdd!=null)
+                profile.addCourse(courseToAdd);
             if (profile!=null){
                 if(profile.getUsername()!=null){
                     System.out.println("Profile " + profile.getUsername());
@@ -112,17 +132,9 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 }
                 if (profile.getProfileImageUrl()!=null){
-                    //TODO:For checkpoint 2, please ask why the image load keeps failing
-                    //    I have added all required dependencies:
-                    //    implementation("com.github.bumptech.glide:glide:4.16.0")
-                    //    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
-                    //    The url is manually set to be correct
-                    //    Error: class com.bumptech.glide.load.engine.GlideException: Failed to load resource
-                    Glide.with(HeadImage.getContext())
-                            .load(profile.getProfileImageUrl())
-                            .override(126, 126)
-                            .into(HeadImage);
+                    getHeadImage();
                 }
+                profile.uploadProfileJson(profile);
             }
             System.out.println("Profile downloaded: " + profile.getUsername());
         }).addOnFailureListener(e -> {
@@ -130,18 +142,21 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    /*protected void updateProfile(Profile profile){
-        //UsernameProfile.setText(profile.getUsername());
-        //EmailProfile.setText(profile.getEmail());
+    public void getHeadImage(){
+        StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + profile.getProfileImageUrl());
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(HeadImage.getContext())
+                        .load(uri.toString())
+                        .into(HeadImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
+    }
 
-        /*adapter.clear();
-        adapter.addAll(profile.getCourses());
-        adapter.notifyDataSetChanged();*/
-
-        /*RequestOptions options = new RequestOptions().override(128, 128).centerCrop();
-        Glide.with(HeadImage.getContext())
-                .load(profile.getProfileImageUrl())
-                .apply(options)
-                .into(HeadImage);
-    }*/
 }

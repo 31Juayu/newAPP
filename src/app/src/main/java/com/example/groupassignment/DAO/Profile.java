@@ -55,6 +55,7 @@ public class Profile {
         });
     }
 
+
     public Profile(){}
 
     public List<String> getCourses() {
@@ -63,6 +64,13 @@ public class Profile {
 
     public void setCourses(List<String> courses) {
         this.courses = courses;
+    }
+
+    public void addCourse(String course){
+        courses.add(course);
+    }
+    public void deleteCourse(String course){
+        courses.remove(course);
     }
 
     public List<String> getFriends() {

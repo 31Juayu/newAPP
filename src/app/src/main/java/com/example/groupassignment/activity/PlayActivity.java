@@ -13,6 +13,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import com.example.groupassignment.DAO.Profile;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.DocumentSnapshot;
 
@@ -28,6 +30,7 @@ public class PlayActivity extends AppCompatActivity {
     private VideoView current_VideoView;
     MediaController mediaController;
     private Switch favoriteSwitch;
+
 
 
 
@@ -50,6 +53,8 @@ public class PlayActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
 
         // pzy 新增了play页面的switch按钮用于收藏和返回按钮
         favoriteSwitch = findViewById(R.id.switch_favorite);
@@ -58,8 +63,12 @@ public class PlayActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     addToFavorites(username, toPlayName, toPlayView);
+                    editor.putString("COURSE_KEY", toPlayName);
+                    editor.apply();
                 } else {
                     removeFromFavorites(username, toPlayName, toPlayView);
+                    editor.remove("COURSE_KEY");
+                    editor.apply();
                 }
             }
         });
@@ -92,6 +101,7 @@ public class PlayActivity extends AppCompatActivity {
 
     private void removeFromFavorites(String username, String videoName, String videoUrl) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         db.collection("favorites")
                 .whereEqualTo("username", username)
                 .whereEqualTo("videoName", videoName)
