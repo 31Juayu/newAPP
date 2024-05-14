@@ -64,6 +64,15 @@ public class PostActivity extends AppCompatActivity {
         ButtonPost2PostItem = (Button) findViewById(R.id.post_notice);
         ButtonPostRefresh = (Button) findViewById(R.id.button_refresh_posts);
 
+        String[] robotProvider = {"Welcome! ", "This is robot messaging system! ", "Have fun! "};
+        String robotMessageRoot = "Robot ";
+        for (int i = 0; i < 3; i ++){
+            String autoPostItem = robotMessageRoot + LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME) + robotProvider[i];
+            postList.add(autoPostItem);
+            adapter = new PostAdapter(postList);
+            recyclerView.setAdapter(adapter);
+        }
+
         downloadPosts();
         ButtonPost2PostItem.setOnClickListener(v -> {
             System.out.println("pressed");
