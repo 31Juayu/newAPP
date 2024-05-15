@@ -1,20 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/EditTextPost"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:title="Post"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <Button
+        android:id="@+id/go_back_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter your post here" />
+        android:text="Return"
+        android:background="@drawable/background_button_login_and_sign_up"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/atomicage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintEnd_toStartOf="@id/ButtonUploadPost"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp" />
 
     <Button
         android:id="@+id/ButtonUploadPost"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Upload Post" />
+        android:text="Upload Post"
+        android:background="@drawable/background_button_login_and_sign_up"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/atomicage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toEndOf="@id/return_button"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp" />
 
-</LinearLayout>
+    <EditText
+        android:id="@+id/EditTextPost"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter your post here"
+        app:layout_constraintTop_toBottomOf="@id/return_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

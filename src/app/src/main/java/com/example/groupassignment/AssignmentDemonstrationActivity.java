@@ -45,6 +45,8 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity implement
     private RecyclerView PDFList;
     private List<Uri> PDFUris;
 
+    private Button go_back_assign;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +64,14 @@ public class AssignmentDemonstrationActivity extends AppCompatActivity implement
                 chooseAssignment();
             }
         });
+        go_back_assign = (Button) findViewById(R.id.go_back_assign);
+        go_back_assign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
     private void chooseAssignment(){
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);

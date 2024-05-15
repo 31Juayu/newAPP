@@ -3,11 +3,13 @@ package com.example.groupassignment.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,6 +51,11 @@ public class PostActivity extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageRef;
 
+    private Button go_back_post;
+    private Button go_back_content;
+
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +88,22 @@ public class PostActivity extends AppCompatActivity {
         ButtonPostRefresh.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), PostActivity.class);
             startActivity(intent);
+        });
+
+        go_back_post = (Button) findViewById(R.id.go_back_post);
+        go_back_post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        go_back_content = (Button) findViewById(R.id.go_back_content);
+        go_back_content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
         });
     }
 
@@ -125,35 +148,5 @@ public class PostActivity extends AppCompatActivity {
             System.out.println("Fail to obtain posts from storage.");
         });
     }
-        /*storageRef.listAll().addOnSuccessListener(listResult -> {
-            for (StorageReference item : listResult.getItems()) {
-                item.getDownloadUrl().addOnSuccessListener(uri -> {
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url(uri.toString()).build();
-                    client.newCall(request).enqueue(new Callback() {
-                        @Override
-                        public void onFailure(@NonNull Call call, @NonNull IOException e) {
-                            runOnUiThread(() -> Toast.makeText(PostActivity.this, "Error downloading file: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-                        }
 
-                        @Override
-                        public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-                            String jsonData = response.body().string();
-                            Gson gson = new Gson();
-                            Type type = new TypeToken<List<Post>>(){}.getType();
-                            List<Post> posts = gson.fromJson(jsonData, type);
-                            runOnUiThread(() -> {
-                                for (Post post : posts) {
-                                    String postText = post.getDisplayContent();
-                                    postList.add(postText);
-                                }
-                                adapter.notifyDataSetChanged();
-                            });
-                        }
-                    });
-                }).addOnFailureListener(e -> Toast.makeText(PostActivity.this, "Error getting file URL: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-            }
-        })
-                .addOnFailureListener(e -> Toast.makeText(PostActivity.this, "Error listing files: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-    }*/
 }
