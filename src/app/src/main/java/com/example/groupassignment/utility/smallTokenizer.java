@@ -2,13 +2,16 @@ package com.example.groupassignment.utility;
 
 import java.util.ArrayList;
 
+//author of this class : jiayu jian
+//reference: lab 6
+
 public class smallTokenizer {
     private String buffer;
     private smallToken currentToken;
 
 
     public static boolean isBlank(String str) {
-        // 使用trim()方法删除开头和结尾的空白字符，然后检查长度是否为0
+
         return str.trim().isEmpty();
     }
 

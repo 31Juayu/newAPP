@@ -3,6 +3,10 @@ package com.example.groupassignment.utility;
 
 import java.util.ArrayList;
 
+//author of this class : jiayu jian
+//a is any course name
+//reference: lab 6
+
 public class smallParser {
 
     smallTokenizer tokenizer;
@@ -25,10 +29,10 @@ public class smallParser {
     public boolean parseExp() {
         if (tokenizer.current().getType() == smallToken.Type.course) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'd' 终结符
-            return parseR(); // 解析 <R> 部分
+            tokenizer.next();
+            return parseR();
         } else {
-            return parseR(); // 解析 <R> 部分
+            return parseR();
         }
     }
 
@@ -43,7 +47,7 @@ public class smallParser {
             return true;
         } else if (tokenizer.current().getType() == smallToken.Type.course) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'a' 终结符
+            tokenizer.next();
             return parseR();
         } else {
             //System.out.println("false for has next");

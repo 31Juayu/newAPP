@@ -22,6 +22,7 @@ import android.widget.VideoView;
 
 import android.widget.MediaController;
 
+//author of this class : jiayu jian
 public class playVedioOfcourse extends AppCompatActivity {
 
     @Override

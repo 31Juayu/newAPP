@@ -28,6 +28,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
+//author of this class : jiayu jian
+
 public class dealSearchActivity extends AppCompatActivity {
     ArrayAdapter<String> ad;
     ArrayList<String> resLine;
@@ -54,7 +56,7 @@ public class dealSearchActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 resLine = parserToSearch.findRess(input,dealSearchActivity.this);
-                //去重
+                //remove duplicate item
                 LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(resLine);
                 resLine = new ArrayList<>(linkedHashSet);
                 textView.setText("result were found");

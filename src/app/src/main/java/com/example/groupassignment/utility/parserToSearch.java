@@ -7,9 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+//author of this class : jiayu jian
+
 public class parserToSearch {
     public static ArrayList<ArrayList<String>> findRes(String input, Context context) {
-        //res是：数字，（quality）
         ArrayList<ArrayList<String>> ress = new ArrayList<>();
 
 
@@ -151,7 +152,6 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个年份的所有结果
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByYear(year,context);
             if(numRes != null){
                 //decoder
@@ -184,7 +184,6 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个国家的所有结果
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByCountry(country,context);
             if(numRes != null){
                 //decoder
@@ -218,7 +217,6 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个信息的所有结果
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByInfo(info,context);
             if(numRes != null){
                 //decoder
@@ -255,7 +253,7 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个年份和信息的所有结果
+
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByYearAndInfo(year,info,context);
             if(numRes != null){
                 //decoder
@@ -292,7 +290,7 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个年份和国家的所有结果
+
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByYearAndCountry(year,country,context);
             if(numRes != null){
                 //decoder
@@ -329,7 +327,7 @@ public class parserToSearch {
                     throw new RuntimeException("Type is err");
                 }
             }
-            //得到符合这个信息和国家的所有结果
+
             RedBlackTree<String> numRes = usefulMethod.readCSVLinesAllSearchByInfoAndCountry(info,country,context);
             if(numRes != null){
                 //decoder

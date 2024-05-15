@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.groupassignment.R;
 import com.example.groupassignment.activity.dealSearchActivity;
 
+//author of this class : jiayu jian
 public class searchActivity extends AppCompatActivity {
 
     @Override

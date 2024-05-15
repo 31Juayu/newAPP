@@ -4,13 +4,10 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//author of this class : jiayu jian
+//reference: lab 6
+//element: 'a' is year, 'b' is info, 'c' is country, 'd' is 'quality' item
 public class Parser implements myParser {
-
-/*    public static class IllegalProductionException extends IllegalArgumentException {
-        public IllegalProductionException(String errorMessage) {
-            super(errorMessage);
-        }
-    }*/
 
     Tokenizer tokenizer;
     ArrayList<Token> parsedList;
@@ -24,31 +21,8 @@ public class Parser implements myParser {
         handleErr();
     }
 
-
-/*    public static void main(String[] args) {
-        // Create a scanner to get the user's input.
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Provide a string to be parsed:");
-        while (scanner.hasNext()) {
-            String input = scanner.nextLine();
-
-            // Check if 'quit' is provided.
-            if (input.equals("q"))
-                break;
-
-            // Create an instance of the tokenizer.
-            Tokenizer tokenizer = new Tokenizer(input);
-
-            // Print out the expression from the parser.
-            Parser parser = new Parser(tokenizer);
-*//*            boolean ifOk = parser.parseExp();
-            System.out.println("Parsing: " + ifOk);*//*
-        }
-    }*/
-
     public void handleErr(){
-        //用红黑树的排重性
+        //use red black tree to remove duplicate type of elements
         RedBlackTree<String> storeTree = new RedBlackTree<>();
         //Tokenizer copiedTokenizer = tokenizer.deepCopy();
         while (tokenizer.hasNext()) {
@@ -58,7 +32,7 @@ public class Parser implements myParser {
         //show
         //ArrayList<ArrayList<String>> list  = storeTree.preOrder();
         //case 1
-        //太长了，看成有多余的*
+        //when the number of types is too large, regard the element of "*" is redundant
         if(storeTree.search("country") != null &&
                 storeTree.search("info") != null &&
                 storeTree.search("year") != null &&
@@ -69,7 +43,7 @@ public class Parser implements myParser {
         ArrayList<ArrayList<String>> list_1  = storeTree.preOrder();
         for (ArrayList<String> e:
                 list_1) {
-            //最后再加入quality以保证符合CFG
+            //Finally, add 'quality' to ensure compliance with CFG
             if(!e.get(0).equals("quality")){
                 modifiedInput = modifiedInput + e.get(1) + ",";
             }
@@ -89,30 +63,13 @@ public class Parser implements myParser {
      * @return type: Exp.
      */
 
-    //returned 就是parse的结果
-    //默认返回右边的
-    //由于不做任何计算，所以所有的parse方法都是boolean，看每一步是否hold。
     public boolean parseExp() {
-/*        Exp res = null; //最终返回的exp结果
-        //保存原来的tokenizer
-        Tokenizer ori_tokenizer = tokenizer.deepCopy();
-        Exp d = parseLeftTerminal_d(); //左边的等式，假设会移动tokenizer
-        if(d == null){
-            tokenizer = ori_tokenizer;
-
-        }else{
-
-        }
-        Exp R; //右边的等式
-        if(tokenizer.hasNext()){
-            R = parseR();
-        }*/
         if (tokenizer.current().getType() == Token.Type.quality) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'd' 终结符
-            return parseR(); // 解析 <R> 部分
+            tokenizer.next();
+            return parseR();
         } else {
-            return parseR(); // 解析 <R> 部分
+            return parseR();
         }
     }
 
@@ -327,7 +284,7 @@ public class Parser implements myParser {
             return true;
         } else if (tokenizer.current().getType() == Token.Type.quality) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'd' 终结符
+            tokenizer.next();
             if(!tokenizer.hasNext()){
                 return true;
             }else{
@@ -343,25 +300,6 @@ public class Parser implements myParser {
     public ArrayList<Token> getRes(){
         return parsedList;
     }
-
-/*    public Exp parseLeftTerminal_d(){
-        Exp res = null;
-        if(tokenizer.hasNext()){
-//            Token current = tokenizer.current();
-            Token.Type type = tokenizer.current().getType();
-
-            if (type == Token.Type.quality) {
-                tokenizer.next();
-                res = new qualityExp();
-            }
-//            else {
-//                throw new IllegalProductionException("err for parse d");
-//            }
-        }
-
-        return res;
-    }*/
-
 
 }
 

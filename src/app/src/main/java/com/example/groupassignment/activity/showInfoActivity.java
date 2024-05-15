@@ -15,6 +15,7 @@ import com.example.groupassignment.utility.usefulMethod;
 
 import java.util.ArrayList;
 
+//author of this class : jiayu jian
 public class showInfoActivity extends AppCompatActivity {
 
     @Override
