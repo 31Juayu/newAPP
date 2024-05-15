@@ -27,6 +27,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.groupassignment.databinding.ActivityGpsmapsBinding;
 import com.google.android.libraries.places.api.net.PlacesClient;
 
+/**
+ * @author Tianyi Xu u7780366
+ */
 public class GPSMapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
