@@ -12,6 +12,12 @@ import com.example.groupassignment.R;
 import com.example.groupassignment.activity.GPSActivity;
 import com.example.groupassignment.activity.GPSMapsActivity;
 
+/**
+ * @author jiayu jian u7731262
+ * @author Tianyi Xu u7780366
+ * @author Ruize Luo u7776709
+ */
+
 public class locationActivity extends AppCompatActivity {
 
     private Button go_back_location;

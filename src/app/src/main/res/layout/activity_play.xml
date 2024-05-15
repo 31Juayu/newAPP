@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- LinearLayout as the root container for a video playback interface, organized vertically and centered horizontally -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +10,7 @@
     android:gravity="center_horizontal"
     tools:context=".activity.PlayActivity">
 
+    <!-- TextView to display the current video's name, centered at the top of the screen with bold style and blue color -->
     <TextView
         android:id="@+id/current_video_name"
         android:layout_width="wrap_content"
@@ -19,12 +22,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
 
+    <!-- VideoView for playing the video, occupying a fixed height and full available width with a margin on top -->
     <VideoView
         android:id="@+id/current_video_play"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginTop="16dp"/>
 
+    <!-- Switch for marking the video as a favorite, styled with custom text color and padding, aligned to match the parent's width -->
     <Switch
         android:id="@+id/switch_favorite"
         android:layout_width="match_parent"
@@ -37,6 +42,7 @@
         android:textColor="#C36A6A"
         android:layout_marginTop="16dp"/>
 
+    <!-- Button to return from the current activity, styled with a custom background and centered in layout -->
     <Button
         android:id="@+id/backButton11"
         android:layout_width="wrap_content"

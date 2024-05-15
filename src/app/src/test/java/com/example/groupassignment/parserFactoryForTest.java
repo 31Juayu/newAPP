@@ -1,5 +1,8 @@
 package com.example.groupassignment;
-
+/**
+ * @author Ruize Luo u7776709
+ *
+ */
 public class parserFactoryForTest {
     public static myParserForTest createParser(String type,TokenizerForTest tokenizer) {
         switch (type) {

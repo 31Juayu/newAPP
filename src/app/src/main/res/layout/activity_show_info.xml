@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Root LinearLayout for displaying country-specific results, organized vertically and centered horizontally -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +11,7 @@
     android:gravity="center_horizontal"
     tools:context=".activity.showInfoActivity">
 
+    <!-- Custom Toolbar with a title "Result", using a dark theme overlay and primary color background -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,7 +21,7 @@
         app:title="Result"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- Adjusted ListView to match the parent's width for better display -->
+    <!-- ListView for displaying results, stretched to match the parent's width with a dynamic height based on content -->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
@@ -26,7 +29,7 @@
         android:layout_weight="1"
         android:layout_marginTop="8dp" />
 
-    <!-- Button to return, centered and placed at the bottom with adequate margins -->
+    <!-- Return Button to navigate back, styled with a custom background and centered within the layout -->
     <Button
         android:id="@+id/goBack"
         android:layout_width="wrap_content"

@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- ConstraintLayout as the root container for a GPS service interface with a starry sky background -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,6 +9,7 @@
     android:background="@drawable/starrysky"
     tools:context=".activity.GPSActivity">
 
+    <!-- Large TextView for the title "GPS Service" centered and styled with custom font and color -->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="0dp"
@@ -21,6 +24,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
+    <!-- Button for returning from the GPS service screen, positioned using guidelines and styled with a selectable background -->
     <Button
         android:id="@+id/go_back_gps"
         android:layout_width="0dp"
@@ -36,6 +40,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintVertical_bias="0.108" />
 
+    <!-- TextView for displaying GPS position, padded and bolded text for emphasis -->
     <TextView
         android:id="@+id/position_show"
         android:layout_width="0dp"
@@ -48,6 +53,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
+    <!-- Guidelines define the structure of layout to ensure consistent spacing and alignment, omitted comments for remaining guidelines for brevity -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -55,6 +61,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.05" />
 
+    <!-- More guidelines set vertical and horizontal boundaries for layout elements -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
@@ -62,6 +69,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.2" />
 
+    <!-- Continuing with other guidelines -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
@@ -69,6 +77,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.8" />
 
+    <!-- Horizontal and vertical guidelines are critical in a ConstraintLayout to manage the positions of all child views precisely -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
         android:layout_width="wrap_content"

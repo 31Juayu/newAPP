@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Root element, defining a LinearLayout with vertical orientation, centered content, and full width and height -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,6 +10,7 @@
     android:gravity="center"
     tools:context=".AssignmentDemonstrationActivity">
 
+    <!-- Toolbar widget with a custom style, background color, and elevation -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -17,6 +20,7 @@
         app:title="Upload Assignment"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <!-- A horizontal LinearLayout for buttons, centered, with top margin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,6 +28,7 @@
         android:gravity="center"
         android:layout_marginTop="16dp">
 
+        <!-- Button to go back with custom background and font, evenly sharing space with the upload button -->
         <Button
             android:id="@+id/go_back_assign"
             android:layout_width="0dp"
@@ -35,6 +40,7 @@
             android:fontFamily="@font/atomicage"
             android:layout_marginEnd="8dp" />
 
+        <!-- Button to upload assignments, similar styling as the return button -->
         <Button
             android:id="@+id/upload_Assignment"
             android:layout_width="0dp"
@@ -47,6 +53,7 @@
             android:layout_marginStart="8dp" />
     </LinearLayout>
 
+    <!-- Horizontal ProgressBar, initially hidden, with top margin -->
     <ProgressBar
         android:id="@+id/progress_bar_PDF"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
@@ -55,6 +62,7 @@
         android:visibility="gone"
         android:layout_marginTop="16dp" />
 
+    <!-- TextView for showing progress, centered and initially hidden -->
     <TextView
         android:id="@+id/progress_text_PDF"
         android:layout_width="wrap_content"
@@ -64,6 +72,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center" />
 
+    <!-- RecyclerView to display a list of PDFs, taking all available space -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/PDF_list"
         android:layout_width="match_parent"

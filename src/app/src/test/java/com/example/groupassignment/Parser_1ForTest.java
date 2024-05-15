@@ -4,14 +4,11 @@ import com.example.groupassignment.utility.Token;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * @author Ruize Luo u7776709
+ *
+ */
 public class Parser_1ForTest implements myParserForTest {
-
-/*    public static class IllegalProductionException extends IllegalArgumentException {
-        public IllegalProductionException(String errorMessage) {
-            super(errorMessage);
-        }
-    }*/
 
     TokenizerForTest tokenizer;
     ArrayList<Token> parsedList;
@@ -21,29 +18,6 @@ public class Parser_1ForTest implements myParserForTest {
         parsedList = new ArrayList<>();
     }
 
-
-/*    public static void main(String[] args) {
-        // Create a scanner to get the user's input.
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Provide a string to be parsed:");
-        while (scanner.hasNext()) {
-            String input = scanner.nextLine();
-
-            // Check if 'quit' is provided.
-            if (input.equals("q"))
-                break;
-
-            // Create an instance of the tokenizer.
-            Tokenizer tokenizer = new Tokenizer(input);
-
-            // Print out the expression from the parser.
-            Parser_1 parser = new Parser_1(tokenizer);
-         *//*   boolean ifOk = parser.parseExp();
-            System.out.println("Parsing: " + ifOk);*//*
-        }
-    }*/
-
     /**
      * Adheres to the grammar rule:
      * <S>    ::= d<R> | <R>
@@ -51,30 +25,16 @@ public class Parser_1ForTest implements myParserForTest {
      * @return type: Exp.
      */
 
-    //returned 就是parse的结果
-    //默认返回右边的
-    //由于不做任何计算，所以所有的parse方法都是boolean，看每一步是否hold。
+    // The returned value is the result of the parsing.
+    // Defaults to returning the right side.
+    // As no calculations are made, all parse methods return a boolean to check if each step holds.
     public boolean parseExp() {
-/*        Exp res = null; //最终返回的exp结果
-        //保存原来的tokenizer
-        Tokenizer ori_tokenizer = tokenizer.deepCopy();
-        Exp d = parseLeftTerminal_d(); //左边的等式，假设会移动tokenizer
-        if(d == null){
-            tokenizer = ori_tokenizer;
-
-        }else{
-
-        }
-        Exp R; //右边的等式
-        if(tokenizer.hasNext()){
-            R = parseR();
-        }*/
         if (tokenizer.current().getType() == Token.Type.quality) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'd' 终结符
-            return parseR(); // 解析 <R> 部分
+            tokenizer.next(); // Consumes the 'd' terminal
+            return parseR(); // Parses the <R> part
         } else {
-            return parseR(); // 解析 <R> 部分
+            return parseR(); // Parses the <R> part
         }
     }
 
@@ -88,21 +48,15 @@ public class Parser_1ForTest implements myParserForTest {
         if (tokenizer.current().getType() == Token.Type.year) {
             parsedList.add(tokenizer.current());
             tokenizer.next();
-            //return parseFinal();
             return parseM();
-        }else if (tokenizer.current().getType() == Token.Type.asterisk) {
+        } else if (tokenizer.current().getType() == Token.Type.asterisk) {
             parsedList.add(tokenizer.current());
             tokenizer.next();
-            //return parseFinal();
             return parseN();
         } else {
-            //return parseFinal();
-            //return parseFinal();
-            //throw new IllegalProductionException("err for parse R");
             return false;
         }
     }
-
 
     /**
      * Adheres to the grammar rule:
@@ -114,13 +68,12 @@ public class Parser_1ForTest implements myParserForTest {
         if (tokenizer.current().getType() == Token.Type.asterisk) {
             parsedList.add(tokenizer.current());
             tokenizer.next();
-            //return parseFinal();
             return parseFinal();
         } else {
-            //throw new IllegalProductionException("err for parse M");
             return false;
         }
     }
+
     /**
      * Adheres to the grammar rule:
      * N → aF
@@ -131,10 +84,8 @@ public class Parser_1ForTest implements myParserForTest {
         if (tokenizer.current().getType() == Token.Type.year) {
             parsedList.add(tokenizer.current());
             tokenizer.next();
-            //return parseFinal();
             return parseFinal();
         } else {
-            //throw new IllegalProductionException("err for parse N");
             return false;
         }
     }
@@ -146,18 +97,17 @@ public class Parser_1ForTest implements myParserForTest {
      * @return type: Exp.
      */
     public boolean parseFinal() {
-        if(!tokenizer.hasNext()) {
+        if (!tokenizer.hasNext()) {
             return true;
         } else if (tokenizer.current().getType() == Token.Type.quality) {
             parsedList.add(tokenizer.current());
-            tokenizer.next(); // 消耗 'd' 终结符
-            if(!tokenizer.hasNext()){
+            tokenizer.next(); // Consumes the 'd' terminal
+            if (!tokenizer.hasNext()) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
         } else {
-            //System.out.println("false for has next");
             return false;
         }
     }
@@ -165,8 +115,4 @@ public class Parser_1ForTest implements myParserForTest {
     public ArrayList<Token> getRes(){
         return parsedList;
     }
-
 }
-
-
-

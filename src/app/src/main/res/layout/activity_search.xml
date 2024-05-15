@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- LinearLayout as the root container for a search activity, organized vertically and aligned to the start -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +11,7 @@
     android:gravity="start"
     tools:context=".activity.searchActivity">
 
+    <!-- Toolbar with a custom title for the search activity, styled according to the app's theme -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,6 +21,7 @@
         app:title="Search"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <!-- Horizontal LinearLayout containing buttons for various search-related actions -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +29,7 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp">
 
+        <!-- Button to return from the search activity, styled consistently with the app's design -->
         <Button
             android:id="@+id/go_back_searches"
             android:layout_width="0dp"
@@ -37,6 +42,7 @@
             android:textSize="14sp"
             android:layout_marginEnd="8dp" />
 
+        <!-- Button to view information, sharing space equally with other buttons -->
         <Button
             android:id="@+id/seeInfo"
             android:layout_width="0dp"
@@ -50,6 +56,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp" />
 
+        <!-- Button labeled 'Country', for potentially filtering searches by country -->
         <Button
             android:id="@+id/Country"
             android:layout_width="0dp"
@@ -63,6 +70,7 @@
             android:layout_marginStart="8dp" />
     </LinearLayout>
 
+    <!-- EditText for user input, styled with hints and margins for clarity and spacing -->
     <EditText
         android:id="@+id/informationEditText"
         android:layout_width="match_parent"
@@ -73,6 +81,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"/>
 
+    <!-- Button to initiate a search based on user input, styled similarly to other buttons in the layout -->
     <Button
         android:id="@+id/startSearch"
         android:layout_width="match_parent"

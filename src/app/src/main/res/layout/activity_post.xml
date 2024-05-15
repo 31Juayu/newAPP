@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Root LinearLayout for a post management activity, centered and vertically oriented -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,16 +10,17 @@
     android:orientation="vertical"
     tools:context=".activity.PostActivity">
 
+    <!-- Custom Toolbar for the activity, with a title and themed appearance -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        app:title="GPS"
+        app:title="Post"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- Horizontal LinearLayout to contain the Post and Return buttons -->
+    <!-- Horizontal LinearLayout for buttons to navigate and post, centered with a top margin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,6 +28,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="16dp">
 
+        <!-- Button to go back or cancel, with uniform style and left margin -->
         <Button
             android:id="@+id/go_back_post"
             android:layout_width="0dp"
@@ -36,6 +40,7 @@
             android:fontFamily="@font/atomicage"
             android:layout_marginEnd="8dp" />
 
+        <!-- Button to post or submit notice, styled similarly to the return button -->
         <Button
             android:id="@+id/post_notice"
             android:layout_width="0dp"
@@ -48,6 +53,7 @@
             android:layout_marginStart="8dp" />
     </LinearLayout>
 
+    <!-- Horizontal ProgressBar, initially hidden, to indicate posting progress -->
     <ProgressBar
         android:id="@+id/post_progress_bar"
         style="@android:style/Widget.DeviceDefault.Light.ProgressBar.Horizontal"
@@ -56,6 +62,7 @@
         android:visibility="gone"
         android:layout_marginTop="16dp" />
 
+    <!-- TextView to display progress of posting, centered and initially hidden -->
     <TextView
         android:id="@+id/post_progress_text"
         android:layout_width="wrap_content"
@@ -65,12 +72,14 @@
         android:layout_marginTop="8dp"
         android:gravity="center" />
 
+    <!-- RecyclerView to display posts or list items, taking all available space -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/post_lost"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- Button to refresh or reload posts, spanning the width of the parent -->
     <Button
         android:id="@+id/button_refresh_posts"
         android:layout_width="match_parent"

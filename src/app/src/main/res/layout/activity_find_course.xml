@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Root LinearLayout for the course finding activity, centered and vertically oriented -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,6 +11,7 @@
     android:gravity="center"
     tools:context=".activity.findCourseActivity">
 
+    <!-- Custom Toolbar with a title and theme for finding courses -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -18,7 +21,7 @@
         app:title="Find Courses"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <!-- Horizontal LinearLayout for buttons to ensure they are side by side -->
+    <!-- Horizontal LinearLayout containing buttons for navigation and action, centered with a top margin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,6 +29,7 @@
         android:gravity="center"
         android:layout_marginTop="16dp">
 
+        <!-- Button to return from the current activity, styled uniformly -->
         <Button
             android:id="@+id/go_back_gps"
             android:layout_width="0dp"
@@ -37,6 +41,7 @@
             android:fontFamily="@font/atomicage"
             android:layout_marginStart="8dp" />
 
+        <!-- Button to view course information, styled similarly to the return button -->
         <Button
             android:id="@+id/seeInfo"
             android:layout_width="0dp"
@@ -49,12 +54,14 @@
             android:layout_marginEnd="8dp" />
     </LinearLayout>
 
+    <!-- ListView to display a list of courses, taking up all available space after other components -->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
+    <!-- RecyclerView to potentially display a different list or details about courses, sharing space with the ListView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/PDF_list"
         android:layout_width="match_parent"
