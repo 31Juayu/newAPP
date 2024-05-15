@@ -96,17 +96,18 @@ public class Login extends AppCompatActivity {
 
     }
     // 实际上不建议在客户端直接处理密码验证。这种验证应该在服务器端进行，客户端只发送请求并处理响应，可以写进报告里。
+    // author : Zhengyu Peng
     private void checkUserJson(String username, String password, FirebaseStorage storage){
         storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("Profiles/" + username + ".json");
 
-        // 将文件的最大大小设置为1MB
+        // Set the maximum file size to 1MB
         long ONE_MEGABYTE = 1024 * 1024;
         profileRef.getBytes(Long.MAX_VALUE).addOnSuccessListener(bytes -> {
             String json = new String(bytes);
             Profile userProfile = new Gson().fromJson(json, Profile.class);
             if(!userProfile.getPassword().equals(password)){
-                // 显示密码错误的 Toast 消息
+                // show wrong password message
                 Toast.makeText(getApplicationContext(), "Wrong password", Toast.LENGTH_LONG).show();
 
                 return;

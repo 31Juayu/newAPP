@@ -19,7 +19,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// author : Zhengyu Peng
 public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
     private Button backButton;
@@ -37,13 +37,9 @@ public class VideoCollection extends AppCompatActivity {
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
         intent = new Intent(this, ProfileActivity.class);
 
-
-
         backButton = (Button) findViewById(R.id.backButton12);
         ButtonUpdate2Profile = (Button) findViewById(R.id.buttonUploadToProfile);
 
-
-        // 假设从SharedPreferences或数据库加载收藏列表
         loadUserFavorites(username);
 
         ButtonUpdate2Profile.setOnClickListener(v -> {
@@ -53,7 +49,7 @@ public class VideoCollection extends AppCompatActivity {
         backButton.setOnClickListener(v -> {
             Intent intent = new Intent(VideoCollection.this, MenuPage.class);
             startActivity(intent);
-            // 结束当前的Activity，确保用户按返回键时不会返回到PlayActivity
+            // End the Activity, making sure the user doesn't return to the PlayActivity when they press the Back key
             finish();
         });
     }
@@ -69,10 +65,10 @@ public class VideoCollection extends AppCompatActivity {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             videoNames.add(document.getString("videoName"));
                         }
-                        // 更新UI或处理视频名称列表
+                        // Update UI or process the list of video names
                         updateVideoList(videoNames);
                         intent.putStringArrayListExtra("courses_list", new ArrayList<>(videoNames));
-                        //
+
                     } else {
                         Log.e("Firestore", "Error getting documents: ", task.getException());
                     }
@@ -85,7 +81,6 @@ public class VideoCollection extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        // 设置点击事件监听器
         listView.setOnItemClickListener((parent, view, position, id) -> {
             String selectedVideoName = videoNames.get(position); // 获取选中的视频名称
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -96,10 +91,10 @@ public class VideoCollection extends AppCompatActivity {
                         if (task.isSuccessful() && !task.getResult().isEmpty()) {
                             String videoUrl = task.getResult().getDocuments().get(0).getString("videoUrl");
 
-                            // 跳转到 PlayActivity 并传递视频 URL
+                            // Go to PlayActivity and pass the video URL
                             Intent intent = new Intent(VideoCollection.this,  com.example.groupassignment.activity.PlayActivity.class);
-                            intent.putExtra("toPlayName", selectedVideoName); // 传递视频名称
-                            intent.putExtra("toPlayView", videoUrl); // 传递视频路径
+                            intent.putExtra("toPlayName", selectedVideoName);
+                            intent.putExtra("toPlayView", videoUrl);
                             startActivity(intent);
                         } else {
                             Toast.makeText(VideoCollection.this, "Video URL not found", Toast.LENGTH_SHORT).show();

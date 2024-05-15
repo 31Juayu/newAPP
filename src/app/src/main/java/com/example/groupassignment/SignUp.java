@@ -52,6 +52,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        // author : Zhengyu Peng
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -152,12 +153,11 @@ public class SignUp extends AppCompatActivity {
                     public void onUploadSuccess() {
                         // 注册成功
                         Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        // 注册成功后可以跳转到其他活动
+                        // After registration, you can jump to other activities
                         Intent intent = new Intent(SignUp.this, Login.class);
                         startActivity(intent);
                         finish();
                     }
-
                     @Override
                     public void onUploadFailure(Exception e) {
                         Toast.makeText(SignUp.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
