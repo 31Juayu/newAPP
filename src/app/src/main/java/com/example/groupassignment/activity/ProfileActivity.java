@@ -1,5 +1,6 @@
 package com.example.groupassignment.activity;
-
+/*Author: Wenzhao Zheng*/
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -75,19 +76,16 @@ public class ProfileActivity extends AppCompatActivity {
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         System.out.println(username);
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
-        //SharedPreferences sharedCoursePreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        //courseToAdd = sharedCoursePreferences.getString("COURSE_KEY", null);
         coursesToAdd = getIntent().getStringArrayListExtra("courses_list");
 
         downloadProfile(username, FirebaseStorage.getInstance());
 
-
+        //Button to go back to menu
         ButtonProfile2Menu.setOnClickListener(v -> {
             Intent intent0 = new Intent(ProfileActivity.this, MenuPage.class);
             startActivity(intent0);
         });
-        //Following button use temporary classes for "go-to", further classes including friends.java and courses.java will be done later
-        //Or the button will be replaced by listview or removed
+        //Button to go to the friend list page
         ButtonProfile2Friends.setOnClickListener(v -> {
             Intent intent1 = new Intent(ProfileActivity.this, FriendsActivity.class);
             intent1.putExtra("friendsList", friends);
@@ -95,12 +93,20 @@ public class ProfileActivity extends AppCompatActivity {
             intent1.putExtra("currentUserName",currentUserName);
             startActivity(intent1);
         });
+        //Button to go to the assignment page
         ButtonProfile2Courses.setOnClickListener(v -> {
             Intent intent2 = new Intent(ProfileActivity.this, AssignmentDemonstrationActivity.class);
             startActivity(intent2);
         });
     }
 
+    /**
+     * Method for downloading json format profile from storage
+     * and update the data to display format of profile
+     * @param username
+     * @param storage
+     */
+    @SuppressLint("SetTextI18n")
     public void downloadProfile(String username, FirebaseStorage storage) {
         StorageReference profileRef = storage.getReference().child("Profiles/" + username + ".json");
 
@@ -108,21 +114,21 @@ public class ProfileActivity extends AppCompatActivity {
             String json = new String(bytes);
             System.out.println("Downloaded Profile json " + json);
             profile = new Gson().fromJson(json, Profile.class);
-            //if (courseToAdd!=null)
-                //profile.addCourse(courseToAdd);
             if (profile!=null){
+                //Update course list from favourite list
                 if (coursesToAdd!=null && !coursesToAdd.equals(profile.getCourses())){
                     profile.updateCourses(coursesToAdd);
                 }
+                //Update all information from data of Profile class for display
                 if(profile.getUsername()!=null){
-                    System.out.println("Profile " + profile.getUsername());
+                    System.out.println("The user name is " + profile.getUsername());
                     UsernameProfile.setText(profile.getUsername());
                 }
                 if(profile.getEmail()!=null){
                     EmailProfile.setText(profile.getEmail());
-                    System.out.println("Email is " + profile.getEmail());
+                    System.out.println("The email is " + profile.getEmail());
                 }else {
-                    EmailProfile.setText(profile.getUsername());
+                    EmailProfile.setText("Fail to load email address");
                 }
                 if(profile.getCourses()!=null){
                     adapter.clear();
@@ -139,16 +145,20 @@ public class ProfileActivity extends AppCompatActivity {
                     getHeadImage();
                 }
                 profile.uploadProfileJson(profile);
+                System.out.println("Profile downloaded: " + profile.getUsername());
             }
-            System.out.println("Profile downloaded: " + profile.getUsername());
         }).addOnFailureListener(e -> {
             System.err.println("Failed to download profile JSON: " + e.getMessage());
         });
     }
 
+    /**
+     * Method for updating head image
+     */
     public void getHeadImage(){
         StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + profile.getProfileImageUrl());
         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            //Method for getting image and handle error where no image is loaded from storage
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(HeadImage.getContext())

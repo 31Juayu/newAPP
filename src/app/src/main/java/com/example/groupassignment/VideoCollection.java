@@ -42,6 +42,7 @@ public class VideoCollection extends AppCompatActivity {
 
         loadUserFavorites(username);
 
+        //Authored by Wenzhao Zheng: button to update favourite list to profile courses list
         ButtonUpdate2Profile.setOnClickListener(v -> {
             startActivity(intent);
         });
@@ -77,6 +78,7 @@ public class VideoCollection extends AppCompatActivity {
                         }
                         // Update UI or process the list of video names
                         updateVideoList(videoNames);
+                        //Authored by Wenzhao Zheng: Update video lists to intent, prepare for updating to profile
                         intent.putStringArrayListExtra("courses_list", new ArrayList<>(videoNames));
 
                     } else {

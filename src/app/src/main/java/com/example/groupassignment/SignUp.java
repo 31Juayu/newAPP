@@ -161,6 +161,7 @@ public class SignUp extends AppCompatActivity {
 //                        Toast.makeText(SignUp.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 //                    }
 //                });
+                //By Wenzhao Zheng: generate random head images saved in the storage
                 Random r = new Random();
                 int randomUserImage = r.nextInt(6);
                 String profileImageUrl = "user" + randomUserImage + ".jpg";
