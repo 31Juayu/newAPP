@@ -5,7 +5,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     tools:context=".activity.PlayActivity">
+
     <TextView
         android:id="@+id/current_video_name"
         android:layout_width="wrap_content"
@@ -16,22 +18,35 @@
         android:textColor="#00008F"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"/>
+
     <VideoView
         android:id="@+id/current_video_play"
         android:layout_width="match_parent"
-        android:layout_height="400dp" />
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"/>
 
     <Switch
         android:id="@+id/switch_favorite"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:text="Favorite"
-        android:textColorLink="#C36A6A"
-        android:textSize="24sp" />
+        android:switchMinWidth="40dp"
+        android:textSize="24sp"
+        android:thumbTextPadding="12dp"
+        android:switchPadding="16dp"
+        android:textColor="#C36A6A"
+        android:layout_marginTop="16dp"/>
 
     <Button
         android:id="@+id/backButton11"
-        android:layout_width="170dp"
-        android:layout_height="48dp"
-        android:text="Return" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background_button_login_and_sign_up"
+        android:fontFamily="@font/atomicage"
+        android:text="Return"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
 </LinearLayout>

@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="start"
     tools:context=".activity.searchActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         app:title="Search"
-        app:layout_constraintTop_toTopOf="parent"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <Button
-        android:id="@+id/go_back_searches"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:fontFamily="@font/atomicage"
-        android:text="Return"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
-    <Button
-        android:id="@+id/seeInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:fontFamily="@font/atomicage"
-        android:text="See info"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/go_back_searches"
-        app:layout_constraintTop_toTopOf="@id/go_back_searches" />
+        <Button
+            android:id="@+id/go_back_searches"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Return"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
 
-    <Button
-        android:id="@+id/Country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Country"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:fontFamily="@font/atomicage"
-        app:layout_constraintStart_toEndOf="@id/seeInfo"
-        app:layout_constraintTop_toTopOf="@id/seeInfo"
-        android:layout_marginStart="16dp" />
+        <Button
+            android:id="@+id/seeInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="See info"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/Country"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Country"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/informationEditText"
@@ -62,23 +69,21 @@
         android:layout_height="wrap_content"
         android:hint="Your input"
         android:inputType="text"
-        app:layout_constraintTop_toBottomOf="@id/go_back_searches"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"/>
 
     <Button
         android:id="@+id/startSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:fontFamily="@font/atomicage"
         android:text="Start Search"
+        android:background="@drawable/background_button_login_and_sign_up"
         android:textColor="@android:color/white"
+        android:fontFamily="@font/atomicage"
         android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/informationEditText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
