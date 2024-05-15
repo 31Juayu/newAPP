@@ -24,15 +24,16 @@
         android:id="@+id/current_video_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:background="#74E647EC"
         android:text="Video Name"
         android:textAlignment="center"
-        android:textColor="#00008F"
+        android:textColor="#040437"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline38"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintEnd_toStartOf="@+id/guideline77"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/guideline39"
+        app:layout_constraintStart_toStartOf="@+id/guideline72"
         app:layout_constraintTop_toTopOf="@+id/guideline40"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -153,5 +154,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.069196425" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline77"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
