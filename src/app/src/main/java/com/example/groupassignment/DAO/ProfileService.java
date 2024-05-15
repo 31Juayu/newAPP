@@ -4,9 +4,23 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+/**
+ * ProfileService class for uploading registered user information.
+ *
+ * This class provides a method to upload the profile JSON of a registered user to Firebase Storage.
+ * It also includes an interface for handling upload success and failure events.
+ */
 public class ProfileService {
-    // author: Zhengyu Peng
-    // use to upload the registered user information.
+    /**
+     * Uploads the profile JSON of a registered user to Firebase Storage.
+     *
+     * This method uploads the profile JSON to a storage reference based on the username.
+     * It invokes the listener's onUploadSuccess() method if the upload is successful,
+     * or onUploadFailure(Exception e) method if the upload fails.
+     *
+     * @param profile  The Profile object containing the user's information.
+     * @param listener The listener for handling upload success and failure events.
+     */
     public static void uploadProfileJson(Profile profile, OnProfileUploadListener listener) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("Profiles/" + profile.getUsername() + ".json");
@@ -20,6 +34,7 @@ public class ProfileService {
             listener.onUploadFailure(e);
         });
     }
+    // Interface for handling profile upload success and failure events.
     public interface OnProfileUploadListener {
         void onUploadSuccess();
         void onUploadFailure(Exception e);

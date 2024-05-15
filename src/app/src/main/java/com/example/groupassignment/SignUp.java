@@ -43,24 +43,32 @@ public class SignUp extends AppCompatActivity {
         Button registerButton = (Button) findViewById(R.id.button_register);
         Button returnButton = (Button) findViewById(R.id.button_return_login);
 
+        // Clicking the button jumps from the SignUp class to the Login class and stops the SignUp class from running.
         returnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignUp.this, Login.class);
-                startActivity(intent); // 启动 LoginActivity
+                startActivity(intent);
                 finish();
             }
         });
 
         // author : Zhengyu Peng
         registerButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Handles the click event for the sign-up button, performing validation checks on the user input.
+             *
+             * @param v The view that was clicked.
+             */
             @Override
             public void onClick(View v) {
+                // Retrieve and trim the input values
                 String PW = passWord.getText().toString().trim();
                 String PW2 = confirmPassWord.getText().toString().trim();
                 String email = emailName.getText().toString().trim();
                 String username = userName.getText().toString().trim();
                 int pwLength = PW.length();
+                // Check if the password and confirm password fields match
                 if (!PW.equals(PW2)) {
                     new AlertDialog.Builder(SignUp.this)
                             .setTitle("Comparison Result")
@@ -95,8 +103,6 @@ public class SignUp extends AppCompatActivity {
 
                 }
                 registerUser(username, PW, email);
-
-
             }
             private boolean isNumeric(String str) {
                 return str.matches("\\d+");
@@ -104,6 +110,19 @@ public class SignUp extends AppCompatActivity {
             private boolean isValidEmail(String email) {
                 return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
             }
+            /**
+             * author : Zhengyu Peng
+             * Registers a new user with the provided username, password, and email.
+             *
+             * This method generates a random profile image URL, initializes empty lists for courses and friends,
+             * and creates a Profile object for the new user. It then uploads the profile JSON using the signup service.
+             * If the upload is successful, a success message is displayed and the user is redirected to the login page.
+             * If the upload fails, an error message is displayed.
+             *
+             * @param username The username of the new user.
+             * @param password The password of the new user.
+             * @param email    The email address of the new user.
+             */
             private void registerUser(String username, String password, String email) {
 //                version 1, use my method to upload the data
 //                初始化用户信息
@@ -151,7 +170,7 @@ public class SignUp extends AppCompatActivity {
                 signupService.uploadProfileJson(signUpProfile, new ProfileService.OnProfileUploadListener() {
                     @Override
                     public void onUploadSuccess() {
-                        // 注册成功
+                        // success
                         Toast.makeText(SignUp.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         // After registration, you can jump to other activities
                         Intent intent = new Intent(SignUp.this, Login.class);

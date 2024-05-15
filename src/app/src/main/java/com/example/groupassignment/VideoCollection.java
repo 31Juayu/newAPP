@@ -54,6 +54,16 @@ public class VideoCollection extends AppCompatActivity {
         });
     }
 
+    /**
+     * author: Zhengyu Peng
+     * Loads the list of favorite videos for a user from the Firestore database.
+     *
+     * This method retrieves documents from the "favorites" collection in Firestore where the "username" field
+     * matches the provided username. It extracts the video names from the retrieved documents and updates
+     * the UI or processes the list of video names accordingly. If the task fails, an error message is logged.
+     *
+     * @param username The username of the user whose favorite videos are to be loaded.
+     */
     private void loadUserFavorites(String username) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("favorites")
@@ -74,6 +84,16 @@ public class VideoCollection extends AppCompatActivity {
                     }
                 });
     }
+    /**
+     * author： Zhengyu Peng
+     * Updates the video list UI with the provided video names and sets up item click handling.
+     *
+     * This method creates an ArrayAdapter using the provided list of video names and sets it to the ListView.
+     * When an item in the ListView is clicked, it retrieves the corresponding video URL from the Firestore database
+     * and starts the PlayActivity, passing the video name and URL as extras.
+     *
+     * @param videoNames The list of video names to display in the ListView.
+     */
     private void updateVideoList(List<String> videoNames) {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 R.layout.custom_list_item, videoNames);
@@ -101,9 +121,6 @@ public class VideoCollection extends AppCompatActivity {
                         }
                     });
         });
-
-
-
     }
 
 
