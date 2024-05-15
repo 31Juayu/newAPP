@@ -1,58 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Author: Ruize Luo u7776709 -->
 <!-- LinearLayout as the root container for a video playback interface, organized vertically and centered horizontally -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/watercolor"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context=".activity.PlayActivity">
 
     <!-- TextView to display the current video's name, centered at the top of the screen with bold style and blue color -->
-    <TextView
-        android:id="@+id/current_video_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Video Name"
-        android:textStyle="bold"
-        android:textSize="35sp"
-        android:textColor="#00008F"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"/>
 
     <!-- VideoView for playing the video, occupying a fixed height and full available width with a margin on top -->
-    <VideoView
-        android:id="@+id/current_video_play"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="16dp"/>
 
     <!-- Switch for marking the video as a favorite, styled with custom text color and padding, aligned to match the parent's width -->
-    <Switch
-        android:id="@+id/switch_favorite"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:text="Favorite"
-        android:switchMinWidth="40dp"
-        android:textSize="24sp"
-        android:thumbTextPadding="12dp"
-        android:switchPadding="16dp"
-        android:textColor="#C36A6A"
-        android:layout_marginTop="16dp"/>
 
     <!-- Button to return from the current activity, styled with a custom background and centered in layout -->
+
+    <TextView
+        android:id="@+id/current_video_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Video Name"
+        android:textAlignment="center"
+        android:textColor="#00008F"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/guideline38"
+        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline39"
+        app:layout_constraintTop_toTopOf="@+id/guideline40"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <VideoView
+        android:id="@+id/current_video_play"
+        android:layout_width="0dp"
+        android:layout_height="467dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline44"
+        app:layout_constraintEnd_toStartOf="@+id/guideline37"
+        app:layout_constraintStart_toStartOf="@+id/guideline36"
+        app:layout_constraintTop_toTopOf="@+id/guideline43" />
+
+    <Switch
+        android:id="@+id/switch_favorite"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:switchMinWidth="40dp"
+        android:switchPadding="16dp"
+        android:text="Favorite"
+        android:textColor="#83228E"
+        android:textSize="34sp"
+        android:thumbTextPadding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline42"
+        app:layout_constraintEnd_toStartOf="@+id/guideline41"
+        app:layout_constraintStart_toStartOf="@+id/guideline36"
+        app:layout_constraintTop_toTopOf="@+id/guideline45" />
+
     <Button
         android:id="@+id/backButton11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/background_button_login_and_sign_up"
+        android:background="?attr/listChoiceBackgroundIndicator"
         android:fontFamily="@font/atomicage"
         android:text="Return"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
+        android:textColor="#952A2A"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline37"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline42" />
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.092276834" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.044132397" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12337011" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5847543" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.61" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
