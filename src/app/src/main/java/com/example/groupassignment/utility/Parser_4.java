@@ -10,8 +10,6 @@ import java.util.ArrayList;
 //element: 'a' is year, 'b' is info, 'c' is country, 'd' is 'quality' item, '*'
 // is a wildcard character, which represents that other elements can be anything,
 // as long as they exist in the CSV table
-
-
 public class Parser_4 implements myParser {
 
     Tokenizer tokenizer;

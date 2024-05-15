@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 //author of this class : jiayu jian
 //reference: lab 6
+
 public class smallTokenizer {
     private String buffer;
     private smallToken currentToken;

@@ -16,7 +16,6 @@ package com.example.groupassignment.utility;
 import java.util.ArrayList;
 
 //author of this class : jiayu jian
-
 public class RedBlackTree<T extends Comparable<T>> {
     enum Color{
         RED,BLACK

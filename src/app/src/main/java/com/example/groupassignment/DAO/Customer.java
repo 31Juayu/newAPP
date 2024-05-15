@@ -1,7 +1,6 @@
 package com.example.groupassignment.DAO;
 
 //author of this class : jiayu jian
-
 public class Customer {
     private String id;
     private String username;
