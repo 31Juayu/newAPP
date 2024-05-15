@@ -14,7 +14,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        app:title="GPS"
+        app:title="Notice Board"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <!-- Horizontal LinearLayout to contain the Post and Return buttons -->

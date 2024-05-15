@@ -52,7 +52,6 @@ public class PostActivity extends AppCompatActivity {
     private StorageReference storageRef;
 
     private Button go_back_post;
-    private Button go_back_content;
 
 
     @SuppressLint("MissingInflatedId")
@@ -98,13 +97,6 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-        go_back_content = (Button) findViewById(R.id.go_back_content);
-        go_back_content.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
     }
 
     private void showPostDialog(){
