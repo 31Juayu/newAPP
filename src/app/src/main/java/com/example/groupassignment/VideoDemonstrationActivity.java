@@ -3,8 +3,10 @@ package com.example.groupassignment;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -34,6 +36,7 @@ import com.google.firebase.storage.UploadTask;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class VideoDemonstrationActivity extends AppCompatActivity implements VideoUploadInterface {
@@ -46,6 +49,7 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
 
     private List<Uri> videoUris;
 
+    private Button go_back_demo;
 
 
     @SuppressLint("MissingInflatedId")
@@ -62,10 +66,19 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
         videoUris = new ArrayList<>();
         videoList.setLayoutManager(new LinearLayoutManager(this));
         readVideoLinks();
+        go_back_demo = (Button) findViewById(R.id.go_back_demo);
+
         uploadv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseVideo();
+            }
+        });
+
+        go_back_demo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -99,12 +112,34 @@ public class VideoDemonstrationActivity extends AppCompatActivity implements Vid
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(r.getType(videouri));
     }
+    private String getUploadFileName(Uri videouri){
+        String result = null;
+        if (Objects.equals(videouri.getScheme(), "content")){
+            try (Cursor cursor = getContentResolver().query(videouri, null, null, null, null)){
+                if(cursor != null && cursor.moveToFirst()){
+                    result = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME));
+                }
+            }
+        }
+        if (result == null){
+            result = videouri.getPath();
+            int cut = result.lastIndexOf("/");
+            if (cut!= -1){
+                result = result.substring(cut + 1);
+            }
+        }
+        if (result != null && result.contains(".")) {
+            result = result.substring(0, result.lastIndexOf("."));
+        }
+        return result;
+    }
 
     public void uploadVideo() {
         if (videouri != null) {
-            // Save the selected video in Firebase storage (后续修改存储位置，名字)
+            // Save the selected video in Firebase storage
+            String fileName = getUploadFileName(videouri);
             final StorageReference reference = FirebaseStorage.getInstance()
-                    .getReference("Files/" + System.currentTimeMillis() + "." + getFileType(videouri));
+                    .getReference("Files/" + fileName + "." + getFileType(videouri));
 
             reference.putFile(videouri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override

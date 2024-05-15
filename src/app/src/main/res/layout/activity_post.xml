@@ -8,12 +8,45 @@
     android:orientation="vertical"
     tools:context=".activity.PostActivity">
 
-    <Button
-        android:id="@+id/post_notice"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:title="Notice Board"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <!-- Horizontal LinearLayout to contain the Post and Return buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Post" />
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/go_back_post"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Return"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/post_notice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Post"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/post_progress_bar"
@@ -21,17 +54,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        android:layout_below="@id/post_notice"
         android:layout_marginTop="16dp" />
+
     <TextView
         android:id="@+id/post_progress_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
         android:visibility="gone"
-        android:layout_below="@id/post_progress_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:gravity="center" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/post_lost"
         android:layout_width="match_parent"
@@ -42,6 +75,5 @@
         android:id="@+id/button_refresh_posts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:text="Refresh" />
 </LinearLayout>
