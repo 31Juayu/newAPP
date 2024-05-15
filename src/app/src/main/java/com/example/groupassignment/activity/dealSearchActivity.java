@@ -34,6 +34,8 @@ public class dealSearchActivity extends AppCompatActivity {
     ArrayAdapter<String> ad;
     ArrayList<String> resLine;
 
+    private Button go_back_search;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +70,16 @@ public class dealSearchActivity extends AppCompatActivity {
 
             }
         });
+
+        go_back_search = (Button) findViewById(R.id.go_back_search);
+        go_back_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
 
 
     }

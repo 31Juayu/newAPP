@@ -15,6 +15,8 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class GPSActivity extends AppCompatActivity {
     private LocationManager lm;
     private TextView position_show;
     private static final int PERMISSION_REQUEST_CODE = 100;
+    private Button go_back_gps;
     @SuppressLint("ServiceCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,15 @@ public class GPSActivity extends AppCompatActivity {
             }
             // 根据模板还有可加的，但是似乎有问题
         });
+
+        go_back_gps = (Button) findViewById(R.id.go_back_gps);
+        go_back_gps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
     /**
      * method to check if GPS is available

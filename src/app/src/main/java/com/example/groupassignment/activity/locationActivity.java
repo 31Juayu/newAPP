@@ -13,6 +13,8 @@ import com.example.groupassignment.activity.GPSActivity;
 import com.example.groupassignment.activity.GPSMapsActivity;
 
 public class locationActivity extends AppCompatActivity {
+
+    private Button go_back_location;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +43,17 @@ public class locationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        go_back_location = (Button) findViewById(R.id.go_back_location);
+        go_back_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
+
 
     }
 }

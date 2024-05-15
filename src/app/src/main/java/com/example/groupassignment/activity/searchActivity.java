@@ -16,6 +16,7 @@ import com.example.groupassignment.activity.dealSearchActivity;
 //author of this class : jiayu jian
 public class searchActivity extends AppCompatActivity {
 
+    private Button go_back_searches;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,5 +66,14 @@ public class searchActivity extends AppCompatActivity {
 
             }
         });
+
+        go_back_searches = (Button) findViewById(R.id.go_back_searches);
+        go_back_searches.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }
