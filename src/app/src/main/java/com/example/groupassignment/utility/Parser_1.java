@@ -5,10 +5,12 @@ import com.example.groupassignment.utility.myParser;
 
 import java.util.ArrayList;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 //reference: lab 6
-//element: 'a' is year, 'b' is info, 'c' is country, 'd' is 'quality' item, '*'
-// is a wildcard character, which represents that other elements can be anything,
+//element: A which represents that other elements can be anything,
 // as long as they exist in the CSV table
 public class Parser_1 implements myParser {
 

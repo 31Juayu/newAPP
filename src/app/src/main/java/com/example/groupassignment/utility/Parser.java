@@ -4,7 +4,10 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 //reference: lab 6
 //element: 'a' is year, 'b' is info, 'c' is country, 'd' is 'quality' item
 public class Parser implements myParser {

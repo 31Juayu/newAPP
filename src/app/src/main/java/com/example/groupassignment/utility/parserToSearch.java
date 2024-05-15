@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 public class parserToSearch {
     public static ArrayList<ArrayList<String>> findRes(String input, Context context) {
         ArrayList<ArrayList<String>> ress = new ArrayList<>();

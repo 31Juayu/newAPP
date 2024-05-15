@@ -5,7 +5,10 @@ import android.content.Context;
 import com.example.groupassignment.utility.Parser;
 import com.example.groupassignment.utility.myParser;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 
 public class parserFactory {
     public static myParser createParser(String type, Tokenizer tokenizer, Context context) {
