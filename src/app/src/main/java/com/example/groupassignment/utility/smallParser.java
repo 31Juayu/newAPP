@@ -6,7 +6,6 @@ import java.util.ArrayList;
 //author of this class : jiayu jian
 //a is any course name
 //reference: lab 6
-
 public class smallParser {
 
     smallTokenizer tokenizer;

@@ -7,6 +7,7 @@ import java.util.Scanner;
 //author of this class : jiayu jian
 //reference: lab 6
 //element: 'a' is year, 'b' is info, 'c' is country, 'd' is 'quality' item
+
 public class Parser implements myParser {
 
     Tokenizer tokenizer;

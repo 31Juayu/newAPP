@@ -4,7 +4,6 @@ import java.util.Objects;
 
 //author of this class : jiayu jian
 //reference: lab 6
-
 public class smallToken {
 
     public enum Type {course,err}

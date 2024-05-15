@@ -6,7 +6,6 @@ import java.util.List;
 
 //author of this class : jiayu jian
 //reference: lab 6
-
 public class smallParserToSearch {
     public static ArrayList<String> findRes(String input, RedBlackTree<String> courseTree) {
 

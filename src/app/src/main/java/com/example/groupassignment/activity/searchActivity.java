@@ -14,6 +14,7 @@ import com.example.groupassignment.R;
 import com.example.groupassignment.activity.dealSearchActivity;
 
 //author of this class : jiayu jian
+
 public class searchActivity extends AppCompatActivity {
 
     private Button go_back_searches;

@@ -54,7 +54,6 @@ import android.widget.Toast;
 import android.widget.ListAdapter;
 
 //author of this class : jiayu jian
-
 public class findCourseActivity extends AppCompatActivity {
     //private TextView jsonTextView;
     String json;

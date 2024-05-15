@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 //author of this class : jiayu jian
 //reference: lab 6
-
 public class Tokenizer {
     private String buffer;
     private Token currentToken;

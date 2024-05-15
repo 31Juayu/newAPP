@@ -11,6 +11,7 @@ import java.util.ArrayList;
 // is a wildcard character, which represents that other elements can be anything,
 // as long as they exist in the CSV table
 
+
 public class Parser_1 implements myParser {
 
     Tokenizer tokenizer;

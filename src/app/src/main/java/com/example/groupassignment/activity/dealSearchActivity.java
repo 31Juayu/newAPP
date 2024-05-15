@@ -29,7 +29,6 @@ import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
 //author of this class : jiayu jian
-
 public class dealSearchActivity extends AppCompatActivity {
     ArrayAdapter<String> ad;
     ArrayList<String> resLine;

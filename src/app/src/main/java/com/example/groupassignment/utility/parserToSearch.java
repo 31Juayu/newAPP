@@ -9,6 +9,7 @@ import java.util.HashSet;
 
 //author of this class : jiayu jian
 
+
 public class parserToSearch {
     public static ArrayList<ArrayList<String>> findRes(String input, Context context) {
         ArrayList<ArrayList<String>> ress = new ArrayList<>();
