@@ -7,7 +7,7 @@
     android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/watercolor"
+    android:background="@drawable/forest1920"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".activity.PlayActivity">
@@ -49,26 +49,29 @@
         android:id="@+id/switch_favorite"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:fontFamily="@font/dancingscript"
         android:switchMinWidth="40dp"
         android:switchPadding="16dp"
         android:text="Favorite"
-        android:textColor="#83228E"
-        android:textSize="34sp"
+        android:textColor="#D64CE6"
+        android:textSize="48sp"
         android:thumbTextPadding="12dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline42"
         app:layout_constraintEnd_toStartOf="@+id/guideline41"
-        app:layout_constraintStart_toStartOf="@+id/guideline36"
-        app:layout_constraintTop_toTopOf="@+id/guideline45" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline72"
+        app:layout_constraintTop_toTopOf="@+id/guideline45"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/backButton11"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/listChoiceBackgroundIndicator"
-        android:fontFamily="@font/spacegrotesk"
+        android:fontFamily="@font/dancingscript"
         android:text="Return"
-        android:textColor="#1812B6"
-        android:textSize="34sp"
+        android:textColor="#B431EC"
+        android:textSize="40sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline41"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline39"
@@ -121,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.68" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline43"
@@ -143,5 +146,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.61" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline72"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.069196425" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
