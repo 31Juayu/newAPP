@@ -1,6 +1,8 @@
 package com.example.groupassignment;
 
-//author: jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
 
 public class User {
     private String name;

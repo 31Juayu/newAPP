@@ -22,6 +22,11 @@ import android.widget.Toast;
 
 import com.example.groupassignment.R;
 
+/**
+ * @author Tianyi Xu u7780366
+ * This file reference from online resources, I used some basic methods provide by it
+ * The references will be shown on the methods
+ */
 public class GPSActivity extends AppCompatActivity {
     private LocationManager lm;
     private TextView position_show;
@@ -53,7 +58,6 @@ public class GPSActivity extends AppCompatActivity {
             public void onLocationChanged(@NonNull Location location) {
                 updatePage(location);
             }
-            // 根据模板还有可加的，但是似乎有问题
         });
 
         go_back_gps = (Button) findViewById(R.id.go_back_gps);
@@ -65,8 +69,10 @@ public class GPSActivity extends AppCompatActivity {
         });
 
     }
+
     /**
      * method to check if GPS is available
+     * reference: https://www.runoob.com/w3cnote/android-tutorial-gps.html
      */
     private boolean isGPSable(LocationManager lm){
         return lm.isProviderEnabled(LocationManager.GPS_PROVIDER);

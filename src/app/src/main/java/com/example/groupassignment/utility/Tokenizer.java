@@ -4,7 +4,10 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 //reference: lab 6
 
 public class Tokenizer {

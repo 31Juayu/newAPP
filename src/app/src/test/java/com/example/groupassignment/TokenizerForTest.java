@@ -5,63 +5,81 @@ import com.example.groupassignment.utility.Token;
 
 import java.util.ArrayList;
 
+/**
+ * @autor Ruize Luo u7776709
+ */
 public class TokenizerForTest {
     private String buffer;
     private Token currentToken;
 
     public TokenizerForTest(String text) {
-        buffer = text;          // save input text (string)
-        //treeCountry = usefulMethod.readCSVLinesAll("CLTEARCHIVE_COUNTRY.csv");
-        next();                 // extracts the first token.
+        buffer = text;          // Save input text (string)
+        next();                 // Extract the first token.
     }
 
+    /**
+     * Removes the first comma from a given string.
+     *
+     * @param input the string to process
+     * @return the string with the first comma removed
+     */
     public static String removeFirstComma(String input) {
         return input.replaceFirst(",", "");
     }
 
+    /**
+     * Extracts the next token from the buffer and updates the current token.
+     */
     public void next() {
         boolean ifNum = true;
 
-        buffer = buffer.trim();     // remove whitespace
+        buffer = buffer.trim(); // Remove whitespace
 
         if (buffer.isEmpty()) {
-            currentToken = null;    // if there's no string left, set currentToken null and return
+            currentToken = null; // If there's no string left, set currentToken to null and return
             return;
         }
 
-        ArrayList<String> list  = splitString(buffer);
+        ArrayList<String> list = splitString(buffer);
         String firstString = list.get(0);
         firstString = firstString.toLowerCase();
 
+        // Check if the first string is a number
         try {
             Integer.parseInt(firstString);
         } catch (NumberFormatException e) {
             ifNum = false;
         }
 
+        // Create a Red-Black Tree to store country names
         RedBlackTree<String> treeCountry = new RedBlackTree<>();
-        //onlyTest one condition.
-        treeCountry.put("china","china");
+        treeCountry.put("china", "china");
 
-        if(ifNum){
-            currentToken = new Token(firstString,Token.Type.year);
+        // Determine the token type and create the token
+        if (ifNum) {
+            currentToken = new Token(firstString, Token.Type.year);
         } else if (treeCountry.search(firstString) != null) {
-            currentToken = new Token(firstString,Token.Type.country);
+            currentToken = new Token(firstString, Token.Type.country);
         } else if (firstString.equals("quality")) {
-            //这里直接是quality,后续再处理
-            currentToken = new Token(firstString,Token.Type.quality);
+            currentToken = new Token(firstString, Token.Type.quality);
         } else if (firstString.equals("*")) {
-            //这里直接是*,后续再处理
-            currentToken = new Token(firstString,Token.Type.asterisk);
-        }else {
-            currentToken = new Token(firstString,Token.Type.info);
+            currentToken = new Token(firstString, Token.Type.asterisk);
+        } else {
+            currentToken = new Token(firstString, Token.Type.info);
         }
 
+        // Update the buffer by removing the processed token
         String newBuffer = removeFirstComma(buffer);
         int tokenLen = currentToken.getToken().length();
         buffer = newBuffer.substring(tokenLen);
     }
 
+    /**
+     * Splits a given string into a list of strings using commas as delimiters.
+     *
+     * @param input the string to split
+     * @return a list of strings
+     */
     public static ArrayList<String> splitString(String input) {
         ArrayList<String> words = new ArrayList<>();
         String[] tokens = input.split(",");
@@ -71,12 +89,21 @@ public class TokenizerForTest {
         return words;
     }
 
+    /**
+     * Returns the current token.
+     *
+     * @return the current token
+     */
     public Token current() {
         return currentToken;
     }
 
+    /**
+     * Checks if there are more tokens to process.
+     *
+     * @return true if there are more tokens, false otherwise
+     */
     public boolean hasNext() {
         return currentToken != null;
     }
-
 }

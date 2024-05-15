@@ -15,6 +15,10 @@ import com.example.groupassignment.activity.findCourseActivity;
 import com.example.groupassignment.activity.locationActivity;
 import com.example.groupassignment.activity.searchActivity;
 
+/**
+ * @author jiayu jian u7731262
+ */
+
 public class MenuPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

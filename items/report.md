@@ -1,131 +1,153 @@
-# [G0 - Team Name] Report
+# Report
 
-The following is a report template to help your team successfully provide all the details necessary for your report in a structured and organised manner. Please give a straightforward and concise report that best demonstrates your project. Note that a good report will give a better impression of your project to the reviewers.
-
-Note that you should have removed ALL TEMPLATE/INSTRUCTION textes in your submission (like the current sentence), otherwise it hampers the professionality in your documentation.
-
-*Here are some tips to write a good report:*
-
-* `Bullet points` are allowed and strongly encouraged for this report. Try to summarise and list the highlights of your project (rather than give long paragraphs).*
-
-* *Try to create `diagrams` for parts that could greatly benefit from it.*
-
-* *Try to make your report `well structured`, which is easier for the reviewers to capture the necessary information.*
-
-*We give instructions enclosed in square brackets [...] and examples for each sections to demonstrate what are expected for your project report. Note that they only provide part of the skeleton and your description should be more content-rich. Quick references about markdown by [CommonMark](https://commonmark.org/help/)*
-
-## Table of Contents
-
-1. [Team Members and Roles](#team-members-and-roles)
-2. [Summary of Individual Contributions](#summary-of-individual-contributions)
-3. [Application Description](#application-description)
-4. [Application UML](#application-uml)
-5. [Application Design and Decisions](#application-design-and-decisions)
-6. [Summary of Known Errors and Bugs](#summary-of-known-errors-and-bugs)
-7. [Testing Summary](#testing-summary)
-8. [Implemented Features](#implemented-features)
-9. [Team Meetings](#team-meetings)
-10. [Conflict Resolution Protocol](#conflict-resolution-protocol)
-
-## Administrative
-- Firebase Repository Link: <insert-link-to-firebase-repository>
-   - Confirm: I have already added comp21006442@gmail.com as a Developer to the Firebase project prior to due date.
-- Two user accounts for markers' access are usable on the app's APK (do not change the username and password unless there are exceptional circumstances. Note that they are not real e-mail addresses in use):
-   - Username: comp2100@anu.edu.au	Password: comp2100
-   - Username: comp6442@anu.edu.au	Password: comp6442
-
-## Team Members and Roles
-The key area(s) of responsibilities for each member
-
-| UID      |     Name      |                                                                           Role |
-|:---------|:-------------:|-------------------------------------------------------------------------------:|
-| u7780366 |   Tianyi Xu   |                     Group leader, backend and some basic part of the interface |
-| u7776709 |   Ruize Luo   |                                                                         [role] |
-| u7705888 | Wenzhao Zheng |                                                                         [role] |
-| u7727795 | Zhengyu Peng  |                                                                         [role] |
-| u7731262 |  Jiayu Jian   | Main programmer, backend programmer, and helping other members with the issues |
+## Team structure and roles
 
 
-## Summary of Individual Contributions
+| UID      |     Name      |                                        Role |
+|:---------|:-------------:|--------------------------------------------:|
+| u7780366 |   Tianyi Xu   |          manager, back-end,tester,presenter |
+| u7776709 |   Ruize Luo   | front-end, tester,document-writer,presenter |
+| u7705888 | Wenzhao Zheng |                            back-end, tester |
+| u7727795 | Zhengyu Peng  |                 front-end, tester, recorder |
+| u7731262 |  Jiayu Jian   |                  back-end, tester,presenter |
 
-Specific details of individual contribution of each member to the project.
+## Summary of individual contributions
 
-Each team member is responsible for writing **their own subsection**.
+1. **u7780366, Tianyi Xu**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+    - Feature A1, A2, A3 - class Dummy:
+    - XYZ Design Pattern -  class AnotherClass:
+    -  (any other contribution in the code, including UI and data files)
 
-A generic summary will not be acceptable and may result in a significant lose of marks.
-
-*[Summarise the contributions made by each member to the project, e.g. code implementation, code design, UI design, report writing, etc.]*
-
-*[Code Implementation. Which features did you implement? Which classes or methods was each member involved in? Provide an approximate proportion in pecentage of the contribution of each member to the whole code implementation, e.g. 30%.]*
-
-*you should ALSO provide links to the specified classes and/or functions*
-Note that the core criteria of contribution is based on `code contribution` (the technical developing of the App).
-
-*Here is an example: (Note that you should remove the entire section (e.g. "others") if it is not applicable)*
-
-1. **UID1, Name1**  I have 30% contribution, as follows: <br>
-  - **Code Contribution in the final App**
-    - Feature A1, A2, A3 - class Dummy: [Dummy.java](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java)
-    - XYZ Design Pattern -  class AnotherClass: [functionOne()](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43), [function2()](the-URL)
-    - ... (any other contribution in the code, including UI and data files) ... [Student class](../src/path/to/class/Student.java), ..., etc.*, [LanguageTranslator class](../src/path/to/class/LanguageTranslator.java): function1(), function2(), ... <br><br>
-
-  - **Code and App Design** 
+- **Code and App Design**
     - [What design patterns, data structures, did the involved member propose?]*
     - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
 
-  - **Others**: (only if significant and significantly different from an "average contribution") 
+- **Others**: (only if significant and significantly different from an "average contribution")
     - [Report Writing?] [Slides preparation?]*
-    - [You are welcome to provide anything that you consider as a contribution to the project or team.] e.g., APK, setups, firebase* <br><br>
 
-2. **UID2, Name2**  I have xx% contribution, as follows: <br>
-  - ...
+
+2. **u7776709,  Ruize Luo**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+    - Feature A1, A2, A3 - class Dummy:
+    - XYZ Design Pattern -  class AnotherClass:
+    -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+    - [What design patterns, data structures, did the involved member propose?]*
+    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+    - [Report Writing?] [Slides preparation?]*
+
+3. **u7705888, Wenzhao Zheng**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+    - Feature A1, A2, A3 - class Dummy:
+    - XYZ Design Pattern -  class AnotherClass:
+    -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+    - [What design patterns, data structures, did the involved member propose?]*
+    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+    - [Report Writing?] [Slides preparation?]*
+
+4. **u7727795, Zhengyu Peng**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+    - Feature A1, A2, A3 - class Dummy:
+    - XYZ Design Pattern -  class AnotherClass:
+    -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+    - [What design patterns, data structures, did the involved member propose?]*
+    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+    - [Report Writing?] [Slides preparation?]*
+
+5. **u7731262, Jiayu Jian**  I have 20% contribution, as follows: <br>
+- **Code Contribution in the final App**
+    - Feature A1, A2, A3 - class Dummy:
+    - XYZ Design Pattern -  class AnotherClass:
+    -  (any other contribution in the code, including UI and data files)
+
+- **Code and App Design**
+    - [What design patterns, data structures, did the involved member propose?]*
+    - [UI Design. Specify what design did the involved member propose? What tools were used for the design?]* <br><br>
+
+- **Others**: (only if significant and significantly different from an "average contribution")
+    - [Report Writing?] [Slides preparation?]*
+
 
 
 
 ## Application Description
 
-*[What is your application, what does it do? Include photos or diagrams if necessary]*
+What we want to achieve is an APP for students to enjoy free educational resources. The goal is to bridge the gap of educational resources available to students from different races, countries and families.
 
-*Here is a pet specific application example*
+The APP provides users with basic functions (such as login, view data, search, etc.) that can realize the purpose of the APP. In addition, some practical functions (such as load and share data, gps, etc.)  are added to improve the user experience.
 
-*PetBook is a social media application specifically targetting pet owners... it provides... certified practitioners, such as veterians are indicated by a label next to their profile...*
+The following screenshots will be helpful to understand what's going on in the app.
+
 
 ### Application Use Cases and or Examples
 
-*[Provide use cases and examples of people using your application. Who are the target users of your application? How do the users use your application?]*
+### Use Case 1: User registration and login
 
-*Here is a pet training application example*
+Description: Students can register an account through email and log in to the application.
 
-*Molly wants to inquiry about her cat, McPurr's recent troublesome behaviour*
-1. *Molly notices that McPurr has been hostile since...*
-2. *She makes a post about... with the tag...*
-3. *Lachlan, a vet, writes a reply to Molly's post...*
-4. ...
-5. *Molly gives Lachlan's reply a 'tick' response*
+Steps:
 
-*Here is a map navigation application example*
+1. Open the APP and navigate to the main page.
+2. Select the option to create an account.
+3. Enter your username, account, and password.
+4. Repeat password confirmation.
+5. After making sure everything is correct, click the button to sign up.
 
-*Targets Users: Drivers*
+### Use Case 2: Course search and viewing
 
-* *Users can use it to navigate in order to reach the destinations.*
-* *Users can learn the traffic conditions*
-* ...
+Description: Students can search for courses or browse all courses to find the suitable one.
 
-*Target Users: Those who want to find some good restaurants*
+Steps:
 
-* *Users can find nearby restaurants and the application can give recommendations*
-* ...
+1.  Students search for courses by entering keywords in the search bar on the main page.
+2. The system returns a list of matched courses.
+3. The student browses the total list of courses and selects a course of interest.
 
-*List all the use cases in text descriptions or create use case diagrams. Please refer to https://www.visual-paradigm.com/guide/uml-unified-modeling-language/what-is-use-case-diagram/ for use case diagram.*
+### Use Case 3: Course learning
 
-<hr> 
+Description: Students can select and begin the course.
 
-### Application UML
+Steps:
 
-![ClassDiagramExample](media/_examples/ClassDiagramExample.png) <br>
-*[Replace the above with a class diagram. You can look at how we have linked an image here as an example of how you can do it too.]*
+1. Students select a course and click to enter.
+2. Students can view the introductory information of the course and decide whether to enter the course or not.
+3. Entering the course, students can see all the resources needed to study the course, including assignments, and can see the discussion group for the course.
 
-<hr>
+### Use Case 4: User interaction
+
+Description: Students can discuss problems in the discussion board, and students can also send private messages to each other.
+
+1. Students choose to join a discussion group.
+2. They can see messages posted by others and respond.
+3. Each person can also select a specific user and choose to send the private messages.
+
+### Use case 5: Resource uploading and sharing
+
+Description: Users can upload materials with permission and students can download and view them.
+
+Steps:
+
+1. The users select to upload the file and enters the resource description.
+2. Students view and download resources on the course page.
+
+### Application UML and ER diagram
+
+![Untitled](Report%20d4b43c65a286492886332f3255a35983/Untitled.png)
+
+![Untitled](Report%20d4b43c65a286492886332f3255a35983/Untitled%201.png)
+
 
 ## Code Design and Decisions
 
@@ -143,19 +165,15 @@ This is an important section of your report and should include all technical dec
 
 ### Data Structures
 
-*[What data structures did your team utilise? Where and why?]*
-
-Here is a partial (short) example for the subsection `Data Structures`:*
-
 *I used the following data structures in my project:*
 
 1. *LinkedList*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
-   * *Reasons:*
-      * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
-      * *We don't need to access the item by index for xxx feature because...*
-      * For the (part), the data ... (characteristics) ...
+* *Objective: used for storing xxxx for xxx feature.*
+* *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+* *Reasons:*
+    * *It is more efficient than Arraylist for insertion with a time complexity O(1)*
+    * *We don't need to access the item by index for xxx feature because...*
+    * For the (part), the data ... (characteristics) ...
 
 2. ...
 
@@ -166,11 +184,17 @@ Here is a partial (short) example for the subsection `Data Structures`:*
 ### Design Patterns
 *[What design patterns did your team utilise? Where and why?]*
 
-1. *xxx Pattern*
-   * *Objective: used for storing xxxx for xxx feature.*
-   * *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
-   * *Reasons:*
-      * ...
+1. *Adapter Pattern*
+* *Objective: used for storing xxxx for xxx feature.*
+* *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+* *Reasons:*
+    * ...
+    *
+2. *Factory Pattern*
+* *Objective: used for storing xxxx for xxx feature.*
+* *Code Locations: defined in [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and [class AnotherClass, lines l1-l2](url); processed using [dataStructureHandlerMethod](url) and ...
+* *Reasons:*
+    * ...
 
 <hr>
 
@@ -199,29 +223,32 @@ Production Rules:
 <br>
 <hr>
 
+
 ## Implemented Features
-*[What features have you implemented? where, how, and why?]* <br>
-*List all features you have completed in their separate categories with their featureId. THe features must be one of the basic/custom features, or an approved feature from Voice Four Feature.*
+
+This app aims to provide free, high-quality educational resources to help students learn independently to achieve the project objectives: A better world, it's in our hands!. The core functions of the application include user management, course management, learning groups, interactive functions and resource sharing.
 
 ### Basic Features
-1. [LogIn]. Description of the feature ... (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of feature: ... <br>
-   * Description of your implementation: ... <br>
 
-2. [DataFiles]. Description  ... ... (...)
-   * Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
-   * Link to the Firebase repo: ...
+1. [LogIn]. Description of the feature ... (easy)
+* Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+* Description of feature: ... <br>
+* Description of your implementation: ... <br>
+
+2. [SignUp]. Description  ... ... (easy)
+* Code to the Data File [users_interaction.json](link-to-file), [search-queries.xml](link-to-file), ...
+* Link to the Firebase repo: ...
 
 3. ...
    <br>
 
 ### Custom Features
+
 Feature Category: Privacy <br>
 1. [Privacy-Request]. Description of the feature  (easy)
-   * Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * Description of your implementation: ... <br>
-     <br>
+* Code: [Class X, methods Z, Y](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+* Description of your implementation: ... <br>
+  <br>
 
 2. [Privacy-Block]. Description ... ... (medium)
    ... ...
@@ -229,9 +256,9 @@ Feature Category: Privacy <br>
 
 Feature Category: Firebase Integration <br>
 3. [FB-Auth] Description of the feature (easy)
-   * Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
-   * [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
-   * Description of your implementation: ... <br>
+* Code: [Class X, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43) and Class Y, ...
+* [Class B](../src/path/to/class/file.java#L30-85): methods A, B, C, lines of code: 30 to 85
+* Description of your implementation: ... <br>
 
 <hr>
 
@@ -242,42 +269,30 @@ Feature Category: Firebase Integration <br>
 
 <br> <hr>
 
-## Summary of Known Errors and Bugs
-
-*[Where are the known errors and bugs? What consequences might they lead to?]*
-*List all the known errors and bugs here. If we find bugs/errors that your team does not know of, it shows that your testing is not thorough.*
-
-*Here is an example:*
+## Summary of known errors/bugs
 
 1. *Bug 1:*
-   - *A space bar (' ') in the sign in email will crash the application.*
-   - ...
+- *A space bar (' ') in the sign in email will crash the application.*
+- ...
 
 2. *Bug 2:*
 3. ...
 
 <br> <hr>
 
-
-## Testing Summary
-
-*[What features have you tested? What is your testing coverage?]*
-*Please provide some screenshots of your testing summary, showing the achieved testing coverage. Feel free to provide further details on your tests.*
-
-*Here is an example:*
+## Testing summary
 
 1. Tests for Search
-   - Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
-   - *Number of test cases: ...*
-   - *Code coverage: ...*
-   - *Types of tests created and descriptions: ...*
+- Code: [TokenizerTest Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java) for the [Tokenizer Class, entire file](https://gitlab.cecs.anu.edu.au/comp2100/group-project/ga-23s2/-/blob/main/items/media/_examples/Dummy.java#L22-43)
+- *Number of test cases: ...*
+- *Code coverage: ...*
+- *Types of tests created and descriptions: ...*
 
-2. xxx
+2. Tests for Upload
 
 ...
 
 <br> <hr>
-
 
 ## Team Management
 
@@ -287,7 +302,7 @@ Feature Category: Firebase Integration <br>
 * Your meetings should also have a reasonable date spanning across Week 6 to 11.*
 
 
-- *[Team Meeting 1](meeting-template.md)*
+- *[Team Meeting 1](items/meeting01.md)*
 - ...
 - ...
 - [Team Meeting 4](link_to_md_file.md)
@@ -296,10 +311,44 @@ Feature Category: Firebase Integration <br>
 <hr>
 
 ### Conflict Resolution Protocol
-*[Write a well defined protocol your team can use to handle conflicts. That is, if your group has problems, what is the procedure for reaching consensus or solving a problem?
-(If you choose to make this an external document, link to it here)]*
 
-This shall include an agreed procedure for situations including (but not limited to):
-- e.g., if a member fails to meet the initial plan and/or deadlines
-- e.g., if your group has issues, how will your group reach consensus or solve the problem?
-- e.g., if a member gets sick, what is the solution? Alternatively, what is your plan to mitigate the impact of unforeseen incidents for this 6-to-8-week project? 
+1. Conflict and Problem Definition
+   In this Agreement, conflicts and issues mainly include but are not limited to:
+
+- Members fail to complete tasks on time or meet the project's initial plan requirements.
+- There are disagreements within the team or difficulty in reaching consensus on decisions.
+- Members are temporarily unable to participate in project work due to illness or other personal reasons.
+
+2. Precautions
+   To minimize conflicts and problems, teams should take the following precautions:
+
+- Clear allocation of roles and responsibilities: At the beginning of the project, define the roles and responsibilities of each member in detail.
+
+- Regular progress checks and meetings: Set regular meeting time points to check project progress and discover and solve problems in a timely manner.
+
+- Transparent communication channels: Establish an open and transparent communication platform to ensure instant sharing of information.
+
+3. Solution
+- a. Task delays and unfinished tasks
+  Preliminary warning: The project leader should communicate with relevant members at the early stage of discovering task delays to understand the reasons and provide necessary support.
+
+Develop remediation measures: If delays affect the project schedule, work with the member to develop a specific remediation plan and set a new deadline.
+
+Team Assistance: If personal issues prevent completion of a task, the team should consider reassigning some work to reduce stress and maintain project progress.
+
+- b. Decision-making conflicts
+  Discussion Meeting: For decision-making conflicts, hold a dedicated meeting to discuss all relevant points and each member should have the opportunity to express his or her opinion.
+
+Voting system: If it is still difficult to reach an agreement after discussion, the decision will be made by voting (when voting, make sure that all members understand the consequences of all options).
+
+The project leader has the final decision-making power: If the decision cannot be resolved through voting, the project leader will make the final decision based on the overall situation of the project.
+
+- c. Member absent due to illness
+
+Prompt notification: Once a member is unable to work due to illness, the project leader and team should be notified as soon as possible.
+Temporary adjustment: The project leader will arrange for other members to temporarily take over their tasks based on the situation and the members' status.
+
+Resources and support: The team should provide necessary support, such as adjusting project schedules and reducing the workload of sick members.
+
+4. Recording and Review
+   Document conflicts and resolution processes: All conflict incidents and results should be documented in detail in the project log for future review and evaluation.

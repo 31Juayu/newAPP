@@ -1,52 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Root LinearLayout for the course finding activity, centered and vertically oriented -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".activity.findCourseActivity">
 
+    <!-- Custom Toolbar with a title and theme for finding courses -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
-        app:title="My Toolbar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:title="Find Courses"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <Button
-        android:id="@+id/seeInfo"
-        android:layout_width="wrap_content"
+    <!-- Horizontal LinearLayout containing buttons for navigation and action, centered with a top margin -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="See course"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="70dp"/>
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
 
-    <!--    <Button
-            android:id="@+id/DirectlySort"
-            android:layout_width="wrap_content"
+        <!-- Button to return from the current activity, styled uniformly -->
+        <Button
+            android:id="@+id/go_back_gps"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="DirectlySort"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"/>-->
+            android:layout_weight="1"
+            android:text="Return"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:layout_marginStart="8dp" />
 
+        <!-- Button to view course information, styled similarly to the return button -->
+        <Button
+            android:id="@+id/seeInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="See course"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:layout_marginEnd="8dp" />
+    </LinearLayout>
+
+    <!-- ListView to display a list of courses, taking up all available space after other components -->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seeInfo" />
+        android:layout_weight="1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- RecyclerView to potentially display a different list or details about courses, sharing space with the ListView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/PDF_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

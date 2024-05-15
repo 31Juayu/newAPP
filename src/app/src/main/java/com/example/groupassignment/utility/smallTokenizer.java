@@ -2,7 +2,10 @@ package com.example.groupassignment.utility;
 
 import java.util.ArrayList;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 //reference: lab 6
 
 public class smallTokenizer {

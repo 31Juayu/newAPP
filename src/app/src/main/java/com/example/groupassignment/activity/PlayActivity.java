@@ -25,6 +25,10 @@ import java.util.Map;
 
 import com.example.groupassignment.R;
 
+/**
+ * @author Tianyi Xu u7780366
+ * @author Zhengyu Peng u7727795
+ */
 public class PlayActivity extends AppCompatActivity {
     private TextView video_name_textView;
     private VideoView current_VideoView;

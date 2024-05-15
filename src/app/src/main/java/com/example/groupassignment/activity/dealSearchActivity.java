@@ -28,8 +28,9 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.TreeMap;
 
-//author of this class : jiayu jian
-
+/**
+ * @author jiayu jian u7731262
+ */
 public class dealSearchActivity extends AppCompatActivity {
     ArrayAdapter<String> ad;
     ArrayList<String> resLine;

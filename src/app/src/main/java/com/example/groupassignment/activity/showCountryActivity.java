@@ -15,7 +15,9 @@ import com.example.groupassignment.utility.usefulMethod;
 
 import java.util.ArrayList;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
 
 public class showCountryActivity extends AppCompatActivity {
 

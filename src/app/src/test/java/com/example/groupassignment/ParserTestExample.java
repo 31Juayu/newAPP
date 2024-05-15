@@ -1,310 +1,296 @@
 package com.example.groupassignment;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
-
 import java.util.ArrayList;
+import java.util.Random;
+
+/**
+ * @author jiayu jian u7731262
+ * @author Ruize Luo u7776709
+ */
 
 public class ParserTestExample {
 
-/*    @Test
-    public void testTokenizer(){
-        String info = "China, 2015, the number of males employed in non-cultural industries";
-*//*        TokenizerForTest tokenizer = new TokenizerForTest(info);
-        while (tokenizer.hasNext()){
-            System.out.println(tokenizer.current().getType());
-            tokenizer.next();
-        }*//*
-        TokenizerForTest tokenizer = new TokenizerForTest(info);
-        myParserForTest parser = parserFactoryForTest.createParser("Parser",tokenizer);
-        boolean ifOk = parser.parseExp();
-        System.out.println("the res is " + ifOk);
-    }*/
-
     @Test
     public void testParser() {
-        ArrayList<String> combinations = new ArrayList<>();
+        assertTrue(testCorrectFormat("China, 2015, the number of males employed in non-cultural industries"));
+        assertFalse(testCorrectFormat("China, 2015,*, the number of males employed in non-cultural industries"));
+        assertFalse(testCorrectFormat("China, 2015,2016, the number of males employed in non-cultural industries,the number of males employed in cultural industries"));
+    }
 
-        // 第一组
-        combinations.add("China, 2015, the number of males employed in non-cultural industries");
-        combinations.add("China, the number of males employed in non-cultural industries, 2015");
-        combinations.add("the number of males employed in non-cultural industries, China, 2015");
-        combinations.add("the number of males employed in non-cultural industries, 2015, China");
-        combinations.add("2015, China, the number of males employed in non-cultural industries");
-        combinations.add("2015, the number of males employed in non-cultural industries, China");
-
-        // 第二组
-        combinations.add("quality, China, 2015, the number of males employed in non-cultural industries");
-        combinations.add("quality, China, the number of males employed in non-cultural industries, 2015");
-        combinations.add("quality, the number of males employed in non-cultural industries, China, 2015");
-        combinations.add("quality, the number of males employed in non-cultural industries, 2015, China");
-        combinations.add("quality, 2015, China, the number of males employed in non-cultural industries");
-        combinations.add("quality, 2015, the number of males employed in non-cultural industries, China");
-
-        // 第三组
-        combinations.add("China, the number of males employed in non-cultural industries, 2015, quality");
-        combinations.add("China, 2015, the number of males employed in non-cultural industries, quality");
-        combinations.add("the number of males employed in non-cultural industries, China, 2015, quality");
-        combinations.add("the number of males employed in non-cultural industries, 2015, China, quality");
-        combinations.add("2015, China, the number of males employed in non-cultural industries, quality");
-        combinations.add("2015, the number of males employed in non-cultural industries, China, quality");
-
-        // 第四组
-        combinations.add("quality, China, the number of males employed in non-cultural industries, 2015, quality");
-        combinations.add("quality, China, 2015, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, China, 2015, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, 2015, China, quality");
-        combinations.add("quality, 2015, China, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, 2015, the number of males employed in non-cultural industries, China, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            myParserForTest parser = parserFactoryForTest.createParser("Parser",tokenizer);
-            boolean ifOk = parser.parseExp();
-            assertTrue(ifOk);
-        }
-        //写错的那种，不符合以上信息顺序的的都是错的：
-        String info = "China, 2015,*, the number of males employed in non-cultural industries";
-        TokenizerForTest tokenizer = new TokenizerForTest(info);
-        //一个parser对应一个输入
-        myParserForTest parser = parserFactoryForTest.createParser("Parser",tokenizer);
-        boolean ifOk = parser.parseExp();
-        assertFalse(ifOk);
-
-        String info2 = "China, 2015,2016, the number of males employed in non-cultural industries,the number of males employed in cultural industries";
-        TokenizerForTest tokenizer2 = new TokenizerForTest(info2);
-        //一个parser对应一个输入
-        myParserForTest parser2 = parserFactoryForTest.createParser("Parser",tokenizer2);
-        boolean ifOk2 = parser2.parseExp();
-        assertFalse(ifOk2);
+    private boolean testCorrectFormat(String input) {
+        TokenizerForTest tokenizer = new TokenizerForTest(input);
+        myParserForTest parser = parserFactoryForTest.createParser("Parser", tokenizer);
+        return parser.parseExp();
     }
 
     @Test
     public void testParser_1() {
-        ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
-        combinations.add("2015, *");
-        combinations.add("*, 2015");
-
-        // 第二组
-        combinations.add("quality, 2015, *");
-        combinations.add("quality, *, 2015");
-
-        combinations.add("2015, *, quality");
-        combinations.add("*, 2015, quality");
-
-        combinations.add("quality, 2015, *, quality");
-        combinations.add("quality, *, 2015, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_1 parser = new Parser_1(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_1",tokenizer);
-            boolean ifOk = parser.parseExp();
-            assertTrue(ifOk);
-        }
+        TokenizerForTest tokenizer = new TokenizerForTest(generateRandomCombination());
+        myParserForTest parser = parserFactoryForTest.createParser("Parser_1", tokenizer);
+        boolean ifOk = parser.parseExp();
+        assertTrue(ifOk);
     }
+
+    public String generateRandomCombination() {
+        Random random = new Random();
+        String year = String.valueOf(2015 + random.nextInt(10));
+        String quality = random.nextBoolean() ? "quality" : "*";
+        String[] parts;
+        int choice = random.nextInt(8);
+        switch(choice) {
+            case 0:
+                parts = new String[] {year, "*"};
+                break;
+            case 1:
+                parts = new String[] {"*", year};
+                break;
+            case 2:
+                parts = new String[] {"quality", year, "*"};
+                break;
+            case 3:
+                parts = new String[] {"quality", "*", year};
+                break;
+            case 4:
+                parts = new String[] {year, "*", "quality"};
+                break;
+            case 5:
+                parts = new String[] {"*", year, "quality"};
+                break;
+            case 6:
+                parts = new String[] {"quality", year, "*", "quality"};
+                break;
+            case 7:
+                parts = new String[] {"quality", "*", year, "quality"};
+                break;
+            default:
+                parts = new String[] {};
+        }
+        return String.join(", ", parts);
+    }
+
     @Test
     public void testParser_2() {
         ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
         combinations.add("china, *");
         combinations.add("*, china");
-
-        // 第二组
         combinations.add("quality, china, *");
         combinations.add("quality, *, china");
-
         combinations.add("china, *, quality");
         combinations.add("*, china, quality");
-
         combinations.add("quality, china, *, quality");
         combinations.add("quality, *, china, quality");
 
-        // 输出ArrayList中的所有组合
         for (String combination : combinations) {
             TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_2 parser = new Parser_2(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_2",tokenizer);
+            myParserForTest parser = parserFactoryForTest.createParser("Parser_2", tokenizer);
             boolean ifOk = parser.parseExp();
             assertTrue(ifOk);
+            TokenizerForTest tokenizer2 = new TokenizerForTest(generateRandomCombination());
+            myParserForTest parser2 = parserFactoryForTest.createParser("Parser_2", tokenizer2);
+            boolean ifOk2 = parser2.parseExp();
+            assertFalse(ifOk2);
         }
     }
+
     @Test
-    public void testParser_3() {
-        ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
-        combinations.add("Number of persons employed in cultural occupations and working in cultural industries, *");
-        combinations.add("*, Number of persons employed in cultural occupations and working in cultural industries");
-
-        // 第二组
-        combinations.add("quality, Number of persons employed in cultural occupations and working in cultural industries, *");
-        combinations.add("quality, *, Number of persons employed in cultural occupations and working in cultural industries");
-
-        combinations.add("Number of persons employed in cultural occupations and working in cultural industries, *, quality");
-        combinations.add("*, Number of persons employed in cultural occupations and working in cultural industries, quality");
-
-        combinations.add("quality, Number of persons employed in cultural occupations and working in cultural industries, *, quality");
-        combinations.add("quality, *, Number of persons employed in cultural occupations and working in cultural industries, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_3 parser = new Parser_3(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_3",tokenizer);
+    public void testParser_3_withRandom() {
+        int numTests = 10;
+        for (int i = 0; i < numTests; i++) {
+            String randomCombination = generateRandomCombination_1();
+            TokenizerForTest tokenizer = new TokenizerForTest(randomCombination);
+            myParserForTest parser = parserFactoryForTest.createParser("Parser_3", tokenizer);
             boolean ifOk = parser.parseExp();
             assertTrue(ifOk);
+            String randomCombination2 = generateRandomCombination();
+            TokenizerForTest tokenizer2 = new TokenizerForTest(randomCombination2);
+            myParserForTest parser2 = parserFactoryForTest.createParser("Parser_3", tokenizer2);
+            boolean ifOk2 = parser2.parseExp();
+            assertFalse(ifOk2);
         }
+    }
+
+    private String generateRandomCombination_1() {
+        Random random = new Random();
+        String occupation = "Number of persons employed in cultural occupations and working in cultural industries";
+        String quality = random.nextBoolean() ? "quality" : "*";
+        String[] parts;
+        int choice = random.nextInt(8);
+        switch(choice) {
+            case 0:
+                parts = new String[] {occupation, "*"};
+                break;
+            case 1:
+                parts = new String[] {"*", occupation};
+                break;
+            case 2:
+                parts = new String[] {"quality", occupation, "*"};
+                break;
+            case 3:
+                parts = new String[] {"quality", "*", occupation};
+                break;
+            case 4:
+                parts = new String[] {occupation, "*", "quality"};
+                break;
+            case 5:
+                parts = new String[] {"*", occupation, "quality"};
+                break;
+            case 6:
+                parts = new String[] {"quality", occupation, "*", "quality"};
+                break;
+            case 7:
+                parts = new String[] {"quality", "*", occupation, "quality"};
+                break;
+            default:
+                parts = new String[] {};
+        }
+        return String.join(", ", parts);
     }
 
     @Test
     public void testParser_4() {
-        ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
-        combinations.add("*, 2015, the number of males employed in non-cultural industries");
-        combinations.add("*, the number of males employed in non-cultural industries, 2015");
-        combinations.add("the number of males employed in non-cultural industries, *, 2015");
-        combinations.add("the number of males employed in non-cultural industries, 2015, *");
-        combinations.add("2015, *, the number of males employed in non-cultural industries");
-        combinations.add("2015, the number of males employed in non-cultural industries, *");
-
-        // 第二组
-        combinations.add("quality, *, 2015, the number of males employed in non-cultural industries");
-        combinations.add("quality, *, the number of males employed in non-cultural industries, 2015");
-        combinations.add("quality, the number of males employed in non-cultural industries, *, 2015");
-        combinations.add("quality, the number of males employed in non-cultural industries, 2015, *");
-        combinations.add("quality, 2015, *, the number of males employed in non-cultural industries");
-        combinations.add("quality, 2015, the number of males employed in non-cultural industries, *");
-
-        // 第三组
-        combinations.add("*, the number of males employed in non-cultural industries, 2015, quality");
-        combinations.add("*, 2015, the number of males employed in non-cultural industries, quality");
-        combinations.add("the number of males employed in non-cultural industries, *, 2015, quality");
-        combinations.add("the number of males employed in non-cultural industries, 2015, *, quality");
-        combinations.add("2015, *, the number of males employed in non-cultural industries, quality");
-        combinations.add("2015, the number of males employed in non-cultural industries, *, quality");
-
-        // 第四组
-        combinations.add("quality, *, the number of males employed in non-cultural industries, 2015, quality");
-        combinations.add("quality, *, 2015, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, *, 2015, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, 2015, *, quality");
-        combinations.add("quality, 2015, *, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, 2015, the number of males employed in non-cultural industries, *, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_4 parser = new Parser_4(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_4",tokenizer);
+        int numTests = 10;
+        for (int i = 0; i < numTests; i++) {
+            String randomCombination = generateRandomCombination_4();
+            TokenizerForTest tokenizer = new TokenizerForTest(randomCombination);
+            myParserForTest parser = parserFactoryForTest.createParser("Parser_4", tokenizer);
             boolean ifOk = parser.parseExp();
             assertTrue(ifOk);
         }
+    }
+
+    private String generateRandomCombination_4() {
+        Random random = new Random();
+        String occupation = "Number of persons employed in cultural occupations and working in cultural industries";
+        String year = "2015";
+        String[] parts;
+        int choice = random.nextInt(8);
+        switch(choice) {
+            case 0:
+                parts = new String[] {occupation,year, "*"};
+                break;
+            case 1:
+                parts = new String[] {year,"*", occupation};
+                break;
+            case 2:
+                parts = new String[] {"quality", occupation, year,"*"};
+                break;
+            case 3:
+                parts = new String[] {"quality", year, "*", occupation};
+                break;
+            case 4:
+                parts = new String[] {year,occupation, "*", "quality"};
+                break;
+            case 5:
+                parts = new String[] {"*", year,occupation, "quality"};
+                break;
+            case 6:
+                parts = new String[] {"quality", year,occupation, "*", "quality"};
+                break;
+            case 7:
+                parts = new String[] {"quality", "*", year,occupation, "quality"};
+                break;
+            default:
+                parts = new String[] {};
+        }
+        return String.join(", ", parts);
     }
 
     @Test
     public void testParser_5() {
-        ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
-        combinations.add("China, 2015, *");
-        combinations.add("China, *, 2015");
-        combinations.add("*, China, 2015");
-        combinations.add("*, 2015, China");
-        combinations.add("2015, China, *");
-        combinations.add("2015, *, China");
-
-        // 第二组
-        combinations.add("quality, China, 2015, *");
-        combinations.add("quality, China, *, 2015");
-        combinations.add("quality, *, China, 2015");
-        combinations.add("quality, *, 2015, China");
-        combinations.add("quality, 2015, China, *");
-        combinations.add("quality, 2015, *, China");
-
-        // 第三组
-        combinations.add("China, *, 2015, quality");
-        combinations.add("China, 2015, *, quality");
-        combinations.add("*, China, 2015, quality");
-        combinations.add("*, 2015, China, quality");
-        combinations.add("2015, China, *, quality");
-        combinations.add("2015, *, China, quality");
-
-        // 第四组
-        combinations.add("quality, China, *, 2015, quality");
-        combinations.add("quality, China, 2015, *, quality");
-        combinations.add("quality, *, China, 2015, quality");
-        combinations.add("quality, *, 2015, China, quality");
-        combinations.add("quality, 2015, China, *, quality");
-        combinations.add("quality, 2015, *, China, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_5 parser = new Parser_5(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_5",tokenizer);
+        int numTests = 10;
+        for (int i = 0; i < numTests; i++) {
+            String randomCombination = generateRandomCombination_5();
+            TokenizerForTest tokenizer = new TokenizerForTest(randomCombination);
+            myParserForTest parser = parserFactoryForTest.createParser("Parser_5", tokenizer);
             boolean ifOk = parser.parseExp();
             assertTrue(ifOk);
         }
+    }
+
+    private String generateRandomCombination_5() {
+        Random random = new Random();
+        String occupation = "China";
+        String year = "2015";
+        String[] parts;
+        int choice = random.nextInt(8);
+        switch(choice) {
+            case 0:
+                parts = new String[] {occupation,year, "*"};
+                break;
+            case 1:
+                parts = new String[] {year,"*", occupation};
+                break;
+            case 2:
+                parts = new String[] {"quality", occupation, year,"*"};
+                break;
+            case 3:
+                parts = new String[] {"quality", year, "*", occupation};
+                break;
+            case 4:
+                parts = new String[] {year,occupation, "*", "quality"};
+                break;
+            case 5:
+                parts = new String[] {"*", year,occupation, "quality"};
+                break;
+            case 6:
+                parts = new String[] {"quality", year,occupation, "*", "quality"};
+                break;
+            case 7:
+                parts = new String[] {"quality", "*", year,occupation, "quality"};
+                break;
+            default:
+                parts = new String[] {};
+        }
+        return String.join(", ", parts);
     }
 
     @Test
     public void testParser_6() {
-        ArrayList<String> combinations = new ArrayList<>();
-
-        // 第一组
-        combinations.add("China, *, the number of males employed in non-cultural industries");
-        combinations.add("China, the number of males employed in non-cultural industries, *");
-        combinations.add("the number of males employed in non-cultural industries, China, *");
-        combinations.add("the number of males employed in non-cultural industries, *, China");
-        combinations.add("*, China, the number of males employed in non-cultural industries");
-        combinations.add("*, the number of males employed in non-cultural industries, China");
-
-        // 第二组
-        combinations.add("quality, China, *, the number of males employed in non-cultural industries");
-        combinations.add("quality, China, the number of males employed in non-cultural industries, *");
-        combinations.add("quality, the number of males employed in non-cultural industries, China, *");
-        combinations.add("quality, the number of males employed in non-cultural industries, *, China");
-        combinations.add("quality, *, China, the number of males employed in non-cultural industries");
-        combinations.add("quality, *, the number of males employed in non-cultural industries, China");
-
-        // 第三组
-        combinations.add("China, the number of males employed in non-cultural industries, *, quality");
-        combinations.add("China, *, the number of males employed in non-cultural industries, quality");
-        combinations.add("the number of males employed in non-cultural industries, China, *, quality");
-        combinations.add("the number of males employed in non-cultural industries, *, China, quality");
-        combinations.add("*, China, the number of males employed in non-cultural industries, quality");
-        combinations.add("*, the number of males employed in non-cultural industries, China, quality");
-
-        // 第四组
-        combinations.add("quality, China, the number of males employed in non-cultural industries, *, quality");
-        combinations.add("quality, China, *, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, China, *, quality");
-        combinations.add("quality, the number of males employed in non-cultural industries, *, China, quality");
-        combinations.add("quality, *, China, the number of males employed in non-cultural industries, quality");
-        combinations.add("quality, *, the number of males employed in non-cultural industries, China, quality");
-
-        // 输出ArrayList中的所有组合
-        for (String combination : combinations) {
-            TokenizerForTest tokenizer = new TokenizerForTest(combination);
-            //一个parser对应一个输入
-            //Parser_6 parser = new Parser_6(tokenizer);
-            myParserForTest parser = parserFactoryForTest.createParser("Parser_6",tokenizer);
+        int numTests = 10;
+        for (int i = 0; i < numTests; i++) {
+            String randomCombination = generateRandomCombination_6();
+            TokenizerForTest tokenizer = new TokenizerForTest(randomCombination);
+            myParserForTest parser = parserFactoryForTest.createParser("Parser_6", tokenizer);
             boolean ifOk = parser.parseExp();
             assertTrue(ifOk);
         }
     }
 
+    private String generateRandomCombination_6() {
+        Random random = new Random();
+        String occupation = "Number of persons employed in cultural occupations and working in cultural industries";
+        String year = "China";
+        String[] parts;
+        int choice = random.nextInt(8);
+        switch(choice) {
+            case 0:
+                parts = new String[] {occupation,year, "*"};
+                break;
+            case 1:
+                parts = new String[] {year,"*", occupation};
+                break;
+            case 2:
+                parts = new String[] {"quality", occupation, year,"*"};
+                break;
+            case 3:
+                parts = new String[] {"quality", year, "*", occupation};
+                break;
+            case 4:
+                parts = new String[] {year,occupation, "*", "quality"};
+                break;
+            case 5:
+                parts = new String[] {"*", year,occupation, "quality"};
+                break;
+            case 6:
+                parts = new String[] {"quality", year,occupation, "*", "quality"};
+                break;
+            case 7:
+                parts = new String[] {"quality", "*", year,occupation, "quality"};
+                break;
+            default:
+                parts = new String[] {};
+        }
+        return String.join(", ", parts);
+    }
 }

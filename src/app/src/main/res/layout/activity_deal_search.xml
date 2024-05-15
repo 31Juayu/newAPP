@@ -1,110 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Author: Ruize Luo u7776709 -->
+<!-- Main LinearLayout that serves as a container for the deal search activity, centered and vertically oriented -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".activity.dealSearchActivity">
 
+    <!-- Custom Toolbar with a title, primary color background, and elevation -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
         android:elevation="4dp"
         app:title="Search"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+    <!-- Horizontal LinearLayout for navigation and action buttons, centered with top margin -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
 
-    <Button
-        android:id="@+id/go_back_search"
-        android:layout_width="80dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/background_button_login_and_sign_up"
-        android:fontFamily="@font/atomicage"
-        android:padding="10dp"
-        android:text="Return"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+        <!-- Button to return from the current activity, styled uniformly with padding and margin -->
+        <Button
+            android:id="@+id/go_back_search"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Return"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:padding="10dp"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
 
+        <!-- Button to show results or perform a search, with mirrored styling from the return button -->
+        <Button
+            android:id="@+id/showRes"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="show Res"
+            android:background="@drawable/background_button_login_and_sign_up"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/atomicage"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- TextView to display an engaging message, centered with a top margin -->
     <TextView
         android:id="@+id/title_signUp"
-        android:layout_width="285dp"
-        android:layout_height="54dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="96dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="So many people in your country are getting jobs through education, why not you?"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:gravity="center"
+        android:layout_marginTop="16dp" />
 
+    <!-- ListView to display a list of search results or data, filling the remaining space -->
     <ListView
         android:id="@+id/listView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="196dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/showRes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:text="show Res"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="150dp"/>
-
+    <!-- TextView with instructional text, centered horizontally with a top margin -->
     <TextView
         android:id="@+id/rightTextView"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="please click left button"
-        app:layout_constraintStart_toEndOf="@id/showRes"
-        app:layout_constraintTop_toTopOf="@id/showRes" />
+        android:gravity="center_horizontal"
+        android:layout_marginTop="8dp" />
 
-    <!--    <Button
-            android:id="@+id/goBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="Go back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.000"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="20dp"/>
-
-        <Button
-            android:id="@+id/sortButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:text="Sort"
-            app:layout_constraintBottom_toBottomOf="@+id/goBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.967"
-            app:layout_constraintStart_toEndOf="@+id/goBack" />-->
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

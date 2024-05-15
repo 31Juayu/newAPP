@@ -13,7 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.groupassignment.R;
 import com.example.groupassignment.activity.dealSearchActivity;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
 public class searchActivity extends AppCompatActivity {
 
     private Button go_back_searches;

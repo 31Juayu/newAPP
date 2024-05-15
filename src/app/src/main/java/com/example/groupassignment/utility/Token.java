@@ -1,7 +1,10 @@
 package com.example.groupassignment.utility;
 import java.util.Objects;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
+
 //reference: lab 6
 
 public class Token {

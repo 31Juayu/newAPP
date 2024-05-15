@@ -15,9 +15,23 @@ import com.example.groupassignment.DAO.AssignmentItem;
 
 import java.util.List;
 
+/**
+ * Adapter for displaying assignment items within a RecyclerView in an Android application.
+ * handles the creation of ViewHolder items and binds them to their respective data
+ * allowing interactions to the assignment items like open a pdf
+ * @author Tianyi Xu u7780366
+ * This file reference to this website, I used the basic format provide by it, the website is as shown below
+ * https://blog.csdn.net/indeedes/article/details/120014927
+ */
 public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.ViewHolder>{
     private List<AssignmentItem> assignmentItemList;
     private Context context;
+
+    /**
+     * constructor for an AssignmentAdapter
+     * @param assignmentItemList
+     * @param context
+     */
     public AssignmentAdapter(List<AssignmentItem> assignmentItemList, Context context){
         this.assignmentItemList = assignmentItemList;
         this.context = context;
@@ -28,6 +42,7 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.assignment_item, parent, false);
         final ViewHolder holder = new ViewHolder(view);
         holder.assignmentView.setOnClickListener(new View.OnClickListener() {
+            // setting an onClickListener to open a pdf when clicking on the item
             @Override
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
@@ -53,12 +68,23 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
 
         public View assignmentView;
         TextView assignment_Text_Bind;
+
+        /**
+         * ViewHolder constructor to create the separate items in the item list layout
+         * @param itemView
+         */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             assignment_Text_Bind = itemView.findViewById(R.id.pdf_name_text_view);
             assignmentView = itemView;
         }
     }
+
+    /**
+     * open a pdf in an external viewer
+     * @param context  Context from which the intent to view the PDF is started.
+     * @param uri The URI of the PDF to be opened.
+     */
     private void openPDF(Context context, Uri uri) {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(uri, "application/pdf");

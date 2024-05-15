@@ -53,7 +53,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ListAdapter;
 
-//author of this class : jiayu jian
+/**
+ * @author jiayu jian u7731262
+ */
 
 public class findCourseActivity extends AppCompatActivity {
     //private TextView jsonTextView;
