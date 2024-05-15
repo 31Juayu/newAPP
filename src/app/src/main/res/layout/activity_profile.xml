@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- author: Wenzhao Zheng u7705888-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.ProfileActivity">
-
+<!-- Head image, randomly generated from storage images/ directory -->
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="128dp"
@@ -19,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
-
+<!-- Username -->
     <TextView
         android:id="@+id/UsernameProfile"
         android:layout_width="0dp"
@@ -34,7 +35,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView14"
         app:layout_constraintTop_toTopOf="parent" />
-
+<!-- Email -->
     <TextView
         android:id="@+id/EmailProfile"
         android:layout_width="0dp"
@@ -70,7 +71,7 @@
             android:fontFamily="sans-serif-black"
             android:text="Courses"
             android:textSize="34sp" />
-
+<!--Courses list -->
         <ListView
             android:id="@+id/CoursesList"
             android:layout_width="match_parent"
@@ -82,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="128dp"
             android:orientation="horizontal">
-
+<!-- Return button -->
             <Button
                 android:id="@+id/ButtonProfile2Menu"
                 android:layout_width="wrap_content"
@@ -94,7 +95,7 @@
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/atomicage"
                 android:text="Retur" />
-
+<!-- To friend list -->
             <Button
                 android:id="@+id/ButtonProfile2Friends"
                 android:layout_width="wrap_content"
@@ -106,7 +107,7 @@
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/atomicage"
                 android:text="Friend" />
-
+<!-- to assignment page -->
             <Button
                 android:id="@+id/ButtonProfile2Courses"
                 android:layout_width="wrap_content"

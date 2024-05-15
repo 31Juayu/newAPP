@@ -1,5 +1,7 @@
 package com.example.groupassignment.activity;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -66,8 +68,9 @@ public class PostActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         }
 
+        //Get posts from storage
         downloadPosts();
-
+        //Pop up a window for creating post
         ButtonPost2PostItem.setOnClickListener(v -> {
             showPostDialog();
         });
@@ -88,6 +91,9 @@ public class PostActivity extends AppCompatActivity {
 
     /**
      * Method for popping up a window for users to create content
+     * The dialog will pop up a window depicted by the post_content.
+     * Get username from sharedPreferences and concatenate the username with time formatted as date and time
+     * Press the upload button to finish posting and upload the post to storage automatically
      */
     private void showPostDialog(){
         final Dialog dialog = new Dialog(this);
@@ -114,6 +120,10 @@ public class PostActivity extends AppCompatActivity {
 
     /**
      * Method for automatically fetching and displaying all posted notices
+     * For each item in the postNotices/ directory, download the post and translate the json
+     * format post to data of Post class. Get the display format of the post and put the string
+     * to the post list. Then update the list to the recyclerView.
+     * Error handler with different print text for it to be easier to tell which step of download fails
      */
     private void downloadPosts() {
         storageRef.listAll().addOnSuccessListener(listResult -> {

@@ -1,5 +1,7 @@
 package com.example.groupassignment.activity;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -71,13 +73,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         CourseList.setAdapter(adapter);
-
+        //Get username from sharedPreferences initialised in the login
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
-        System.out.println(username);
+        //System.out.println(username);
         String password = sharedPreferences.getString("PASSWORD_KEY", "defaultPassword");
+        //Get courses list from favourite list
         coursesToAdd = getIntent().getStringArrayListExtra("courses_list");
 
+        //Download and update the profile
         downloadProfile(username, FirebaseStorage.getInstance());
 
         //Button to go back to menu
@@ -103,8 +107,10 @@ public class ProfileActivity extends AppCompatActivity {
     /**
      * Method for downloading json format profile from storage
      * and update the data to display format of profile
-     * @param username
-     * @param storage
+     * Download the profile from storage Profiles/ directory and translate json to Profile
+     * Iterate all elements of the profile page, fill the profile page with respective data
+     * @param username String username to identify a profile document in storage
+     * @param storage Storage initialised when calling the method
      */
     @SuppressLint("SetTextI18n")
     public void downloadProfile(String username, FirebaseStorage storage) {
@@ -144,7 +150,9 @@ public class ProfileActivity extends AppCompatActivity {
                 if (profile.getProfileImageUrl()!=null){
                     getHeadImage();
                 }
+                //Update the profile of the storage
                 profile.uploadProfileJson(profile);
+                //Print the identifier of the profile to check if it is downloaded correctly
                 System.out.println("Profile downloaded: " + profile.getUsername());
             }
         }).addOnFailureListener(e -> {
@@ -159,6 +167,7 @@ public class ProfileActivity extends AppCompatActivity {
         StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/" + profile.getProfileImageUrl());
         storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             //Method for getting image and handle error where no image is loaded from storage
+            //Reference: https://stackoverflow.com/questions/42868036/android-how-to-load-image-by-name-using-glide
             @Override
             public void onSuccess(Uri uri) {
                 Glide.with(HeadImage.getContext())
