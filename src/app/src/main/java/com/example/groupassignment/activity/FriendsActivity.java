@@ -1,5 +1,5 @@
 package com.example.groupassignment.activity;
-
+//Author: Wenzhao Zheng
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -37,6 +37,7 @@ public class FriendsActivity extends AppCompatActivity {
             adapter.addAll(friends);
             adapter.notifyDataSetChanged();
         }
+        //Author: Tianyi Xu
         friendList.setOnItemClickListener((parent,view,position,id) -> {
             String friendName = adapter.getItem(position);
             Intent intent = new Intent(getApplicationContext(), ChatIndividual.class);

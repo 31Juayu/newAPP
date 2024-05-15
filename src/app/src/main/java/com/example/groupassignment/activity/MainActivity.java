@@ -1,5 +1,5 @@
 package com.example.groupassignment.activity;
-
+/*Author: Wenzhao Zheng*/
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
