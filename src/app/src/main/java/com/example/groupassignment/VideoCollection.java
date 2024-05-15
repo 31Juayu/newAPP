@@ -45,7 +45,11 @@ public class VideoCollection extends AppCompatActivity {
 
         loadUserFavorites(username);
 
-        //Authored by Wenzhao Zheng: button to update favourite list to profile courses list
+        /**
+         * @author Wenzhao Zheng u7705888
+         * Get the favourite list from the current class and deliver the intent to the profile activity
+         * Pressing the button, the favourite list would be updated to the profile courses list
+          */
         ButtonUpdate2Profile.setOnClickListener(v -> {
             startActivity(intent);
         });

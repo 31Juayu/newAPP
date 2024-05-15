@@ -201,13 +201,13 @@ public class Login extends AppCompatActivity {
         for (Customer e : list) {
             if (e.getUsername().equals(userName) && e.getPassword().equals(passWord)) {
                 ifIn = true;
-                //following is temporary method for profile activity
+                //Wenzhao Zheng: following is temporary method for profile activity
                 SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("USERNAME_KEY", userName);
                 editor.putString("PASSWORD_KEY", passWord);
                 editor.apply();
-                //following is test method to upload files to firebase, no check will apply for the test method
+                //Wenzhao Zheng: following is test method to upload files to firebase, no check will apply for the test method
                 Profile profile = new Profile(userName, null, passWord, null, null, null);
                 profile.setExampleData();
                 profile.uploadProfileJson(profile);

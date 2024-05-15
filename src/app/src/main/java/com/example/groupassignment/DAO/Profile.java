@@ -1,5 +1,7 @@
 package com.example.groupassignment.DAO;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -15,6 +17,17 @@ public class Profile {
     private String profileImageUrl;
     private List<String> courses;
     private List<String> friends;
+
+    /**
+     * Constructor, the profile represent the user's personal information, non-private information
+     * will be shown on the profile page.
+     * @param username as registered in the signup page
+     * @param email as registered in the signup page
+     * @param password will be saved in profile but not be disclosed on the profile page
+     * @param profileImageUrl the image reference of the head image
+     * @param courses courses list, would be updated via favourite list
+     * @param friends friends list, would show all friends that the user has interacted with
+     */
 
     public Profile(String username, String email, String password, String profileImageUrl, List<String> courses, List<String> friends) {
         this.username = username;
@@ -41,7 +54,15 @@ public class Profile {
         return gson.toJson(this);
     }
 
-    //Upload json format of profile data to firebase storage
+    /**
+     * Method for uploading profile to the firebase storage
+     * First, get the reference of Profiles/ directory which is the target directory
+     * Second, call the toJson() function to generate the profile to json format
+     * Third, create the update variable to upload the json to the storage
+     * If the upload is successful, then print the success message; else, print the fail message
+     * Reference: https://firebase.google.com/docs/storage/android/upload-files
+      * @param profile
+     */
     public void uploadProfileJson(Profile profile) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("Profiles/" + profile.getUsername() + ".json");

@@ -1,5 +1,8 @@
 package com.example.groupassignment;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * This class referenced other adapter classes including VideoAdapter and AssignmentAdapter
+ * */
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     /**
      * Inner class to customise view-holder to post view-holder
      */
-    static class PostViewHolder extends RecyclerView.ViewHolder {
+    public static class PostViewHolder extends RecyclerView.ViewHolder {
         TextView post_content;
 
         PostViewHolder(View itemView) {

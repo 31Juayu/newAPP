@@ -1,5 +1,7 @@
 package com.example.groupassignment.activity;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

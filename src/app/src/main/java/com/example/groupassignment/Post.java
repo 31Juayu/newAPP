@@ -1,5 +1,7 @@
 package com.example.groupassignment;
-/*Author: Wenzhao Zheng*/
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -43,6 +45,10 @@ public class Post {
 
     /**
      * Method for uploading json format of post data to firebase storage
+     * First, get the reference of Profiles/ directory which is the target directory
+     * Second, call the toJson() function to generate the profile to json format
+     * Third, create the update variable to upload the json to the storage* If the upload is successful, then print the success message; else, print the fail message
+     * Referencing the uploadProfileJson() method I created
      * @param post
      */
     public void uploadPostJson(Post post) {
