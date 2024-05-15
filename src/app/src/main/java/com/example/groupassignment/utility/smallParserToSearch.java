@@ -4,9 +4,12 @@ package com.example.groupassignment.utility;
 import java.util.ArrayList;
 import java.util.List;
 
+//author of this class : jiayu jian
+//reference: lab 6
+
 public class smallParserToSearch {
     public static ArrayList<String> findRes(String input, RedBlackTree<String> courseTree) {
-        //res是：数字，（quality）
+
         ArrayList<String> ress = new ArrayList<>();
 
         boolean ifOk = false;

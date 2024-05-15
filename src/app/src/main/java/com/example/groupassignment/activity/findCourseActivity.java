@@ -53,6 +53,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ListAdapter;
 
+//author of this class : jiayu jian
 
 public class findCourseActivity extends AppCompatActivity {
     //private TextView jsonTextView;
@@ -153,9 +154,7 @@ public class findCourseActivity extends AppCompatActivity {
     public void readJSONFromStorage(StorageReference storageRef) {
         storageRef.getBytes(Long.MAX_VALUE)
                 .addOnSuccessListener(bytes -> {
-                    // 成功获取文件内容，将字节数组转换为字符串
                     json = new String(bytes);
-                    // 将 JSON 内容显示在 TextView 中
                     //jsonTextView.setText(json);
 
                     Gson gson = new Gson();
@@ -172,7 +171,14 @@ public class findCourseActivity extends AppCompatActivity {
 
 
                     ress = smallParserToSearch.findRessInSmall(userInput,lowerCase);
-                    //去重
+                    for (int i = 0; i < ress.size(); i++) {
+                        String str = ress.get(i);
+                        if (str.endsWith(".mp4")) {
+                            String newStr = str.substring(0, str.length() - 4);
+                            ress.set(i, newStr);
+                        }
+                    }
+
                     LinkedHashSet<String> linkedHashSet = new LinkedHashSet<>(ress);
                     ress = new ArrayList<>(linkedHashSet);
 

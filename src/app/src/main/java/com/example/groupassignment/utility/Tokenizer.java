@@ -4,6 +4,9 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//author of this class : jiayu jian
+//reference: lab 6
+
 public class Tokenizer {
     private String buffer;
     private Token currentToken;
@@ -11,29 +14,6 @@ public class Tokenizer {
 
     Context context;
 
-/*    public static void main(String[] args) {
-        // Create a scanner to get the user's input.
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Provide a input:");
-        while (scanner.hasNext()) {
-            String input = scanner.nextLine();
-
-            // Check if 'quit' is provided.
-            if (input.equals("q"))
-                break;
-
-            // Create an instance of the tokenizer.
-            Tokenizer tokenizer = new Tokenizer(input);
-
-            // Print all the tokens.
-            while (tokenizer.hasNext()) {
-                System.out.print(tokenizer.current() + " ");
-                tokenizer.next();
-            }
-            System.out.println();
-        }
-    }*/
 
     public Tokenizer(String text, Context context) {
         buffer = text;          // save input text (string)
