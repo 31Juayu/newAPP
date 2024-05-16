@@ -1,7 +1,4 @@
 package com.example.groupassignment.activity;
-/**
- * @author Wenzhao Zheng u7705888
- * */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;

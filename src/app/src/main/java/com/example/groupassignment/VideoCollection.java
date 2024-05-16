@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author u7727795
+ * @author Zhengyu Peng u7727795
+ * @author Wenzhao Zheng u7705888
  */
 public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
