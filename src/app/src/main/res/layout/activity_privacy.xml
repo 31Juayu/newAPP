@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Author: Wenzhao Zheng u7705888 -->
 <!-- Author: Ruize Luo u7776709 -->
 <!-- ConstraintLayout as the root container for the main activity interface focused on privacy settings -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -36,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.349" />
-
+<!-- Privacy Policy content is included -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -45,11 +46,11 @@
         android:layout_marginEnd="115dp"
         android:layout_marginBottom="12dp"
         android:fontFamily="@font/atomicage"
-        android:text="Privacy Policy"
+        android:text=" Privacy Policy of &#10; Shared Knowledge, A Better Future&#10;&#10; Effective Date: 16/05/2024 &#10; Introduction &#10; Welcome to Shared Knowledge, A Better Future. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use and safeguard your information when you visit our mobile application. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the application. &#10; Information We Collect &#10; We may collect information about you in a variety of ways. The information we may collect via the Application depends on the content and materials you use, and includes: &#10; Personal Data: Personally identifiable information, such as your email address and telephone number, that you voluntarily give to us when you register with the Application or when you choose to participate in various activities related to the Application like forum and private chat with other users. &#10; Derivative Data: Information our servers automatically collect when you access the Application, such as your native actions that are integral to the Application, including liking, posting or private chatting, and all other actions related to the course material. &#10; Security of Your Information &#10; We use security measures provided by firebase storage to help protect your personal information."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.22"
+        app:layout_constraintHorizontal_bias="0.339"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.23" />
+        app:layout_constraintVertical_bias="0.868" />
 </androidx.constraintlayout.widget.ConstraintLayout>

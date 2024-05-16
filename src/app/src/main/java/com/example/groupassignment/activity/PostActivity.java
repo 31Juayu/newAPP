@@ -1,6 +1,7 @@
 package com.example.groupassignment.activity;
-
-import androidx.annotation.NonNull;
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -13,31 +14,20 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.groupassignment.DAO.Profile;
-import com.example.groupassignment.MenuPage;
 import com.example.groupassignment.Post;
 import com.example.groupassignment.PostAdapter;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.io.IOException;
-import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 import com.example.groupassignment.R;
 
@@ -47,10 +37,8 @@ public class PostActivity extends AppCompatActivity {
     private List<String> postList = new ArrayList<>();
     private Button ButtonPost2PostItem;
     private Button ButtonPostRefresh;
-
     private FirebaseStorage storage;
     private StorageReference storageRef;
-
     private Button go_back_post;
 
 
@@ -70,6 +58,7 @@ public class PostActivity extends AppCompatActivity {
         ButtonPost2PostItem = (Button) findViewById(R.id.post_notice);
         ButtonPostRefresh = (Button) findViewById(R.id.button_refresh_posts);
 
+        //System automatically generated messages, not loaded to the storage
         String[] robotProvider = {"Welcome! ", "This is robot messaging system! ", "Have fun! "};
         String robotMessageRoot = "Robot ";
         for (int i = 0; i < 3; i ++){
@@ -79,13 +68,14 @@ public class PostActivity extends AppCompatActivity {
             recyclerView.setAdapter(adapter);
         }
 
+        //Get posts from storage
         downloadPosts();
+        //Pop up a window for creating post
         ButtonPost2PostItem.setOnClickListener(v -> {
-            System.out.println("pressed");
             showPostDialog();
         });
         ButtonPostRefresh.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), PostActivity.class);
+            Intent intent = new Intent(PostActivity.this, PostActivity.class);
             startActivity(intent);
         });
 
@@ -99,18 +89,24 @@ public class PostActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Method for popping up a window for users to create content
+     * The dialog will pop up a window depicted by the post_content.
+     * Get username from sharedPreferences and concatenate the username with time formatted as date and time
+     * Press the upload button to finish posting and upload the post to storage automatically
+     */
     private void showPostDialog(){
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.post_content);
 
         EditText EdixPost = dialog.findViewById(R.id.EditTextPost);
-        Button ButtonUploadPost = dialog.findViewById(R.id.ButtonUploadPost);
+        Button ButtonUploadPost = (Button) dialog.findViewById(R.id.ButtonUploadPost);
 
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         String username = sharedPreferences.getString("USERNAME_KEY", "defaultUsername");
         String time = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE_TIME);
-
+        //Generate Post for uploading
         ButtonUploadPost.setOnClickListener(v -> {
             String postContent = EdixPost.getText().toString();
             if (!postContent.isEmpty()){
@@ -122,6 +118,13 @@ public class PostActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    /**
+     * Method for automatically fetching and displaying all posted notices
+     * For each item in the postNotices/ directory, download the post and translate the json
+     * format post to data of Post class. Get the display format of the post and put the string
+     * to the post list. Then update the list to the recyclerView.
+     * Error handler with different print text for it to be easier to tell which step of download fails
+     */
     private void downloadPosts() {
         storageRef.listAll().addOnSuccessListener(listResult -> {
                     for (StorageReference item : listResult.getItems()){
@@ -137,7 +140,7 @@ public class PostActivity extends AppCompatActivity {
                         });
                     }
                 }).addOnFailureListener(e -> {
-            System.out.println("Fail to obtain posts from storage.");
+            System.out.println("Fail to fetch posts from storage.");
         });
     }
 

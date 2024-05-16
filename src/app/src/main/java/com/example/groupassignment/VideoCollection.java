@@ -21,7 +21,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author u7727795
+ * @author Zhengyu Peng u7727795
+ * @author Wenzhao Zheng u7705888
  */
 public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
@@ -45,6 +46,11 @@ public class VideoCollection extends AppCompatActivity {
 
         loadUserFavorites(username);
 
+        /**
+         * @author Wenzhao Zheng u7705888
+         * Get the favourite list from the current class and deliver the intent to the profile activity
+         * Pressing the button, the favourite list would be updated to the profile courses list
+          */
         ButtonUpdate2Profile.setOnClickListener(v -> {
             startActivity(intent);
         });
@@ -80,6 +86,7 @@ public class VideoCollection extends AppCompatActivity {
                         }
                         // Update UI or process the list of video names
                         updateVideoList(videoNames);
+                        //Authored by Wenzhao Zheng: Update video lists to intent, prepare for updating to profile
                         intent.putStringArrayListExtra("courses_list", new ArrayList<>(videoNames));
 
                     } else {

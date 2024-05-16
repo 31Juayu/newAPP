@@ -1,5 +1,7 @@
 package com.example.groupassignment;
-
+/**
+ * @author Wenzhao Zheng u7705888
+ * */
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -12,21 +14,43 @@ public class Post {
     private String usernameTime;
 
 
+    /**
+     * Constructor of Post, usernameTime, as a concatenated string of username
+     * and time, is used to locate specific Post in storage
+     * @param username
+     * @param postContent
+     * @param time
+     * @param usernameTime
+     */
     public Post(String username, String postContent, String time, String usernameTime) {
         this.username = username;
         this.postContent = postContent;
         this.time = time;
         this.usernameTime = usernameTime;
-    }//使用usernameTime作为确定post的指标
+    }
 
-
+    /**
+     * Helper constructor for fetching firebase storage data
+     */
     public Post(){}
 
+    /**
+     * Method for saving the Post class to json document
+     * @return
+     */
     public String toJson() {
         Gson gson = new Gson();
         return gson.toJson(this);
     }
 
+    /**
+     * Method for uploading json format of post data to firebase storage
+     * First, get the reference of Profiles/ directory which is the target directory
+     * Second, call the toJson() function to generate the profile to json format
+     * Third, create the update variable to upload the json to the storage* If the upload is successful, then print the success message; else, print the fail message
+     * Referencing the uploadProfileJson() method I created
+     * @param post
+     */
     public void uploadPostJson(Post post) {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageRef = storage.getReference().child("postNotices/" + post.getUsernameTime() + ".json");
@@ -40,37 +64,74 @@ public class Post {
         });
     }
 
+    /**
+     * Getter method for time
+     * @return
+     */
     public String getTime() {
         return time;
     }
 
+    /**
+     * Setter method for time
+     * @param time
+     */
     public void setTime(String time) {
         this.time = time;
     }
 
+    /**
+     * Getter method for usernameTime
+     * @return
+     */
     public String getUsernameTime() {
         return usernameTime;
     }
 
+    /**
+     * Setter method for username time
+     * @param usernameTime
+     */
     public void setUsernameTime(String usernameTime) {
         this.usernameTime = usernameTime;
     }
 
+    /**
+     * Getter method for username
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * Setter method for username
+     * @param username
+     */
     public void setUsername(String username) {
         this.username = username;
     }
 
+    /**
+     * Getter method for post content
+     * @return
+     */
     public String getPostContent() {
         return postContent;
     }
 
+    /**
+     * Setter method for post content
+     * @param postContent
+     */
     public void setPostContent(String postContent) {
         this.postContent = postContent;
     }
+
+    /**
+     * Method for transforming the post from Post to display format
+     * @return
+     */
     public String getDisplayContent() {
         return username + " (" + time + "): " + postContent;
     }

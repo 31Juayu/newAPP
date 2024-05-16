@@ -1,5 +1,8 @@
 package com.example.groupassignment.activity;
-
+/**
+ * @author Wenzhao Zheng u7705888
+ * Simple adapter part is referenced from lab 5 material
+ * */
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -31,7 +34,7 @@ public class FriendsActivity extends AppCompatActivity {
         friendList = (ListView) findViewById(R.id.FriendsList);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         friendList.setAdapter(adapter);
-
+        //Add friends to the friend list
         adapter.clear();
         if (friends!=null){
             adapter.addAll(friends);

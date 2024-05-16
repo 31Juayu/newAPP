@@ -106,6 +106,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.91914386" />
 
+    <!-- author: Wenzhao Zheng -->
     <Button
         android:id="@+id/buttonUploadToProfile"
         android:layout_width="250dp"
