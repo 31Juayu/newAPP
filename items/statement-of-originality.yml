@@ -23,11 +23,7 @@ declaration: >-
   own work, with the following exceptions:
   
 
-# add as many "name+comment" entries as necessary
-# (or remove it altogether if you haven't collaborated with anyone outside your group)
-collaboration:
-  - name:
-    comment: >-
+
   
 
 # add as many "url+licence+comment" entries as necessary
@@ -45,29 +41,38 @@ assets:
   - comment: "_Bliss_ by Charles O'Rear"
     url: https://en.wikipedia.org/wiki/Bliss_(image)
     licence: fair use
+  - comment: "The use of the code for uploading files in VideoDemonstrationActivity.java and AssignmentDemonstrationActivity,java, related methods are onActivityResult, getFileType, uploadVideo, getUploadFileType, uploadPDFAssign"
+    url: https://verytoolz.com/blog/f632174b21/
+    licence: fair use
+  - comment: "The use of the code format for adapter in VideoAdapter.java and AssignmentAdapter.java"
+    url: https://blog.csdn.net/indeedes/article/details/120014927
+    licence: fair use
+  - comment: "The use of the code format for GPS use in GPSActivity.java"
+    url: https://www.runoob.com/w3cnote/android-tutorial-gps.html
+    licence: fair use
 
 
-### Questions (answer before final submission):
+  ### Questions (answer before final submission):
 1. You (as a group) completed this work (tick the most appropriate option):
   - [ ] by yourself (as a group) without the help of others;
-      [ ] with Gen AI tools (e.g., ChatGPT, Co-Pilot).
+      [x] with Gen AI tools (e.g., ChatGPT, Co-Pilot).
       [ ] using online resources (e.g., Stackoverflow, blogs)
 
 2. If not completed by yourself only, how did the use of Gen AI tools (and which ones), contribute to completing this assignment?
-  - Tool(s): <tools used here>
+  - Tool(s): ChatGPT
   
 3. How did they contribute to the completion of this assignment?
-  - <your answer here>
+  - Help me to find the bugs that cause the crashes and help me explain the code that I got from the references, thus I can learn more about how to use them in the future
 
 4. How long did it take to complete this assignment (approximately, in hours)?
-  - <your answer here> hours
+  - 70
 
 
 
 # for each member, sign by inputting your name and uid here (remove any empty "name+uid" entries)
 members:
-  - name:
-    uid:
+  - name: Tianyi Xu
+    uid: u7780366
   - name:
     uid:
   - name:
