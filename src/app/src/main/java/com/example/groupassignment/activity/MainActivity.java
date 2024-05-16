@@ -11,6 +11,11 @@ import com.example.groupassignment.Login;
 import com.example.groupassignment.R;
 import com.example.groupassignment.SignUp;
 
+/**
+ * @author Tianyi Xu u7780366
+ * @author Jiayu Jian u7731262
+ * @author Wenzhao Zheng u7705888
+ */
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {

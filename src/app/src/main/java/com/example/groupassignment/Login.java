@@ -41,6 +41,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 /**
  * @author jiayu jian u7731262
+ * @author Zhengyu Peng u7727795
  */
 public class Login extends AppCompatActivity {
     private EditText userNameText;

@@ -19,7 +19,10 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
-// author : Zhengyu Peng
+
+/**
+ * @author u7727795
+ */
 public class VideoCollection extends AppCompatActivity {
     private ListView favoritesList;
     private Button backButton;

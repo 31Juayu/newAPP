@@ -154,7 +154,7 @@
             android:background="?attr/selectableItemBackground"
             android:backgroundTint="#3F51B5"
             android:fontFamily="@font/zector"
-            android:text="Test"
+            android:text="Search courses"
             android:textColor="#A8EC79"
             android:textSize="48sp"
             android:textStyle="bold"

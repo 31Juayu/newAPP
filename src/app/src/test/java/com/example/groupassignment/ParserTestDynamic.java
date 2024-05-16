@@ -5,10 +5,7 @@ import org.junit.runners.Parameterized;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.*;
-/**
- * @author Ruize Luo u7776709
- *
- */
+
 @RunWith(Parameterized.class)
 public class ParserTestDynamic {
 

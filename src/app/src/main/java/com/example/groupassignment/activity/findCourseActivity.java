@@ -79,6 +79,8 @@ public class findCourseActivity extends AppCompatActivity {
     ListView lv;
     ArrayList<String> ress;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +103,14 @@ public class findCourseActivity extends AppCompatActivity {
         Button seeTest = (Button) findViewById(R.id.seeInfo);
         lv = (ListView) findViewById(R.id.listView);
         //Button sortCourse = (Button) findViewById(R.id.DirectlySort);
+        Button findCourseBack = (Button) findViewById(R.id.go_back_find_course);
+        findCourseBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
 
         Intent intent = getIntent();

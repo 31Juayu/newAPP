@@ -26,6 +26,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * @author Zhengyu Peng u7727795
+ */
+
 public class SignUp extends AppCompatActivity {
     private EditText emailName;
     private EditText passWord;

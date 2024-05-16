@@ -5,6 +5,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 /**
+ * @author Zhengyu Peng u7727795
  * ProfileService class for uploading registered user information.
  *
  * This class provides a method to upload the profile JSON of a registered user to Firebase Storage.

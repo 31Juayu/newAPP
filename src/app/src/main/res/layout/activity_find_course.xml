@@ -31,7 +31,7 @@
 
         <!-- Button to return from the current activity, styled uniformly -->
         <Button
-            android:id="@+id/go_back_gps"
+            android:id="@+id/go_back_find_course"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
