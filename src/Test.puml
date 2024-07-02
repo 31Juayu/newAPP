@@ -1,0 +1,765 @@
+@startuml
+class com.example.groupassignment.utility.smallParser {
+~ smallTokenizer tokenizer
+~ ArrayList<smallToken> parsedList
++ <<Create>> smallParser(smallTokenizer)
++ boolean parseExp()
++ boolean parseR()
++ ArrayList<smallToken> getRes()
+}
+
+
+class com.example.groupassignment.utility.Token {
+- String token
+- Type type
++ <<Create>> Token(String,Type)
++ String getToken()
++ Type getType()
++ String toString()
++ boolean equals(Object)
++ int hashCode()
+}
+
+
+enum com.example.groupassignment.utility.Type {
++  info
++  country
++  year
++  quality
++  asterisk
+}
+
+class com.example.groupassignment.utility.Token$IllegalTokenException {
++ <<Create>> IllegalTokenException(String)
+}
+
+class com.example.groupassignment.utility.Parser_1 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_1(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.VideoAdapter {
+- List<VideoItem> video_Items
+- Context context
++ <<Create>> VideoAdapter(List<VideoItem>,Context)
++ VideoAdapter.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(VideoAdapter.ViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.groupassignment.VideoAdapter$ViewHolder {
++ View videoview
+~ TextView video_Names_Text
++ <<Create>> ViewHolder(View)
+}
+
+
+class com.example.groupassignment.utility.MyAppGlideModule {
+}
+class com.example.groupassignment.activity.findCourseActivity {
+~ String json
+~ List<String> list
+~ String usernameInJson
+~ String passwordInJson
+~ String emailInJson
+~ String username
+~ String password
+~ String email
+~ String userInput
+~ ListView lv
+~ ArrayList<String> ress
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
++ void readJSONFromStorage(StorageReference)
+}
+
+
+class com.example.groupassignment.utility.smallTokenizer {
+- String buffer
+- smallToken currentToken
++ <<Create>> smallTokenizer(String)
++ {static} boolean isBlank(String)
++ {static} String removeFirstComma(String)
++ void next()
++ {static} ArrayList<String> splitString(String)
++ smallToken current()
++ boolean hasNext()
+}
+
+
+class com.example.groupassignment.MenuPage {
+# void onCreate(Bundle)
+}
+
+class com.example.groupassignment.DAO.VideoItem {
+~ String videoName
+~ String videoUri
++ <<Create>> VideoItem(String,String)
++ String getVideoName()
++ String getVideoUri()
+}
+
+
+class com.example.groupassignment.Post {
+- String username
+- String postContent
+- String time
+- String usernameTime
++ <<Create>> Post(String,String,String,String)
++ <<Create>> Post()
++ String toJson()
++ void uploadPostJson(Post)
++ String getTime()
++ void setTime(String)
++ String getUsernameTime()
++ void setUsernameTime(String)
++ String getUsername()
++ void setUsername(String)
++ String getPostContent()
++ void setPostContent(String)
++ String getDisplayContent()
+}
+
+
+class com.example.groupassignment.utility.Parser_6 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_6(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseH()
++ boolean parseL()
++ boolean parseW()
++ boolean parseX()
++ boolean parseY()
++ boolean parseP()
++ boolean parseQ()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.activity.showInfoActivity {
+# void onCreate(Bundle)
+}
+
+class com.example.groupassignment.PostAdapter {
+- List<String> posts
++ <<Create>> PostAdapter(List<String>)
++ PostViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(PostViewHolder,int)
++ int getItemCount()
+}
+
+
+class com.example.groupassignment.PostAdapter$PostViewHolder {
+~ TextView post_content
+~ <<Create>> PostViewHolder(View)
+}
+
+
+interface com.example.groupassignment.DAO.VideoUploadInterface {
++ void uploadVideo()
++ void readVideoLinks()
+}
+
+class com.example.groupassignment.utility.RedBlackTree {
+- Node<T> root
+~ boolean isRed(Node<T>)
+~ boolean isBlack(Node<T>)
+- void rightRotate(Node<T>)
+- void leftRotate(Node<T>)
++ void put(T,T)
+~ void fixRedRed(Node<T>)
++ void remove(T)
+- void fixDoubleBlack(Node<T>)
+- void doRemove(Node<T>)
+~ Node<T> find(T)
+~ Node<T> findReplaced(Node<T>)
++ Node<T> findByKey(Node<T>,T)
++ T search(T)
++ ArrayList<ArrayList<T>> preOrder()
+- void preOrder(Node<T>,ArrayList<ArrayList<T>>)
+}
+
+
+enum com.example.groupassignment.utility.Color {
++  RED
++  BLACK
+}
+
+class com.example.groupassignment.utility.RedBlackTree$Node {
+~ T key
+~ T value
+~ Node<T> left
+~ Node<T> right
+~ Node<T> parent
+~ Color color
++ <<Create>> Node(T,T)
+~ boolean isLeftChild()
+~ Node<T> uncle()
+~ Node<T> sibling()
+}
+
+
+class com.example.groupassignment.utility.Tokenizer {
+- String buffer
+- Token currentToken
+~ Context context
++ <<Create>> Tokenizer(String,Context)
++ {static} String removeFirstComma(String)
++ void next()
++ {static} ArrayList<String> splitString(String)
++ Token current()
++ boolean hasNext()
+}
+
+
+class com.example.groupassignment.utility.smallToken {
+- String token
+- Type type
++ <<Create>> smallToken(String,Type)
++ String getToken()
++ Type getType()
++ String toString()
+}
+
+
+enum com.example.groupassignment.utility.Type {
++  course
++  err
+}
+
+class com.example.groupassignment.utility.Parser_2 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_2(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+interface com.example.groupassignment.utility.myParser {
+~ void handleErr()
+~ boolean parseExp()
+~ ArrayList<Token> getRes()
+}
+
+class com.example.groupassignment.utility.usefulMethod {
++ {static} RedBlackTree<String> readCSVLinesAllCountry(Context)
++ {static} RedBlackTree<String> readCSVLinesAllInfo(Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchTable(Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchQuality(Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByYear(String,Context)
++ {static} ArrayList<String> keyDecoder(String,Context)
++ {static} RedBlackTree<String> readCSVLinesAllCountryByKey(Context)
++ {static} RedBlackTree<String> readCSVLinesAllInfoByKey(Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByCountry(String,Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByInfo(String,Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByYearAndInfo(String,String,Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByYearAndCountry(String,String,Context)
++ {static} RedBlackTree<String> readCSVLinesAllSearchByInfoAndCountry(String,String,Context)
++ {static} ArrayList<String> readCSVLinesAllOfInfo(Context)
++ {static} ArrayList<String> readCSVLinesAllOfCountry(Context)
++ {static} ArrayList<String> getAllCountry(Context)
++ {static} ArrayList<String> getAllInfo(Context)
++ {static} HashSet<String> getAllYear(Context)
+}
+
+class com.example.groupassignment.activity.searchActivity {
+- Button go_back_searches
+# void onCreate(Bundle)
+}
+
+
+class com.example.groupassignment.VideoDemonstrationActivity {
+- Button uploadv
+- Uri videouri
+- ProgressBar progressBar
+- TextView progressText
+- RecyclerView videoList
+- List<Uri> videoUris
+- Button go_back_demo
+# void onCreate(Bundle)
+- void chooseVideo()
+# void onActivityResult(int,int,Intent)
+- String getFileType(Uri)
+- String getUploadFileName(Uri)
++ void uploadVideo()
++ void readVideoLinks()
+- void updateVideoList(List<VideoItem>)
+}
+
+
+class com.example.groupassignment.AssignmentAdapter {
+- List<AssignmentItem> assignmentItemList
+- Context context
++ <<Create>> AssignmentAdapter(List<AssignmentItem>,Context)
++ AssignmentAdapter.ViewHolder onCreateViewHolder(ViewGroup,int)
++ void onBindViewHolder(AssignmentAdapter.ViewHolder,int)
++ int getItemCount()
+- void openPDF(Context,Uri)
+}
+
+
+class com.example.groupassignment.AssignmentAdapter$ViewHolder {
++ View assignmentView
+~ TextView assignment_Text_Bind
++ <<Create>> ViewHolder(View)
+}
+
+
+class com.example.groupassignment.AssignmentDemonstrationActivity {
+- Button uploadPDF
+- Uri PDFUri
+- ProgressBar progressBarPDF
+- TextView progressTextViewPDF
+- RecyclerView PDFList
+- List<Uri> PDFUris
+- Button go_back_assign
+# void onCreate(Bundle)
+- void chooseAssignment()
+# void onActivityResult(int,int,Intent)
+- String getUploadFileType(Uri)
+- String getUploadFileName(Uri)
++ void uploadPDFAssign()
++ void readPDFLinks()
+- void updatePDFList(List<AssignmentItem>)
+}
+
+
+class com.example.groupassignment.activity.playVedioOfcourse {
+# void onCreate(Bundle)
+- void playVideo(String)
+}
+
+interface com.example.groupassignment.DAO.AssignmentUploadInterface {
++ void uploadPDFAssign()
++ void readPDFLinks()
+}
+
+class com.example.groupassignment.activity.GPSMapsActivity {
+- GoogleMap mMap
+- ActivityGpsmapsBinding binding
+- {static} int LOCATION_REQUEST_CODE
+- FusedLocationProviderClient fusedLocationProviderClient
+- LocationManager lm
+- PlacesClient placesClient
+# void onCreate(Bundle)
++ void onMapReady(GoogleMap)
+- void getCurrentUserLocation()
+- void updateGoogleMap(Location)
+- void openUserLocation()
+- void requestLocationPermissions()
+- boolean isGPSable(LocationManager)
+- void openGPS()
+}
+
+
+class com.example.groupassignment.activity.MainActivity {
+# void onCreate(Bundle)
+}
+
+class com.example.groupassignment.activity.FriendsActivity {
+- ListView friendList
+- ArrayAdapter<String> adapter
+# void onCreate(Bundle)
+}
+
+
+class com.example.groupassignment.activity.ChatIndividual {
+- LinearLayout show_message_layout
+- ScrollView scrollView
+- EditText message_area
+- DatabaseReference reference1
+- String currentUserName
+# void onCreate(Bundle)
+- void initializeViews()
+- void configureDatabaseReferences()
+- String sanitize(String)
+- void setupMessageSending()
+- void sendMessage(String)
+- void listenForIncomingMessages()
+- void displayMessage(Map<String,String>,boolean)
+- void messageViewer(String,int)
+}
+
+
+class com.example.groupassignment.activity.ChatIndividual$ChildEventListenerAdapter {
++ void onChildAdded(DataSnapshot,String)
++ void onChildChanged(DataSnapshot,String)
++ void onChildRemoved(DataSnapshot)
++ void onChildMoved(DataSnapshot,String)
++ void onCancelled(DatabaseError)
+}
+
+class com.example.groupassignment.utility.Parser_5 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_5(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseH()
++ boolean parseL()
++ boolean parseW()
++ boolean parseX()
++ boolean parseY()
++ boolean parseP()
++ boolean parseQ()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.utility.parserToSearch {
++ {static} ArrayList<ArrayList<String>> findRes(String,Context)
++ {static} ArrayList<String> findRess(String,Context)
++ {static} ArrayList<String> handle_err_Input(ArrayList<Token>,Context)
++ {static} ArrayList<String> findMostSimilarString(String,HashSet<String>,ArrayList<String>,ArrayList<String>)
++ {static} double calculateSimilarity(String,String)
++ {static} String removeExtraCommas(String)
++ {static} String removeLeadingTrailingCommasAndSpaces(String)
+}
+
+class com.example.groupassignment.Login {
+- EditText userNameText
+- EditText passWordText
+- String jsonRead
+- List<String> courseListInJson
+- String usernameInJson
+- String passwordInJson
+- String emailInJson
+- String profileImageUrlInJson
+- List<String> friendsInJson
+- ArrayList<String> videoNamesFound
+- StorageReference storageReference
+# void onCreate(Bundle)
+- void checkLogin()
+- void checkUserJson(String,String,FirebaseStorage)
++ void readJSONFromStorage(StorageReference)
+- void performLogin()
+- void performSignUp()
++ ArrayList<Customer> parseXML()
+}
+
+
+class com.example.groupassignment.utility.Parser {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseH()
++ boolean parseL()
++ boolean parseW()
++ boolean parseX()
++ boolean parseY()
++ boolean parseP()
++ boolean parseQ()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.SignUp {
+- EditText emailName
+- EditText passWord
+- EditText confirmPassWord
+- EditText userName
+- ProfileService signupService
+# void onCreate(Bundle)
+}
+
+
+class com.example.groupassignment.DAO.Profile {
+- String username
+- String email
+- String password
+- String profileImageUrl
+- List<String> courses
+- List<String> friends
++ <<Create>> Profile(String,String,String,String,List<String>,List<String>)
++ <<Create>> Profile()
++ void setExampleData()
++ String toJson()
++ void uploadProfileJson(Profile)
++ List<String> getCourses()
++ void updateCourses(List<String>)
++ void setCourses(List<String>)
++ List<String> getFriends()
++ void setFriends(List<String>)
++ String getUsername()
++ String getEmail()
++ String getPassword()
++ String getProfileImageUrl()
++ void setUsername(String)
++ void setEmail(String)
++ void setPassword(String)
++ void setProfileImageUrl(String)
+}
+
+
+class com.example.groupassignment.utility.Parser_4 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_4(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseH()
++ boolean parseL()
++ boolean parseW()
++ boolean parseX()
++ boolean parseY()
++ boolean parseP()
++ boolean parseQ()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.activity.showCountryActivity {
+# void onCreate(Bundle)
+}
+
+class com.example.groupassignment.VideoCollection {
+- ListView favoritesList
+- Button backButton
+- Button ButtonUpdate2Profile
+- ArrayAdapter<String> adapter
+- Intent intent
+# void onCreate(Bundle)
+- void loadUserFavorites(String)
+- void updateVideoList(List<String>)
+}
+
+
+class com.example.groupassignment.utility.Parser_3 {
+~ Tokenizer tokenizer
+~ ArrayList<Token> parsedList
+~ Context context
++ <<Create>> Parser_3(Tokenizer,Context)
++ void handleErr()
++ boolean parseExp()
++ boolean parseR()
++ boolean parseM()
++ boolean parseN()
++ boolean parseFinal()
++ ArrayList<Token> getRes()
+}
+
+
+class com.example.groupassignment.DAO.AssignmentItem {
+~ String PDFName
+~ String PDFUri
++ <<Create>> AssignmentItem(String,String)
++ String getPDFName()
++ String getPDFUri()
+}
+
+
+class com.example.groupassignment.utility.smallParserToSearch {
++ {static} ArrayList<String> findRes(String,RedBlackTree<String>)
++ {static} ArrayList<String> findRessInSmall(String,List<String>)
++ {static} ArrayList<String> handle_err_Input_Small(ArrayList<smallToken>,List<String>)
++ {static} ArrayList<String> findMostSimilarStringInSmallSearch(String,List<String>)
+}
+
+class com.example.groupassignment.utility.parserFactory {
++ {static} myParser createParser(String,Tokenizer,Context)
+}
+
+class com.example.groupassignment.DAO.Customer {
+- String id
+- String username
+- String password
++ <<Create>> Customer(String,String,String)
++ String getId()
++ String getUsername()
++ String getPassword()
++ String toString()
+}
+
+
+class com.example.groupassignment.activity.PostActivity {
+- RecyclerView recyclerView
+- PostAdapter adapter
+- List<String> postList
+- Button ButtonPost2PostItem
+- Button ButtonPostRefresh
+- FirebaseStorage storage
+- StorageReference storageRef
+- Button go_back_post
+# void onCreate(Bundle)
+- void showPostDialog()
+- void downloadPosts()
+}
+
+
+class com.example.groupassignment.activity.PlayActivity {
+- TextView video_name_textView
+- VideoView current_VideoView
+~ MediaController mediaController
+- Switch favoriteSwitch
+# void onCreate(Bundle)
+- void addToFavorites(String,String,String)
+- void removeFromFavorites(String,String,String)
+- void checkFavoriteStatus(String,String,String)
+}
+
+
+class com.example.groupassignment.activity.locationActivity {
+- Button go_back_location
+# void onCreate(Bundle)
+}
+
+
+class com.example.groupassignment.activity.ProfileActivity {
+~ Profile profile
+- TextView UsernameProfile
+- TextView EmailProfile
+- ListView CourseList
+- Button ButtonProfile2Menu
+- Button ButtonProfile2Friends
+- Button ButtonProfile2Courses
+- ImageView HeadImage
+- ArrayAdapter<String> adapter
+- ArrayList<String> friends
+- List<String> coursesToAdd
+# void onCreate(Bundle)
++ void downloadProfile(String,FirebaseStorage)
++ void getHeadImage()
+}
+
+
+class com.example.groupassignment.activity.GPSActivity {
+- LocationManager lm
+- TextView position_show
+- {static} int PERMISSION_REQUEST_CODE
+- Button go_back_gps
+# void onCreate(Bundle)
+- boolean isGPSable(LocationManager)
+- void openGPS()
+- void updatePage(Location)
+}
+
+
+class com.example.groupassignment.User {
+- String name
+- String email
+- String password
++ <<Create>> User(String,String,String)
++ void watchVideo()
++ void discuss()
++ String getName()
++ void setName(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
+}
+
+
+class com.example.groupassignment.activity.dealSearchActivity {
+~ ArrayAdapter<String> ad
+~ ArrayList<String> resLine
+- Button go_back_search
+# void onCreate(Bundle)
++ boolean onCreateOptionsMenu(Menu)
++ boolean onOptionsItemSelected(MenuItem)
++ {static} int getNum(String)
+}
+
+
+class com.example.groupassignment.DAO.ProfileService {
++ {static} void uploadProfileJson(Profile,OnProfileUploadListener)
+}
+
+interface com.example.groupassignment.DAO.ProfileService$OnProfileUploadListener {
+~ void onUploadSuccess()
+~ void onUploadFailure(Exception)
+}
+
+
+
+com.example.groupassignment.utility.Token +.. com.example.groupassignment.utility.Token$IllegalTokenException
+com.example.groupassignment.utility.IllegalArgumentException <|-- com.example.groupassignment.utility.Token$IllegalTokenException
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_1
+com.example.groupassignment.Adapter <|-- com.example.groupassignment.VideoAdapter
+com.example.groupassignment.VideoAdapter +.. com.example.groupassignment.VideoAdapter$ViewHolder
+com.example.groupassignment.ViewHolder <|-- com.example.groupassignment.VideoAdapter$ViewHolder
+com.bumptech.glide.module.AppGlideModule <|-- com.example.groupassignment.utility.MyAppGlideModule
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.findCourseActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.MenuPage
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_6
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.showInfoActivity
+com.example.groupassignment.Adapter <|-- com.example.groupassignment.PostAdapter
+com.example.groupassignment.PostAdapter +.. com.example.groupassignment.PostAdapter$PostViewHolder
+com.example.groupassignment.ViewHolder <|-- com.example.groupassignment.PostAdapter$PostViewHolder
+com.example.groupassignment.utility.RedBlackTree +.. com.example.groupassignment.utility.RedBlackTree$Node
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_2
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.searchActivity
+com.example.groupassignment.DAO.VideoUploadInterface <|.. com.example.groupassignment.VideoDemonstrationActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.VideoDemonstrationActivity
+com.example.groupassignment.Adapter <|-- com.example.groupassignment.AssignmentAdapter
+com.example.groupassignment.AssignmentAdapter +.. com.example.groupassignment.AssignmentAdapter$ViewHolder
+com.example.groupassignment.ViewHolder <|-- com.example.groupassignment.AssignmentAdapter$ViewHolder
+com.example.groupassignment.DAO.AssignmentUploadInterface <|.. com.example.groupassignment.AssignmentDemonstrationActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.AssignmentDemonstrationActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.playVedioOfcourse
+com.google.android.gms.maps.OnMapReadyCallback <|.. com.example.groupassignment.activity.GPSMapsActivity
+androidx.fragment.app.FragmentActivity <|-- com.example.groupassignment.activity.GPSMapsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.MainActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.FriendsActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.ChatIndividual
+com.example.groupassignment.activity.ChatIndividual +.. com.example.groupassignment.activity.ChatIndividual$ChildEventListenerAdapter
+com.example.groupassignment.activity.ChildEventListener <|.. com.example.groupassignment.activity.ChatIndividual$ChildEventListenerAdapter
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_5
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.Login
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.SignUp
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_4
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.showCountryActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.VideoCollection
+com.example.groupassignment.utility.myParser <|.. com.example.groupassignment.utility.Parser_3
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.PostActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.PlayActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.locationActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.ProfileActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.GPSActivity
+androidx.appcompat.app.AppCompatActivity <|-- com.example.groupassignment.activity.dealSearchActivity
+com.example.groupassignment.DAO.ProfileService +.. com.example.groupassignment.DAO.ProfileService$OnProfileUploadListener
+@enduml

@@ -56,10 +56,10 @@ public class Tokenizer {
         } else if (treeCountry.search(firstString) != null) {
             currentToken = new Token(firstString,Token.Type.country);
         } else if (firstString.equals("quality")) {
-            //这里直接是quality,后续再处理
+
             currentToken = new Token(firstString,Token.Type.quality);
         } else if (firstString.equals("*")) {
-            //这里直接是*,后续再处理
+
             currentToken = new Token(firstString,Token.Type.asterisk);
         }else {
             currentToken = new Token(firstString,Token.Type.info);
